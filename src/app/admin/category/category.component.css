@@ -1,0 +1,60 @@
+*{
+    text-align: center;
+}
+
+/*Tables*/
+table {
+	border-collapse: collapse;
+	width: 100%;
+	float: left;
+	border-radius: 20px;
+	-moz-border-radius: 25px;
+}
+
+table, th, td {
+	border: 0.5px solid rgb(220, 247, 253);
+  }
+
+th, td {
+	text-align: center;
+	padding: 2px;
+}
+
+td{
+    font-size: 16px;
+}
+
+
+tr:nth-child(even) {
+	background-color: #B3F2FB;
+}
+
+th {
+	background-color: #0CDCB6;
+	color: #ffffff;
+	font-size: 17px;
+}
+
+a:hover {
+	color: #999999;
+}
+
+input, select{
+    background-color: inherit;
+	font-size: inherit;
+	border-radius: 20px;
+	padding: 4px;
+}
+
+input:hover,  input:active, input:focus{
+    border: 2px solid rgb(18, 122, 136);
+}
+
+button:hover{
+    background-color: rgb(18, 122, 136);
+}
+button {
+	border: 0.5px;
+	background-color: rgb(120, 179, 169);
+	border-radius: 20px;
+}

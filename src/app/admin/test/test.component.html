@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            Curretly selected category
+          </th>
+          <th>
+            Test category
+          </th>
+          <th>
+            test time
+          </th>
+          <th>
+            Test name
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Delete
+          </th>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <select [(ngModel)]="testtoinsert.categoriesId">
+                <option *ngFor="let c of categories" [ngValue]="c.id">{{c.category}}</option>
+            </select>
+          </td>
+          <td>
+            <input type="number"  placeholder="test time" [(ngModel)]="testtoinsert.timeTest">
+          </td>
+          <td>
+            <input placeholder="test name" [(ngModel)]="testtoinsert.testName">
+          </td>
+          <td>
+            <button (click)="insert(testtoinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let test of tests">
+          <td>
+              <span>{{test.categoriesCategory}}</span>
+          </td>
+          <td>
+              <select [(ngModel)]="test.categoriesId">
+                  <option *ngFor="let c of categories" [ngValue]="c.id" [selected]="c.id == test.categoriesId">{{c.category}}</option>
+              </select>
+          </td>
+          <td>
+            <input [(ngModel)]="test.timeTest">
+          </td>
+          <td>
+            <input [(ngModel)]="test.testName">
+          </td>
+          <td>
+            <button (click)=update(test)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(test)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>

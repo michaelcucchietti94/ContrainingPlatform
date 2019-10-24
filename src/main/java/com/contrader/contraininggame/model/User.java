@@ -25,6 +25,7 @@ public class User implements Serializable {
     private Date dataNascita;
 
     private Long livello;
+    private Usertype usertype;
 
 
 }

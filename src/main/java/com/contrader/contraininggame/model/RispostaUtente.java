@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -24,4 +26,7 @@ public class RispostaUtente implements Serializable {
     private User user;
 
     private Long questionScore;
+
+    private LocalDate insertdate = LocalDate.now();
+
 }

@@ -19,10 +19,35 @@ public class UserController extends AbstractController<User, Long> {
         return uService.authenticate(loginCredentials.getUsername(), loginCredentials.getPassword());
     }
 
-    @GetMapping("/ranks")
+    @GetMapping("/allrankings")
     public List<Ranking> getAllRakings() {
         UserService uService = (UserService)service;
         return uService.getRankings();
     }
+
+    @GetMapping("/rankof_{user}")
+    public Ranking getUserRanking(@PathVariable("user") String username) {
+        UserService uService = (UserService)service;
+        return uService.getUserRanking(username);
+    }
+
+    @GetMapping("/dailyranking")
+    public List<Ranking> getDailyRanking() {
+        UserService uService = (UserService)service;
+        return uService.getDailyRanking();
+    }
+
+    @GetMapping("/weeklyranking")
+    public List<Ranking> getWeeklyRanking() {
+        UserService uService = (UserService)service;
+        return uService.getWeeklyRanking();
+    }
+
+    @GetMapping("/levelranking_{level}")
+    public List<Ranking> getLevelRanking(@PathVariable("level") Integer level) {
+        UserService uService = (UserService)service;
+        return uService.getLevelRanking(level);
+    }
+
 
 }

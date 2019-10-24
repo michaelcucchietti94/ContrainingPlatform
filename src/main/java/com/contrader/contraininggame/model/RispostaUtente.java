@@ -22,4 +22,6 @@ public class RispostaUtente implements Serializable {
     @ManyToOne
     @JoinColumn(name="idUtente")
     private User user;
+
+    private Long questionScore;
 }

@@ -7,10 +7,10 @@ public interface Service<Model, KeyType> {
 
     Optional<Model> read(KeyType id);
 
-    public Model insert (Model dto);
+    Model insert (Model dto);
 
-    public Model update (Model dto);
+    Model update (Model dto);
 
-    public void delete (KeyType id);
+    void delete (KeyType id);
 
 }

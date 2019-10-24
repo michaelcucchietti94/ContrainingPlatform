@@ -1,4 +1,4 @@
-package com.contrader.contraininggame.utils;
+package com.contrader.contraininggame.utils.mappers;
 
 import java.util.List;
 import java.util.function.Function;

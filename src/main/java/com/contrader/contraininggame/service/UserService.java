@@ -3,7 +3,7 @@ package com.contrader.contraininggame.service;
 import com.contrader.contraininggame.model.Ranking;
 import com.contrader.contraininggame.model.User;
 import com.contrader.contraininggame.repository.UserRepository;
-import com.contrader.contraininggame.utils.Mapper;
+import com.contrader.contraininggame.utils.mappers.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

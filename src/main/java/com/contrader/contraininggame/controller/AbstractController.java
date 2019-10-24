@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public abstract class AbstractController<Model, KeyType> {
     @Autowired
     protected Service<Model, KeyType> service;

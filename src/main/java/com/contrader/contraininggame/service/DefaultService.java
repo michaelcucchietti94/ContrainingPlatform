@@ -1,5 +1,6 @@
 package com.contrader.contraininggame.service;
 
+import com.contrader.contraininggame.service.interfaces.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 

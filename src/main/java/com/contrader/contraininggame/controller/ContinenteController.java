@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/continents")
-public class ContinenteController extends AbstractController<Continente, Long> {
+class ContinenteController extends AbstractController<Continente, Long> {
     @Override
     public Iterable<Continente> getAll() {
         setData();

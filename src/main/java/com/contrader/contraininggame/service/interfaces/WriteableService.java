@@ -1,4 +1,4 @@
-package com.contrader.contraininggame.service;
+package com.contrader.contraininggame.service.interfaces;
 
 import java.util.Optional;
 

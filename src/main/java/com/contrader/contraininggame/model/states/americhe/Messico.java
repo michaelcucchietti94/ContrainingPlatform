@@ -4,7 +4,7 @@ import com.contrader.contraininggame.model.Stato;
 import com.contrader.contraininggame.utils.data.ContinentName;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class Messico extends Stato {
     public Messico() {
         this.setContinente(ContinentName.AMERICHE.getContinente());

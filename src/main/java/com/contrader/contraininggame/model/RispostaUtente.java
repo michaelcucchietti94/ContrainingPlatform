@@ -25,8 +25,9 @@ public class RispostaUtente implements Serializable {
     @JoinColumn(name="idUtente")
     private User user;
 
-    private Long questionScore;
 
+    private Long questionScore;
     private LocalDate insertdate = LocalDate.now();
+    private Long secondsForAnswering;
 
 }

@@ -3,52 +3,34 @@ package com.contrader.contraininggame.utils.data;
 import com.contrader.contraininggame.model.states.americhe.*;
 import com.contrader.contraininggame.model.states.europa.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 class States {
     /* AMERICHE */
-    @Autowired
-    static Argentina argentina;
-    @Autowired
-    static Brasile brasile;
-    @Autowired
-    static Canada canada;
-    @Autowired
-    static Colombia colombia;
-    @Autowired
-    static Cuba cuba;
-    @Autowired
-    static Guatemala guatemala;
-    @Autowired
-    static Messico messico;
-    @Autowired
-    static Nicaragua nicaragua;
-    @Autowired
-    static Peru peru;
-    @Autowired
-    static USA usa;
+    static Argentina argentina = new Argentina();
+    static Brasile brasile = new Brasile();
+    static Canada canada = new Canada();
+    static Colombia colombia = new Colombia();
+    static Cuba cuba = new Cuba();
+    static Guatemala guatemala = new Guatemala();
+    static Messico messico = new Messico();
+    static Nicaragua nicaragua = new Nicaragua();
+    static Peru peru = new Peru();
+    static USA usa = new USA();
     /* AMERICHE */
 
     /* EUROPA */
-    @Autowired
-    static Danimarca danimarca;
-    @Autowired
-    static Francia francia;
-    @Autowired
-    static Germania germania;
-    @Autowired
-    static Grecia grecia;
-    @Autowired
-    static Islanda islanda;
-    @Autowired
-    static Italia italia;
-    @Autowired
-    static RegnoUnito regnoUnito;
-    @Autowired
-    static Spagna spagna;
-    @Autowired
-    static Svezia svezia;
-    @Autowired
-    static Ucraina ucraina;
+    static Danimarca danimarca = new Danimarca();
+    static Francia francia = new Francia();
+    static Germania germania = new Germania();
+    static Grecia grecia = new Grecia();
+    static Islanda islanda = new Islanda();
+    static Italia italia = new Italia();
+    static RegnoUnito regnoUnito = new RegnoUnito();
+    static Spagna spagna = new Spagna();
+    static Svezia svezia = new Svezia();
+    static Ucraina ucraina = new Ucraina();
     /* EUROPA */
 
 }

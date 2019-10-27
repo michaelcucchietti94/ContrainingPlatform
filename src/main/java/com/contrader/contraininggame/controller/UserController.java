@@ -6,6 +6,7 @@ import com.contrader.contraininggame.model.User;
 import com.contrader.contraininggame.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
@@ -47,6 +48,12 @@ public class UserController extends AbstractController<User, Long> {
     public List<Ranking> getLevelRanking(@PathVariable("level") Integer level) {
         UserService uService = (UserService)service;
         return uService.getLevelRanking(level);
+    }
+
+    @GetMapping("/usersByLevel_{level}")
+    public List<User> getUsersByLevel(@PathVariable("level") Long level) {
+        UserService userService = (UserService)service;
+        return userService.getUsersByLevel(level);
     }
 
 

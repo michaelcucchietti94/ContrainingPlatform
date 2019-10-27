@@ -13,14 +13,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@IdClass(RispostaUtenteKey.class)
 public class RispostaUtente implements Serializable {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
     @ManyToOne
     @JoinColumn(name="idRisposta")
     private RispostaDomanda risposta;
 
-    @Id
     @ManyToOne
     @JoinColumn(name="idUtente")
     private User user;

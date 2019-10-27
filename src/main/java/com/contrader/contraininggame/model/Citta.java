@@ -23,11 +23,15 @@ public class Citta implements Serializable {
     @JoinColumn(name = "idStato")
     private Stato stato;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(
             name = "cittatests",
             joinColumns = {@JoinColumn(name = "idtest")},
             inverseJoinColumns = {@JoinColumn(name = "idCitta")}
     )
-    private List<Test> tests;
+    private List<Test> tests;*/
+
+    @OneToOne
+    @JoinColumn(name = "idtest")
+    private Test test;
 }

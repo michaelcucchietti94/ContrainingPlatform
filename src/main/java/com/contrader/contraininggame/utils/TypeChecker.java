@@ -1,6 +1,7 @@
 package com.contrader.contraininggame.utils;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class TypeChecker {
 
@@ -52,9 +53,17 @@ public class TypeChecker {
             return false;
         }
     }
-    public static boolean isBigDeciaml(Object o) {
+    public static boolean isBigDecimal(Object o) {
         try {
             BigDecimal l = (BigDecimal)o;
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
+    }
+    public static boolean isBigInteger(Object o) {
+        try {
+            BigInteger l = (BigInteger) o;
             return true;
         } catch(Exception e) {
             return false;
@@ -63,6 +72,9 @@ public class TypeChecker {
 
 
     public static boolean isNumeric(Object o) {
-        return isLong(o) || isByte(o) || isInteger(o) || isDouble(o) || isDouble(o) || isFloat(o) || isShort(o) || isBigDeciaml(o);
+        return isLong(o) || isByte(o) || isInteger(o) || isDouble(o) || isDouble(o) || isFloat(o) || isShort(o) || isBigDecimal(o) || isBigInteger(o);
     }
+
+
 }
+

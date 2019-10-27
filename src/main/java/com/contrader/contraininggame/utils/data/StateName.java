@@ -22,7 +22,31 @@ public enum StateName {
     REGNOUNITO(States.regnoUnito),
     SPAGNA(States.spagna),
     SVEZIA(States.svezia),
-    UCRAINA(States.ucraina);
+    UCRAINA(States.ucraina),
+    CINA(States.cina),,
+    FILIPPINE(States.filippine),
+    GIAPPONE(States.giappone),
+    INDIA(States.india),
+    IRAN(States.iran),
+    IRAQ(States.iraq),
+    LIBANO(States.libano),
+    MALESIA(States.malesia),
+    PAKISTAN(States.pakistan),
+    RUSSIA(States.russia),
+    ALGERIA(States.algeria),
+    EGITTO(States.egitto),
+    ETIOPIA(States.etiopia),
+    MADAGASCAR(States.madagascar),
+    MAROCCO(States.marocco),
+    NIGERIA(States.nigeria),
+    REPUBBLICA_DEL_CONGO(States.repubblicaDelCongo),
+    SUD_AFRICA(States.sudAfrica),
+    SUDAN(States.sudan),
+    TANZANIA(States.tanzania),
+    AUSTRALIA(States.australia),
+    NUOVA_ZELANDA(States.nuovaZelanda),
+    POLINESIA(States.polinesia);
+
 
     private Stato stato;
     private StateName(Stato s) {

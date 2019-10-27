@@ -1,18 +1,11 @@
 package com.contrader.contraininggame.controller.training;
 
-import com.contrader.contraininggame.controller.AbstractController;
 import com.contrader.contraininggame.model.training.TempoTesto;
 import com.contrader.contraininggame.model.training.TestoTraining;
 import com.contrader.contraininggame.service.training.TempoTestoService;
 import com.contrader.contraininggame.service.training.TestoTrainingService;
-import com.contrader.contraininggame.utils.UsefulValues;
-import org.aspectj.weaver.Iterators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 @RestController
 @RequestMapping("/training")

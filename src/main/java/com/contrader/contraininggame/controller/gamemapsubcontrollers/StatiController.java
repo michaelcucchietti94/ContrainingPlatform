@@ -5,6 +5,7 @@ import com.contrader.contraininggame.model.Stato;
 import com.contrader.contraininggame.model.Stato;
 import com.contrader.contraininggame.service.StatesService;
 import com.contrader.contraininggame.service.UserService;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/states")
 @CrossOrigin(origins = "http://localhost:4200")*/
-class StatiController extends AbstractController<Stato, Long> {
+@Component
+public class StatiController extends AbstractController<Stato, Long> {
     @Override
     public Iterable<Stato> getAll() {
         setData();

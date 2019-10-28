@@ -3,6 +3,7 @@ package com.contrader.contraininggame.controller.gamemapsubcontrollers;
 import com.contrader.contraininggame.controller.AbstractController;
 import com.contrader.contraininggame.model.Continente;
 import com.contrader.contraininggame.service.ContinenteService;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("continenti")
 @CrossOrigin(origins = "http://localhost:4200")*/
-class ContinenteController extends AbstractController<Continente, Long> {
+@Component
+public class ContinenteController extends AbstractController<Continente, Long> {
     @Override
     public Iterable<Continente> getAll() {
         setData();

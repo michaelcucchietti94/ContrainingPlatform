@@ -25,4 +25,9 @@ public class ContinenteService extends DefaultService<Continente, Long> {
             emptyCache = false;
         }
     }
+
+
+    public List<Continente> getContinentiByCategory(Long idCategoria) {
+        return ((ContinenteRepository)repository).getContinentiByCategory(idCategoria);
+    }
 }

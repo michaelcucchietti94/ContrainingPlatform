@@ -7,10 +7,12 @@ import com.contrader.contraininggame.repository.ContinenteRepository;
 import com.contrader.contraininggame.repository.StatesRepository;
 import com.contrader.contraininggame.utils.data.ContinentName;
 import com.contrader.contraininggame.utils.data.StateName;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class StatesService extends DefaultService<Stato, Long> {
     private boolean emptyCache = true;
 
@@ -25,5 +27,14 @@ public class StatesService extends DefaultService<Stato, Long> {
             });
             emptyCache = false;
         }
+    }
+
+    public List<Stato> getStatiByContinente(Long idContinente) {
+        StatesRepository repo = (StatesRepository)repository;
+        return repo.getStatiByContinente(idContinente);
+    }
+
+    public List<Stato> getStatiByContinenteAndCategory(Long idContinente, Long idCategoria) {
+        return ((StatesRepository)repository).getStatiByContinenteAndCategory(idContinente, idCategoria);
     }
 }

@@ -23,7 +23,7 @@ public enum StateName {
     SPAGNA(States.spagna),
     SVEZIA(States.svezia),
     UCRAINA(States.ucraina),
-    CINA(States.cina),,
+    CINA(States.cina),
     FILIPPINE(States.filippine),
     GIAPPONE(States.giappone),
     INDIA(States.india),

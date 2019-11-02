@@ -1,9 +1,16 @@
 package com.contrader.contraininggame.repository;
 
+import com.contrader.contraininggame.model.Domanda;
 import com.contrader.contraininggame.model.Test;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
+@Repository
+@Transactional
 public interface TestRepository extends CrudRepository<Test, Long> {
 
     @Query(value = "select count(*) as TestRimanenti from test join categoria on categoria.id = test.idcategoria " +
@@ -18,4 +25,7 @@ public interface TestRepository extends CrudRepository<Test, Long> {
             "group by insertdate, test.id " +
             "having (sum(risposta_domanda.corretta)*100/count(*)) >= 60)", nativeQuery = true)
     Integer countRemainingTest(String username, Integer livello, Long idCategoria);
+
+    @Query("SELECT d from Test t inner join Domanda d on d.test = t and t.id = ?1")
+    List<Domanda> getDomandeOfTest(Long idTest);
 }

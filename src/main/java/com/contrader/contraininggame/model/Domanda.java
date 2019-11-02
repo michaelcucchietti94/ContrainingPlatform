@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,8 +18,10 @@ public class Domanda implements Serializable {
     private Long id;
 
     private String testo;
+    private String spiegazione;
 
     @ManyToOne
     @JoinColumn(name="idtest")
     private Test test;
+
 }

@@ -1,14 +1,11 @@
 package com.contrader.contraininggame.controller;
 
-import com.contrader.contraininggame.controller.gamemapsubcontrollers.CittaController;
-import com.contrader.contraininggame.controller.gamemapsubcontrollers.ContinenteController;
-import com.contrader.contraininggame.controller.gamemapsubcontrollers.StatiController;
-import com.contrader.contraininggame.model.Citta;
-import com.contrader.contraininggame.model.Continente;
-import com.contrader.contraininggame.model.Stato;
-import com.contrader.contraininggame.model.User;
+import com.contrader.contraininggame.controller.gamemapsubcontrollers.*;
+import com.contrader.contraininggame.model.*;
 import com.contrader.contraininggame.model.decorated.CittaDecorated;
+import com.contrader.contraininggame.model.decorated.DomandaDecorated;
 import com.contrader.contraininggame.model.decorated.RequestCities;
+import com.contrader.contraininggame.model.test.UserTestScore;
 import com.contrader.contraininggame.service.ContinenteService;
 import com.contrader.contraininggame.service.StatesService;
 import com.contrader.contraininggame.utils.mappers.Mapper;
@@ -20,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/map")
+@RequestMapping("/game")
 @CrossOrigin(origins = "http://localhost:4200")
 public class GameMapController {
 
@@ -37,11 +34,17 @@ public class GameMapController {
     private TestController testController;
 
     @Autowired
+    private UserTestController userTestController;
+
+    @Autowired
+    private RispostaDomandaController rispostaDomandaController;
+
+    @Autowired
     private Mapper<Citta, CittaDecorated> cittaMapper;
 
 
 
-    @GetMapping("ContinenteByCategory_{id}")
+    @GetMapping("/ContinenteByCategory_{id}")
     public List<Continente> getContinentiByCategory(@PathVariable("id") Long idCategoria) {
         return continenteController.getContinentiByCategory(idCategoria);
     }
@@ -56,7 +59,7 @@ public class GameMapController {
         return statiController.getStatiByContinenteAndCategory(idContinente, idCategoria);
     }
 
-    @GetMapping("CitiesByState_{id}")
+    @GetMapping("/CitiesByState_{id}")
     public List<CittaDecorated> getCitiesByState(@PathVariable("id") Long idStato) {
         return cittaController.getCitiesForState(idStato)
                 .stream()
@@ -70,7 +73,7 @@ public class GameMapController {
      * @param request Oggetto che incapsula User e Stato
      * @return
      */
-    @PostMapping("CitiesAvailable")
+    @PostMapping("/CitiesAvailable")
     public List<CittaDecorated> getAvailableCities(@RequestBody RequestCities request) {
         User user = request.getUser();
         Stato stato = request.getStato();
@@ -120,5 +123,25 @@ public class GameMapController {
 
         sureAvailable.addAll(toAdd);
         return sureAvailable;
+    }
+
+    @GetMapping("/test/user_{username}/start_test_{idTest}")
+    public void startTest(@PathVariable("username") String username, @PathVariable("idTest") Long idTest) {
+        userTestController.startTest(username, idTest);
+    }
+
+    @GetMapping("/test/user_{username}/getNextQuestion")
+    public DomandaDecorated getNextQuestion(@PathVariable("username") String username) {
+        return userTestController.getNextQuestion(username);
+    }
+
+    @PostMapping("/test/user/addResponse")
+    public void addResponse(@RequestBody RispostaUtente risposta) {
+        userTestController.addRisposta(risposta);
+    }
+
+    @GetMapping("/test/user_{username}/end_test")
+    public UserTestScore endTest(@PathVariable("username") String username) {
+        return this.userTestController.endTest(username);
     }
 }

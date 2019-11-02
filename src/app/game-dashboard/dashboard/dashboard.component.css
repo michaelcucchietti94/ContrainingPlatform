@@ -1,4 +1,4 @@
-div.dashboardContainer {
+div.backgroud {
     position: relative;
     top:0;
     left:0;
@@ -11,6 +11,15 @@ div.dashboardContainer {
     background-image: url('../../../assets/dashboard/background.svg');
 }
 
+div.dashboardContainer {
+    position: relative;
+    top: 0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(200,200,200, 0.25);
+}
+
 div.dashboardContainer div {
     position: relative;
     width: 100vw;
@@ -20,8 +29,8 @@ div.dashboardContainer div {
     padding-right: 2vw;
 }
 div.dashboardContainer div.header {
-    height:10vh;
+    height:12vh;
 }
 div.dashboardContainer div.main {
-    height: 90vh;
+    height: 88vh;
 }

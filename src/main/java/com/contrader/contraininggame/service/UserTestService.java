@@ -10,6 +10,7 @@ import com.contrader.contraininggame.service.training.TempoTestoService;
 import com.contrader.contraininggame.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,6 +26,8 @@ public class UserTestService implements IUserTestService {
     private TempoTestoService timeChecker;
     @Autowired
     private RispostaDomandaService rispostaDomandaService;
+    @Autowired
+    private DefaultService<RispostaUtente, Long> rispostaUtenteService;
     @Autowired
     private TestService testService;
 
@@ -71,28 +74,38 @@ public class UserTestService implements IUserTestService {
         r.setSecondsForAnswering(seconds);
 
 
-
         repository.getTest(r.getUser().getUsername()).addRisposta(r);
     }
 
     @Override
     public UserTestScore finishTest(String username) {
-        List<RispostaUtente> responses = getRisposteCorrette(username);
+        UserTestScore score = calculateScore(username);
+        saveTestForUser(username);
+        trainTheSystem(username);
+        repository.removeTest(username);
+
+        return score;
+    }
+
+    private UserTestScore calculateScore(String username) {
+        List<RispostaUtente> responses = repository.getTest(username).getRisposteUtente();
         UserTestScore score = new UserTestScore();
 
         long partialScore[] = {0};
         responses.forEach(r -> {
-            long parole = getParoleOfDomanda(r.getRisposta().getDomanda());
-            long timeToRespond = r.getSecondsForAnswering();
+            if(r.getRisposta().getCorretta()) {
+                long parole = getParoleOfDomanda(r.getRisposta().getDomanda());
+                long timeToRespond = r.getSecondsForAnswering();
 
-            trainTheSystem(timeToRespond, parole);
-            long responseScore = (long)(Math.floor(100*calculateCoefficentScore(timeToRespond, parole)));
-            r.setQuestionScore(responseScore);
-            partialScore[0] += responseScore;
+                long responseScore = (long)(Math.floor(100*calculateCoefficentScore(timeToRespond, parole)));
+                r.setQuestionScore(responseScore);
+                partialScore[0] += responseScore;
+            } else {
+                r.setQuestionScore(0L);
+            }
         });
 
         score.setScore(partialScore[0]);
-        repository.removeTest(username);
         return score;
     }
 
@@ -123,7 +136,24 @@ public class UserTestService implements IUserTestService {
         return coeff;
     }
 
-    private void trainTheSystem(long timeToRespond, long numberOfWords) {
+    private void trainTheSystem(String username) {
+        UserTest t = repository.getTest(username);
+        List<RispostaUtente> userResponses = t.getRisposteUtente();
+        userResponses.forEach(r -> {
+            long parole = getParoleOfDomanda(r.getRisposta().getDomanda());
+            long timeToRespond = r.getSecondsForAnswering();
+
+            updateMachineLearning(timeToRespond, parole);
+        } );
+    }
+    private void updateMachineLearning(long timeToRespond, long numberOfWords) {
         timeChecker.addToQueue(numberOfWords, timeToRespond);
+    }
+
+    @Transactional
+    protected void saveTestForUser(String username) {
+        UserTest t = repository.getTest(username);
+        List<RispostaUtente> userResponses = t.getRisposteUtente();
+        userResponses.forEach(r -> rispostaUtenteService.insert(r));
     }
 }

@@ -1,6 +1,7 @@
 package com.contrader.contraininggame.controller.gamemapsubcontrollers;
 
 import com.contrader.contraininggame.controller.AbstractController;
+import com.contrader.contraininggame.controller.DBInitializable;
 import com.contrader.contraininggame.model.Continente;
 import com.contrader.contraininggame.service.ContinenteService;
 import org.springframework.stereotype.Component;
@@ -13,10 +14,10 @@ import java.util.List;
 @RequestMapping("continenti")
 @CrossOrigin(origins = "http://localhost:4200")*/
 @Component
-public class ContinenteController extends AbstractController<Continente, Long> {
+public class ContinenteController extends AbstractController<Continente, Long> implements DBInitializable {
     @Override
     public Iterable<Continente> getAll() {
-        setData();
+        initializeData();
         return super.getAll();
     }
 
@@ -37,7 +38,7 @@ public class ContinenteController extends AbstractController<Continente, Long> {
 
     @Override
     public Continente read(Long key) {
-        setData();
+        initializeData();
         return super.read(key);
     }
 
@@ -47,8 +48,8 @@ public class ContinenteController extends AbstractController<Continente, Long> {
         return ((ContinenteService)service).getContinentiByCategory(idCategoria);
     }
 
-    /* PRIVATE METHODS */
-    private void setData() {
+    /* INITIALIZATION */
+    public void initializeData() {
         ContinenteService s = (ContinenteService)this.service;
         s.initContinenti();
     }

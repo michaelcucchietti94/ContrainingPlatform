@@ -1,6 +1,5 @@
 package com.contrader.contraininggame.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,19 +7,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
-public class Continente implements Serializable {
+public class ContinentPiece implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String nome;
 
-    public Continente clona() {
-        return new Continente(id, nome);
+    @ManyToOne
+    @JoinColumn(name = "idContinente")
+    private Continente continente;
+
+    public ContinentPiece clona() {
+        return new ContinentPiece(id, nome, continente);
     }
 }

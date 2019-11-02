@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,8 +19,8 @@ public class Citta implements Serializable {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "idStato")
-    private Stato stato;
+    @JoinColumn(name = "id_continent_piece")
+    private ContinentPiece continentPiece;
 
     /*@ManyToMany
     @JoinTable(

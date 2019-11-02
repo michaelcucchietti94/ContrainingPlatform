@@ -12,8 +12,8 @@ import java.util.List;
 @Transactional
 public interface ContinenteRepository extends CrudRepository<Continente, Long> {
 
-    @Query(value = "select c.id, c.nome from continente c join stato on c.id = stato.id_continente " +
-            "join citta on citta.id_stato = stato.id " +
+    @Query(value = "select c.id, c.nome from continente c join continent_piece cp on c.id = cp.id_continente " +
+            "join citta on citta.id_continent_piece = cp.id " +
             "join test on citta.idtest = test.id " +
             "join categoria on categoria.id = test.idcategoria " +
             "where categoria.id = ?1 " +

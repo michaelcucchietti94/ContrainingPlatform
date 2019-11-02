@@ -6,8 +6,6 @@ import com.contrader.contraininggame.model.decorated.CittaDecorated;
 import com.contrader.contraininggame.model.decorated.DomandaDecorated;
 import com.contrader.contraininggame.model.decorated.RequestCities;
 import com.contrader.contraininggame.model.test.UserTestScore;
-import com.contrader.contraininggame.service.ContinenteService;
-import com.contrader.contraininggame.service.StatesService;
 import com.contrader.contraininggame.utils.mappers.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +26,7 @@ public class GameMapController {
     private ContinenteController continenteController;
 
     @Autowired
-    private StatiController statiController;
+    private ContinentPieceController continentPieceController;
 
     @Autowired
     private TestController testController;
@@ -44,19 +42,29 @@ public class GameMapController {
 
 
 
+    @GetMapping("/getContinenti")
+    public Iterable<Continente> getContinenti() {
+        return continenteController.getAll();
+    }
+    @GetMapping("/getContinentiPieces")
+    public Iterable<ContinentPiece> getContinentiPieces() {
+        return continentPieceController.getAll();
+    }
+
+
     @GetMapping("/ContinenteByCategory_{id}")
     public List<Continente> getContinentiByCategory(@PathVariable("id") Long idCategoria) {
         return continenteController.getContinentiByCategory(idCategoria);
     }
 
-    @GetMapping("/StatiByContinente_{id}")
-    public List<Stato> getByContinente(@PathVariable("id") Long id) {
-        return statiController.getByContinente(id);
+    @GetMapping("/PiecesByContinente_{id}")
+    public List<ContinentPiece> getPiecesOfContinent(@PathVariable("id") Long id) {
+        return continentPieceController.getByContinente(id);
     }
 
-    @GetMapping("/StatiByContinente_{idContinente}/Category_{idCategory}")
-    public List<Stato> getStatiByContinenteAndCategory(@PathVariable("idContinente") Long idContinente, @PathVariable("idCategory") Long idCategoria) {
-        return statiController.getStatiByContinenteAndCategory(idContinente, idCategoria);
+    @GetMapping("/PiecesByContinente_{idContinente}/Category_{idCategory}")
+    public List<ContinentPiece> getStatiByContinenteAndCategory(@PathVariable("idContinente") Long idContinente, @PathVariable("idCategory") Long idCategoria) {
+        return continentPieceController.getByContinenteAndCategory(idContinente, idCategoria);
     }
 
     @GetMapping("/CitiesByState_{id}")
@@ -70,15 +78,15 @@ public class GameMapController {
     /**
      * Ritorna un array di città con il flag enabled impostato a seconda se l'utente può accedere o meno ad una determinata categoria di test
      * per un certo livello
-     * @param request Oggetto che incapsula User e Stato
+     * @param request Oggetto che incapsula User e ContinentPiece
      * @return
      */
     @PostMapping("/CitiesAvailable")
     public List<CittaDecorated> getAvailableCities(@RequestBody RequestCities request) {
         User user = request.getUser();
-        Stato stato = request.getStato();
+        ContinentPiece continentPiece = request.getContinentPiece();
 
-        List<CittaDecorated> sureAvailable = getCitiesByState(stato.getId()).stream().filter((citta) -> citta.getTest().getLivello() <= user.getLivello()).collect(Collectors.toList());
+        List<CittaDecorated> sureAvailable = getCitiesByState(continentPiece.getId()).stream().filter((citta) -> citta.getTest().getLivello() <= user.getLivello()).collect(Collectors.toList());
 
         // Tutte le città che hanno livello <= del livello utente sono abilitate sicuramente
         sureAvailable
@@ -87,7 +95,7 @@ public class GameMapController {
         // Tutte le città che hanno livello > del livello dell'utente potrebbero essere abilitate se l'utente ha completato i
         // test della stessa categoria ma di livello inferiore.
         // Ottieni quindi la lista di città che potrebbero essere abilitate
-        List<CittaDecorated> maybeAvailable = getCitiesByState(stato.getId())
+        List<CittaDecorated> maybeAvailable = getCitiesByState(continentPiece.getId())
                 .stream()
                 .filter((citta) -> citta.getTest().getLivello() > user.getLivello())
                 .collect(Collectors.toList());

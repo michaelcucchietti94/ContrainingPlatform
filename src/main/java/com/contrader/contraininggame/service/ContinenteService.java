@@ -26,7 +26,6 @@ public class ContinenteService extends DefaultService<Continente, Long> {
         }
     }
 
-
     public List<Continente> getContinentiByCategory(Long idCategoria) {
         return ((ContinenteRepository)repository).getContinentiByCategory(idCategoria);
     }

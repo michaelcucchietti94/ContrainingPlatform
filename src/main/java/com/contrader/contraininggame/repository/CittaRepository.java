@@ -13,6 +13,6 @@ import java.util.List;
 @Transactional
 public interface CittaRepository extends CrudRepository<Citta, Long> {
 
-    @Query("SELECT c from Citta c where id_stato = ?1")
-    List<Citta> getCitiesInState(Long idStato);
+    @Query("SELECT c from Citta c where id_continent_piece = ?1")
+    List<Citta> getCitiesInState(Long idContinentPiece);
 }

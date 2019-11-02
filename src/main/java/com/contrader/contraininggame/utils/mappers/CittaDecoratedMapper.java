@@ -4,8 +4,6 @@ import com.contrader.contraininggame.model.Citta;
 import com.contrader.contraininggame.model.decorated.CittaDecorated;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 @Component
 public class CittaDecoratedMapper implements Mapper<Citta, CittaDecorated> {
     @Override
@@ -13,7 +11,7 @@ public class CittaDecoratedMapper implements Mapper<Citta, CittaDecorated> {
         CittaDecorated result = new CittaDecorated();
         result.setId(citta.getId());
         result.setName(citta.getName());
-        result.setStato(citta.getStato());
+        result.setContinentPiece(citta.getContinentPiece());
         result.setTest(citta.getTest());
         return result;
     }

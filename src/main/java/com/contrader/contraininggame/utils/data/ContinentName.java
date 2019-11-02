@@ -3,11 +3,11 @@ package com.contrader.contraininggame.utils.data;
 import com.contrader.contraininggame.model.Continente;
 
 public enum ContinentName {
-    AMERICHE(Continents.americhe),
-    ASIA(Continents.asia),
-    EUROPA(Continents.europa),
-    AFRICA(Continents.africa),
-    OCEANIA(Continents.oceania);
+    AMERICHE(Continents.americhe.clona()),
+    ASIA(Continents.asia.clona()),
+    EUROPA(Continents.europa.clona()),
+    AFRICA(Continents.africa.clona()),
+    OCEANIA(Continents.oceania.clona());
 
     private Continente continente;
 

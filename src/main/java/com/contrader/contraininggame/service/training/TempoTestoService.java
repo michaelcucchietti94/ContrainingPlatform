@@ -122,7 +122,7 @@ public class TempoTestoService extends DefaultService<TempoTesto, Long> {
         this.dataManager = new Thread(() -> {
             while(true) {
                 double size = (double)queue.queueSize();
-                if(size >= 100 || size/getCount() >= 0.1) {
+                if(size >= 100 || getCount() == 0 || size/getCount() >= 0.1) {
                     // se il numero di elementi in coda è maggiore di 100 oppure è maggiore del 10% del numero totale
                     // di elementi esistenti
                     // ALLORA svuota la coda e aggiorna i valori
@@ -132,8 +132,12 @@ public class TempoTestoService extends DefaultService<TempoTesto, Long> {
                     }
 
                     // Ora la coda è vuota, quindi aggiorna i valori
-                    updateMedia();
-                    updateVarianza();
+                    try {
+                        updateMedia();
+                        updateVarianza();
+                    } catch(Exception e) {
+                        // do nothing
+                    }
                 }
 
                 try {

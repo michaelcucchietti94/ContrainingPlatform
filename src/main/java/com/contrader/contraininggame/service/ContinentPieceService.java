@@ -28,10 +28,10 @@ public class ContinentPieceService extends DefaultService<ContinentPiece, Long> 
 
     public List<ContinentPiece> getPiecesByContinente(Long idContinente) {
         ContinentPieceRepository repo = (ContinentPieceRepository)repository;
-        return repo.getStatiByContinente(idContinente);
+        return repo.getContinentPiecesByContinente(idContinente);
     }
 
     public List<ContinentPiece> getPiecesByContinenteAndCategory(Long idContinente, Long idCategoria) {
-        return ((ContinentPieceRepository)repository).getStatiByContinenteAndCategory(idContinente, idCategoria);
+        return ((ContinentPieceRepository)repository).getContinentPiecesByContinenteAndCategory(idContinente, idCategoria);
     }
 }

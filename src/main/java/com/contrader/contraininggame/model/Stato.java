@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Entity
-public class Citta implements Serializable {
+public class Stato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,14 +21,6 @@ public class Citta implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_continent_piece")
     private ContinentPiece continentPiece;
-
-    /*@ManyToMany
-    @JoinTable(
-            name = "cittatests",
-            joinColumns = {@JoinColumn(name = "idtest")},
-            inverseJoinColumns = {@JoinColumn(name = "idCitta")}
-    )
-    private List<Test> tests;*/
 
     @OneToOne
     @JoinColumn(name = "idtest")

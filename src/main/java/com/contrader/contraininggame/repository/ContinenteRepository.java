@@ -13,8 +13,8 @@ import java.util.List;
 public interface ContinenteRepository extends CrudRepository<Continente, Long> {
 
     @Query(value = "select c.id, c.nome from continente c join continent_piece cp on c.id = cp.id_continente " +
-            "join citta on citta.id_continent_piece = cp.id " +
-            "join test on citta.idtest = test.id " +
+            "join stato on stato.id_continent_piece = cp.id " +
+            "join test on stato.idtest = test.id " +
             "join categoria on categoria.id = test.idcategoria " +
             "where categoria.id = ?1 " +
             "group by c.id", nativeQuery = true)

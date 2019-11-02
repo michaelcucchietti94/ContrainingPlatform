@@ -1,9 +1,9 @@
 package com.contrader.contraininggame.model.decorated;
 
-import com.contrader.contraininggame.model.Citta;
+import com.contrader.contraininggame.model.Stato;
 import lombok.Data;
 
 @Data
-public class CittaDecorated extends Citta {
+public class StatoDecorated extends Stato {
     private Boolean enabled = false;
 }

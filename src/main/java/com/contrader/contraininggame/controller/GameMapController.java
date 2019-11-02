@@ -2,9 +2,9 @@ package com.contrader.contraininggame.controller;
 
 import com.contrader.contraininggame.controller.gamemapsubcontrollers.*;
 import com.contrader.contraininggame.model.*;
-import com.contrader.contraininggame.model.decorated.CittaDecorated;
+import com.contrader.contraininggame.model.decorated.StatoDecorated;
 import com.contrader.contraininggame.model.decorated.DomandaDecorated;
-import com.contrader.contraininggame.model.decorated.RequestCities;
+import com.contrader.contraininggame.model.decorated.RequestState;
 import com.contrader.contraininggame.model.test.UserTestScore;
 import com.contrader.contraininggame.utils.mappers.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class GameMapController {
 
     @Autowired
-    private CittaController cittaController;
+    private StatoController statoController;
 
     @Autowired
     private ContinenteController continenteController;
@@ -38,7 +38,7 @@ public class GameMapController {
     private RispostaDomandaController rispostaDomandaController;
 
     @Autowired
-    private Mapper<Citta, CittaDecorated> cittaMapper;
+    private Mapper<Stato, StatoDecorated> statiMapper;
 
 
 
@@ -63,15 +63,15 @@ public class GameMapController {
     }
 
     @GetMapping("/PiecesByContinente_{idContinente}/Category_{idCategory}")
-    public List<ContinentPiece> getStatiByContinenteAndCategory(@PathVariable("idContinente") Long idContinente, @PathVariable("idCategory") Long idCategoria) {
+    public List<ContinentPiece> getPiecesByContinentAndCategory(@PathVariable("idContinente") Long idContinente, @PathVariable("idCategory") Long idCategoria) {
         return continentPieceController.getByContinenteAndCategory(idContinente, idCategoria);
     }
 
-    @GetMapping("/CitiesByState_{id}")
-    public List<CittaDecorated> getCitiesByState(@PathVariable("id") Long idStato) {
-        return cittaController.getCitiesForState(idStato)
+    @GetMapping("/StatiByContinentPiece_{id}")
+    public List<StatoDecorated> getStatiByContinentPiece(@PathVariable("id") Long idCP) {
+        return statoController.getStateForContinentPiece(idCP)
                 .stream()
-                .map(cittaMapper)
+                .map(statiMapper)
                 .collect(Collectors.toList());
     }
 
@@ -81,51 +81,51 @@ public class GameMapController {
      * @param request Oggetto che incapsula User e ContinentPiece
      * @return
      */
-    @PostMapping("/CitiesAvailable")
-    public List<CittaDecorated> getAvailableCities(@RequestBody RequestCities request) {
+    @PostMapping("/StatiAvailable")
+    public List<StatoDecorated> getAvailableStati(@RequestBody RequestState request) {
         User user = request.getUser();
         ContinentPiece continentPiece = request.getContinentPiece();
 
-        List<CittaDecorated> sureAvailable = getCitiesByState(continentPiece.getId()).stream().filter((citta) -> citta.getTest().getLivello() <= user.getLivello()).collect(Collectors.toList());
+        List<StatoDecorated> sureAvailable = getStatiByContinentPiece(continentPiece.getId()).stream().filter((stato) -> stato.getTest().getLivello() <= user.getLivello()).collect(Collectors.toList());
 
         // Tutte le città che hanno livello <= del livello utente sono abilitate sicuramente
         sureAvailable
-                .forEach((citta) -> citta.setEnabled(true));
+                .forEach((stato) -> stato.setEnabled(true));
 
         // Tutte le città che hanno livello > del livello dell'utente potrebbero essere abilitate se l'utente ha completato i
         // test della stessa categoria ma di livello inferiore.
         // Ottieni quindi la lista di città che potrebbero essere abilitate
-        List<CittaDecorated> maybeAvailable = getCitiesByState(continentPiece.getId())
+        List<StatoDecorated> maybeAvailable = getStatiByContinentPiece(continentPiece.getId())
                 .stream()
-                .filter((citta) -> citta.getTest().getLivello() > user.getLivello())
+                .filter((stato) -> stato.getTest().getLivello() > user.getLivello())
                 .collect(Collectors.toList());
 
 
         // Per ogni città da verificare
-        maybeAvailable.stream().forEach((citta) -> {
+        maybeAvailable.stream().forEach((stato) -> {
 
-            int level = citta.getTest().getLivello() - 1;                   // i test completati devono essere quelli del livello inferiore
-            long idCategoria = citta.getTest().getCategoria().getId();      // i test devono appartenere alla stessa categoria della città
+            int level = stato.getTest().getLivello() - 1;                   // i test completati devono essere quelli del livello inferiore
+            long idCategoria = stato.getTest().getCategoria().getId();      // i test devono appartenere alla stessa categoria della città
             String username = user.getUsername();                           // la verifica si attua per l'utete specificato
 
             int remainingTests = testController.getRemainingTest(username, level, idCategoria); // conta i test rimanenti
             // se il numero di test rimanenti per quella categoria per il livello inferiore per l'utente specificato è pari a 0, allora l'utente
             // ha accesso alla città
             if(remainingTests == 0) {
-                citta.setEnabled(true);
+                stato.setEnabled(true);
             } else {
-                citta.setEnabled(false);
+                stato.setEnabled(false);
             }
         });
 
 
         // unisci le due liste
-        List<CittaDecorated> toAdd = new ArrayList<>();
+        List<StatoDecorated> toAdd = new ArrayList<>();
         maybeAvailable.stream()
-                .filter(CittaDecorated::getEnabled)
-                .forEach(citta -> {
-                    if(sureAvailable.stream().noneMatch((cittaSure) -> cittaSure.getId().equals(citta.getId()))) {
-                        toAdd.add(citta);
+                .filter(StatoDecorated::getEnabled)
+                .forEach(stato -> {
+                    if(sureAvailable.stream().noneMatch((statoSure) -> statoSure.getId().equals(stato.getId()))) {
+                        toAdd.add(stato);
                     }
                 });
 

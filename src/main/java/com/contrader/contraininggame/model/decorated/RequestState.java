@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestCities {
+public class RequestState {
     User user;
     ContinentPiece continentPiece;
 }

@@ -1,4 +1,3 @@
-import { Domain } from 'domain';
 import { DomandaDecorated } from './DomandaDecorated';
 
 export class RispostaDomanda {

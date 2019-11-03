@@ -1,0 +1,70 @@
+.container-background{
+    background-image: url("src/assets/login/center/backgroundcolor.svg");
+    background-position: center;
+}
+.map-container{
+    background-image: url("src/assets/login/center/map backgroud.svg");
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.matrix-container{
+    position: fixed;
+    background-image: url("src/assets/login/center/matrixeffectbckrnd.svg");
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    z-index: 0;
+}
+.login-details{
+    background-image: url("src/assets/login/center/logo blue circle.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+}
+.vuoto{
+    background-image: url("src/assets/login/center/cerchio vuoto.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-x: 53.3%;
+    background-position-y: 59.7%;
+    height: 100vh;
+    width: 100vw;
+    background-size: 33.7%;
+}
+.cerchio-login{
+    background-image: url("src/assets/login/center/login.svg");
+    background-position: center;
+    background-position-x: 52%;
+    background-position-y: 44%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    background-size: 34%;
+}
+.cerchio-signup{
+    background-image: url("src/assets/login/center/signup.svg");
+    background-position: center;
+    background-position-x: 54%;
+    background-position-y: 84.4%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    background-size: 39%;
+}
+.logo-contraining{
+    background-image: url("src/assets/login/center/logo ConTraining.svg");
+    background-position: center;
+    background-position-x: 51%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    background-size: 19%;
+}

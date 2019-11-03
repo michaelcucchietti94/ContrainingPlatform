@@ -12,5 +12,7 @@ export class UserService extends AbstractService<User> {
         this.serviceMap = "user";
     }
 
+    
+
 
 }

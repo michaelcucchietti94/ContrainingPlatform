@@ -1,0 +1,83 @@
+div.profileContainer {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: auto;
+    width: 18vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding:2vw;
+    background-color: rgba(0, 197, 194, 0.08);
+    border-radius: 1.3vw;
+    border: 0.2vh solid rgba(0, 197, 194, 0.7);
+}
+div.profileContainer * {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    min-height: 5vh;
+    width: 100%;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+span.username {
+    font-size: 3.5vh;
+    color: rgb(0, 197, 194);
+    margin-bottom: 5vh;
+}
+
+span.totalChallenges {
+    font-size: 3vh;
+    color: rgb(0, 197, 194);
+}
+
+div.level {
+    color: rgb(0, 197, 194);
+}
+div.level * {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+div.level span {
+    font-size: 3vh;
+    width:35%;
+    justify-content: flex-start;
+}
+div.level span.l1 {
+    color: rgb(14, 156, 32);
+}
+div.level span.l2 {
+    color: rgb(193, 196, 197);
+}
+div.level span.l3 {
+    color: rgb(209, 95, 94);
+}
+div.level span.text {
+    color: rgb(0, 197, 194);
+    width: 65%;
+    font-size:2vh;
+    justify-content: flex-end;
+}
+div.spacer {
+    height:5vh;
+}
+
+a.button {
+    font-size: 2vh;
+    border:0;
+}
+a.button:nth-of-type(1) {
+    border-top: 0.1vh solid rgba(0, 197, 194, 0.3);
+}
+a.button:nth-last-of-type(1) {
+    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.3);
+}
+

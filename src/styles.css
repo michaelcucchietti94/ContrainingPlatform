@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Exo+2:300&display');
+
 * {
     flex-grow: 0;
     flex-shrink: 0;
@@ -6,5 +8,43 @@
     margin: 0;
     border:0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Exo 2', 'Agency FB',sans-serif;
+}
+
+a.button {
+    display: flex;
+    height: auto;
+    width: auto;
+    box-sizing: content-box;
+    padding: 1vh 2vw;
+
+    background-color: rgba(220, 220, 200, 0.05);
+    border: 0.1vh solid rgba(0, 197, 194, 0.3);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(220, 220, 220);
+}
+
+a.button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 197, 194, 0.05);
+
+}
+
+div.defaultBox {
+    box-sizing: content-box;
+    height: auto;
+    width: auto;
+    padding: 0.2vw;
+    margin:0;
+
+    background-attachment: local, local, local, local;
+    background-position: left top, right top, right bottom, left bottom;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-size: 1auto, auto, auto, auto;
+    background-image: url('assets/boxes/bAS.svg') ,url('assets/boxes/bAD.svg'),url('assets/boxes/bBD.svg'),url('assets/boxes/bBS.svg');
 }

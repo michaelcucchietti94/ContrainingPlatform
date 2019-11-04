@@ -1,0 +1,121 @@
+div.defaultBox {
+    position:absolute;
+    height: 100%;
+    width:100%;
+    top:0;
+    left:0;
+}
+div.mapContainer {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding:2vw;
+    background-color: rgba(0, 197, 194, 0.08);
+    border-radius: 1.9vw;
+    border: 0.2vh solid rgba(0, 197, 194, 0.7);
+}
+div.mapNavigator {
+    position: relative;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    top:0;
+    left:0;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.7);
+}
+div.mapNavigator div {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    padding:0;
+    box-sizing: border-box;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+div.mapNavigator div div.back {
+    width: 9vh;
+    height: 9vh;
+    padding: 3vh;
+    background-origin: content-box;
+    background-attachment: local;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../../../assets/controls/backArrow.svg');
+
+}
+div.mapNavigator div div.back:hover {
+    cursor: pointer;
+    background-color: rgba(220,220,220, 0.07);
+}
+
+div.mapNavigator div div.elements {
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: calc(100% - 9vh);
+    top:0;
+    left:0;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+div.mapNavigator div div.elements div {
+    position: relative;
+    top:0;
+    left:0;
+    height: 9vh;
+    width: 19%;
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+    border:0;
+}
+div.mapNavigator div div.elements div a.button {
+    height: 100%;
+    width: 100%;
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+
+
+div.map {
+    position: relative;
+    top: 0;
+    left:0;
+    height: calc(100% - 10vh);
+    width: 100%;
+    
+    font-size: 0;
+    background-position: center;
+    background-size: contain;
+    background-attachment: local;
+    background-repeat: no-repeat;
+}
+
+.world {
+    background-image: url('../../../assets/map/void.svg');
+}
+

@@ -1,1 +1,16 @@
 
+<div class="defaultBox">
+    <div class="mapContainer">
+        <div class="mapNavigator">
+            <div>
+                <div class="back" (click)="goUp()"></div>
+                <div class="elements">
+                    <div *ngFor="let elem of elements">
+                        <a class="button" (click)="goDown(elem.id)">{{elem.testo}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map world"></div>
+    </div>
+</div>

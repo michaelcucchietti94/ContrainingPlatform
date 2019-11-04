@@ -3,14 +3,38 @@
 <div class="container-background">
     <div class="map-container">
         <div class="login-details">
-                <div class="vuoto">
-                        <div class="cerchio-signup">
-                                <div class="cerchio-login">
-                                    <div class="logo-contraining">
-                                    </div>
-                                </div>
+            <div (click)="loginclasse" class="classelogin" id="loginclasse">
+            </div>
+            <div>
+                    <form class="centratologin">
+                            <div class="lines">
+                                <input class="form-control" type="text" id="user" name="username" ngModel  placeholder="Email">
+                            </div>
+                            <div class="lines">
+                                <input class="form-control" type="password" id="pass" name="password" ngModel placeholder="Password">
+                            </div>
+                            <div class="loginButton">
+                                <button type="submit" (click)="login(f)" 
+                                style="width: 65px; 
+                                height: 65px; 
+                                border-radius: 50%;
+                                color:rgb(6, 240, 228); 
+                                font-size: 14px; 
+                                font-weight: bold; 
+                                background: transparent; 
+                                border-style: solid; 
+                                border-width: 2px;">Login</button>
+                            </div>
+                        </form>
+            </div>
+            <div class="vuoto">
+                <div class="cerchio-signup">
+                    <div class="cerchio-login">
+                        <div class="logo-contraining" >
                         </div>
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>

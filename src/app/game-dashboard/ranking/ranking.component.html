@@ -1,0 +1,16 @@
+<div class="defaultBox">
+    <div class="rankingContainer">
+        <div class="header">
+            <div id="initialRanking" class="active" (click)="updateDaily($event.target)">Daily</div>
+            <div (click)="updateWeekly($event.target)">Weekly</div>
+            <div (click)="updateLevel($event.target)">Level {{user.livello}}</div>
+        </div>
+        <div class="body" rankingScores>
+            <div class="rElement" *ngFor="let rank of targetRanking; let i = index">
+                <span class="position">{{i+1}}.</span>
+                <span>{{rank.username}}</span>
+                <span>{{rank.score}}</span>
+            </div>
+        </div>
+    </div>
+</div>

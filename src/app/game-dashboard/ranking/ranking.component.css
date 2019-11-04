@@ -1,0 +1,84 @@
+div.rankingContainer {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: auto;
+    width: 18vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding:2vw;
+    background-color: rgba(0, 197, 194, 0.08);
+    border-radius: 1.3vw;
+    border: 0.2vh solid rgba(0, 197, 194, 0.7);
+}
+
+div.rankingContainer * {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    min-height: 5vh;
+    width: 100%;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.rankingContainer div.header {
+    color: rgb(220, 220, 220);
+    font-size: 2vh;
+    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.5);
+    margin-bottom: 5vh;
+}
+div.rankingContainer div.header div {
+    width: 33.33%;
+    height: 100%;
+    justify-content: center;
+}
+div.rankingContainer div.header div:hover {
+    cursor:pointer;
+    background-color: rgba(171,197,194, 0.1);
+}
+
+div.rankingContainer div.header div.active, 
+div.rankingContainer div.header div.active:hover {
+    background-color: rgba(220, 220, 220, 0.2);
+}
+
+
+div.rankingContainer div.body {
+    height: 50vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+div.rankingContainer div.body div.rElement {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: 5vh;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+div.rankingContainer div.body div.rElement span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    font-size: 2vh;
+    color: rgb(220, 220, 220);
+    justify-content: flex-start;
+}
+div.rankingContainer div.body div.rElement span.position {
+    width: 20%;
+}
+div.rankingContainer div.body div.rElement span:nth-last-of-type(1) {
+    justify-content: flex-end;
+}

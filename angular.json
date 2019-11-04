@@ -27,7 +27,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/animaframework/AnimaFramework.js"
+              
             ]
           },
           "configurations": {

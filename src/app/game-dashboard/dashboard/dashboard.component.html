@@ -1,14 +1,25 @@
+<div id="logoutBox" class="logoutBox">
+    <div class="message">
+        <span class="text">Sei sicuro di voler smettere di giocare?</span>
+        <div class="controls">
+            <a class="button" (click)="confirmLogout()">Si</a>
+            <a class="button" (click)="cancelLogout()">No</a>
+        </div>
+    </div>
+</div>
 <div class="backgroud">
     <div class="dashboardContainer">
         <div class="header">
-            <app-dashboard-header></app-dashboard-header>
+            <app-dashboard-header (logout)="showLogoutBox()"></app-dashboard-header>
         </div>
         <div class="main">
             <div class="side_left">
                 <app-profile></app-profile>
             </div>
             <div class="center"></div>
-            <div class="side_right"></div>
+            <div class="side_right">
+                <app-ranking></app-ranking>
+            </div>
         </div>
     </div>   
 </div>

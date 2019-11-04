@@ -71,7 +71,8 @@ div.part div.content {
 }
 div.part div.name {
     justify-content: flex-start;
-    width: 80%;
+    width: auto;
+    margin-right: 2vw;
 }
 div.part div.visualSettings {
     justify-content: flex-end;

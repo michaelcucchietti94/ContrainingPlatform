@@ -3,17 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/dto/User';
 import { LoginCredentials } from 'src/dto/LoginCredentials';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn:'root'
 })
 export class LoginService {
-    constructor(private http : HttpClient) {
+    constructor(private http : HttpClient, private router : Router) {
 
     }
 
     login(credentials : LoginCredentials) : Observable<User>{
         return this.http.post<User>('http://localhost:8080/user/login', credentials);
+    }
+
+    logout() {
+        localStorage.removeItem("currentUser");
+        this.router.navigate(['/login']);
     }
 
 }

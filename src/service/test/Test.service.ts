@@ -55,12 +55,6 @@ export class TestService {
         return this.http.get<Number>(this.getServerCommand(this.cmd_countTestOfUser, new KeyField('username', username)));
     }
     countLevelTestCompletedBy(username : string, level : number) : Observable<Number> {
-        console.log(this.getServerCommand(
-            this.cmd_countTestOfUserLevel, 
-            new KeyField('username', username), 
-            new KeyField('level', level.toString()
-            )
-        ));
         return this.http.get<Number>(
             this.getServerCommand(
                 this.cmd_countTestOfUserLevel, 

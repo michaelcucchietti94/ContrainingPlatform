@@ -48,3 +48,10 @@ div.defaultBox {
     background-size: 1auto, auto, auto, auto;
     background-image: url('assets/boxes/bAS.svg') ,url('assets/boxes/bAD.svg'),url('assets/boxes/bBD.svg'),url('assets/boxes/bBS.svg');
 }
+
+.displayNone {
+    display: none;
+}
+.displayFlex {
+    display: flex;
+}

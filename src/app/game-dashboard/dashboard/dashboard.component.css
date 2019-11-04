@@ -9,7 +9,7 @@ div.logoutBox {
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(40,40,40, 0.8);
+    background-color: rgba(40,40,40, 0.9);
     z-index: 10000;
 }
 
@@ -24,7 +24,7 @@ div.logoutBox div.message {
     align-items: center;
     justify-content: flex-start;
     padding:2vw;
-    background-color: rgba(233, 155, 50, 0.12);
+    background-color: rgba(233, 155, 50, 0.22);
     border-radius: 1.3vw;
     border: 0.2vh solid rgba(233, 155, 50, 0.7);
 }

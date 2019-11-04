@@ -18,4 +18,19 @@ public class TestService extends DefaultService<Test, Long> {
     public List<Domanda> getDomandeOfTest(Long idTest) {
         return ((TestRepository)repository).getDomandeOfTest(idTest);
     }
+
+    public Integer countTest() {
+        return ((TestRepository)repository).countTest();
+    }
+    public Integer countTest(Integer livello) {
+        return ((TestRepository)repository).countTest(livello);
+    }
+
+    public List<Test> TestForUser(String username) {
+        return ((TestRepository)repository).TestDoneForUser(username);
+    }
+    public List<Test> TestForUser(String username, Integer livello) {
+        return ((TestRepository)repository).TestDoneForUser(username, livello);
+    }
+
 }

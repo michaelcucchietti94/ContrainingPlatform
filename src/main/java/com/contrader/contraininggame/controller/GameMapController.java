@@ -42,16 +42,6 @@ public class GameMapController {
 
 
 
-    @GetMapping("/getContinenti")
-    public Iterable<Continente> getContinenti() {
-        return continenteController.getAll();
-    }
-    @GetMapping("/getContinentiPieces")
-    public Iterable<ContinentPiece> getContinentiPieces() {
-        return continentPieceController.getAll();
-    }
-
-
     @GetMapping("/ContinenteByCategory_{id}")
     public List<Continente> getContinentiByCategory(@PathVariable("id") Long idCategoria) {
         return continenteController.getContinentiByCategory(idCategoria);
@@ -151,5 +141,35 @@ public class GameMapController {
     @GetMapping("/test/user_{username}/end_test")
     public UserTestScore endTest(@PathVariable("username") String username) {
         return this.userTestController.endTest(username);
+    }
+
+    @GetMapping("/countTest")
+    public Integer countTest() {
+        return testController.countTest();
+    }
+    @GetMapping("/countTest_level_{level}")
+    public Integer countTest(@PathVariable("level") Integer level) {
+        return testController.countTest(level);
+    }
+
+
+    @GetMapping("/user_{username}/testDone")
+    public List<Test> testForUser(@PathVariable("username") String username){
+        return testController.userDoneTest(username);
+    }
+
+    @GetMapping("/user_{username}/testDone_level_{level}")
+    public List<Test> testForUser(@PathVariable("username") String username, @PathVariable("level") Integer level){
+        return testController.userDoneTest(username, level);
+    }
+
+    @GetMapping("/user_{username}/countTestDone")
+    public Integer countTestForUser(@PathVariable("username") String username){
+        return testController.countUserDoneTest(username);
+    }
+
+    @GetMapping("/user_{username}/countTestDone_level_{level}")
+    public Integer countTestForUser(@PathVariable("username") String username, @PathVariable("level") Integer level){
+        return testController.countUserDoneTest(username, level);
     }
 }

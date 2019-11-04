@@ -19,7 +19,6 @@ public class ContinentPieceService extends DefaultService<ContinentPiece, Long> 
         ContinentPieceRepository repo = (ContinentPieceRepository)this.repository;
         if(emptyCache && isEmpty()) {
             Arrays.stream(ContinentPieceName.values()).forEach((s) -> {
-                System.out.println("Sto inserendo:\n" + s.getContinentPiece().toString() + "\n\n");
                 this.insert(s.getContinentPiece());
             });
             emptyCache = false;

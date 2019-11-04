@@ -22,6 +22,8 @@ public class Ranking {
             Ranking r = new Ranking();
             r.setUsername(o[0].toString());
             BigDecimal b = (BigDecimal)o[1];
+            if(b == null)
+                b = new BigDecimal(0);
             r.setScore(b.longValue());
             return r;
         }

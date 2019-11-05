@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginCredentials } from 'src/dto/LoginCredentials';
 import { LoginService } from 'src/service/user/Login.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +14,10 @@ export class LoginComponent implements OnInit {
   constructor(private service : LoginService, private router : Router) { }
 
   ngOnInit() {
+    /*this.login();*/
     this.login(null);
   }
+  
 
   login(f: NgForm) {
     //let credentials : LoginCredentials = new LoginCredentials(f.value.username, f.value.password);

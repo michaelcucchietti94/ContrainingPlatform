@@ -107,15 +107,166 @@ div.map {
     left:0;
     height: calc(100% - 10vh);
     width: 100%;
+    box-sizing: border-box;
+    padding: 5vh;
     
     font-size: 0;
+    background-origin: content-box;
     background-position: center;
     background-size: contain;
     background-attachment: local;
     background-repeat: no-repeat;
 }
 
-.world {
-    background-image: url('../../../assets/map/void.svg');
+/* WORLD, blank + colors */
+.continente {
+    background-image: url('../../../assets/map/continente.svg');
+}
+.continente_Africa {
+    background-image: url('../../../assets/map/africa.svg');
+}
+.continente_Americhe {
+    background-image: url('../../../assets/map/america.svg');
+}
+.continente_Asia {
+    background-image: url('../../../assets/map/asia.svg');
+}
+.continente_Europa {
+    background-image: url('../../../assets/map/europa.svg');
+}
+.continente_Oceania {
+    background-image: url('../../../assets/map/oceania.svg');
+}
+
+/* AFRICA, blank + colors */
+.Africa {
+    background-image: url('../../../assets/map/continente/africa/africa_blank.svg');
+}
+.Africa_Africa_Nord {
+    background-image: url('../../../assets/map/continente/africa/africa_nord.svg');
+}
+.Africa_Africa_Sud {
+    background-image: url('../../../assets/map/continente/africa/africa_sud.svg');
+}
+.Africa_Africa_Est {
+    background-image: url('../../../assets/map/continente/africa/africa_est.svg');
+}
+.Africa_Africa_Nord-Ovest {
+    background-image: url('../../../assets/map/continente/africa/africa_no.svg');
+}
+.Africa_Africa_Sud-Ovest {
+    background-image: url('../../../assets/map/continente/africa/africa_so.svg');
+}
+
+/* AFRICA PIECES, blank */
+.Africa_Nord {
+    background-image: url('../../../assets/map/continente/africa/stati/nord/africa_nord_blank.svg');
+}
+.Africa_Sud {
+    background-image: url('../../../assets/map/continente/africa/stati/sud/africa_sud_blank.svg');
+}
+.Africa_Est {
+    background-image: url('../../../assets/map/continente/africa/stati/est/africa_est_blank.svg');
+}
+.Africa_Nord-Ovest {
+    background-image: url('../../../assets/map/continente/africa/stati/no/africa_no_blank.svg');
+}
+.Africa_Sud-Ovest {
+    background-image: url('../../../assets/map/continente/africa/stati/so/africa_so_blank.svg');
+}
+
+/* ASIA, blank + color */
+.Asia {
+    background-image: url('../../../assets/map/continente/asia/asia_blank.svg');
+}
+.Asia_Asia_Nord {
+    background-image: url('../../../assets/map/continente/asia/asia_nord.svg');
+}
+.Asia_Asia_Sud {
+    background-image: url('../../../assets/map/continente/asia/asia_sud.svg');
+}
+.Asia_Asia_Ovest {
+    background-image: url('../../../assets/map/continente/asia/asia_ovest.svg');
+}
+.Asia_Asia_Est {
+    background-image: url('../../../assets/map/continente/asia/asia_est.svg');
+}
+
+/* ASIA PIECES, blank */
+.Asia_Nord {
+    background-image: url('../../../assets/map/continente/asia/stati/nord/asia_nord_blank.svg');
+}
+.Asia_Sud {
+    background-image: url('../../../assets/map/continente/asia/stati/sud/asia_sud_blank.svg');
+}
+.Asia_Ovest {
+    background-image: url('../../../assets/map/continente/asia/stati/ovest/asia_ovest_blank.svg');
+}
+.Asia_Est {
+    background-image: url('../../../assets/map/continente/asia/stati/est/asia_est_blank.svg');
+}
+
+/* AMERICA, blank + color */
+.Americhe {
+    background-image: url('../../../assets/map/continente/america/america_blank.svg');
+}
+.Americhe_America_Nord {
+    background-image: url('../../../assets/map/continente/america/america_nord.svg');
+}
+.Americhe_America_Sud {
+    background-image: url('../../../assets/map/continente/america/america_sud.svg');
+}
+
+/* America pieces, blank */
+.America_Nord {
+    background-image: url('../../../assets/map/continente/america/stati/nord/america_nord_blank.svg');
+}
+.America_Sud {
+    background-image: url('../../../assets/map/continente/america/stati/sud/america_sud_blank.svg');
+}
+
+/* EUROPA, blank + color */
+.Europa {
+    background-image: url('../../../assets/map/continente/europa/europa_blank.svg');
+}
+.Europa_Europa_Nord {
+    background-image: url('../../../assets/map/continente/europa/europa_nord.svg');
+}
+.Europa_Europa_Sud {
+    background-image: url('../../../assets/map/continente/europa/europa_sud.svg');
+}
+.Europa_Europa_Est {
+    background-image: url('../../../assets/map/continente/europa/europa_est.svg');
+}
+.Europa_Europa_Ovest {
+    background-image: url('../../../assets/map/continente/europa/europa_ovest.svg');
+}
+.Europa_Europa_Centro {
+    background-image: url('../../../assets/map/continente/europa/europa_centro.svg');
+}
+
+/* EUROPA PIECES, blank */
+.Europa_Nord {
+    background-image: url('../../../assets/map/continente/europa/stati/nord/europa_nord_blank.svg');
+}
+.Europa_Sud {
+    background-image: url('../../../assets/map/continente/europa/stati/sud/europa_sud_blank.svg');
+}
+.Europa_Centro {
+    background-image: url('../../../assets/map/continente/europa/stati/centro/europa_centro_blank.svg');
+}
+.Europa_Ovest {
+    background-image: url('../../../assets/map/continente/europa/stati/ovest/europa_ovest_blank.svg');
+}
+.Europa_Est {
+    background-image: url('../../../assets/map/continente/europa/stati/est/europa_est_blank.svg');
+}
+
+/* OCEANIA, blank + color */
+.Oceania {
+    background-image: url('../../../assets/map/continente/oceania/oceania_blank.svg');
+}
+.Oceania_Oceania {
+    background-image: url('../../../assets/map/continente/oceania/oceania_oceania.svg');
 }
 

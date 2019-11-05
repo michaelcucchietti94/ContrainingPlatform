@@ -13,23 +13,69 @@ import { StatoDecorated } from 'src/dto/game/StatoDecorated';
 export class MapComponent implements OnInit {
 	elements : Data[] = [];
 	private serviceContainer : ServiceAdapterContainer;
+	private currentElement : Data;
+	private mainData = new Data(0, 'continente');
+	private mapCSS: MapCss;
 
 	constructor(private service : GamemapService) {
 	}
 
 	ngOnInit() {
 		this.serviceContainer = new ServiceAdapterContainer(this.service);
-		this.serviceContainer.getChildren(this.elements)				// we get Continenti
+		this.serviceContainer.getChildren(this.elements, this.mainData)				// we get Continenti
+		this.currentElement = this.mainData;
+		this.mapCSS = new MapCss();
+		this.updateMap();
 	}
 	
-	goDown(id : number) {
-		this.serviceContainer.getChildren(this.elements, id);
+	goDown(d : Data) {
+		this.serviceContainer.getChildren(this.elements, d);
+		this.currentElement = d;
+		this.updateMap();
 	}
 	goUp() {
 		this.serviceContainer.getParents(this.elements);
+		if(this.currentElement.parent != null)
+			this.currentElement = this.currentElement.parent;
+			this.updateMap();
+	}
+	
+	overSpecific(d : Data)  {
+		this.mapCSS.applySpecific(this.currentElement, d.testo)
+	}
+	leaveSpecific() {
+		this.updateMap();
+	}
+
+	updateMap() {
+		this.mapCSS.updateMap(this.currentElement);
 	}
 
 }
+
+class MapCss {
+	private mapElement : HTMLElement;
+	constructor() {
+		this.mapElement = document.getElementById('contrainingMap');
+	}
+
+	updateMap(currentElement : Data) {
+		this.mapElement.className = '';
+		this.mapElement.classList.add('map');
+		let className : string = currentElement.testo.replace(/(\s+)/g, '_');
+		this.mapElement.classList.add(className);
+	}
+
+	applySpecific(currentElement : Data, selector : string) {
+		this.mapElement.className = '';
+		this.mapElement.classList.add('map');
+		let className : string = currentElement.testo.replace(/(\s+)/g, '_');
+		className += '_' + selector.replace(/(\s+)/g, '_');
+		this.mapElement.classList.add(className);
+
+	}
+}
+
 enum ServiceAdapters {
 	Continenti, Pieces, Stati, End
 }
@@ -45,8 +91,9 @@ class ServiceAdapterContainer {
 		this.statiAdapter = new StatiAdapter(service);
 	}
 
-	getChildren(targetList : Data[], id : number = 0) : void {
+	getChildren(targetList : Data[], d : Data) : void {
 		if(this.adapterSelector === ServiceAdapters.Continenti) {
+			this.continentAdapter.main = d;
 			this.continentAdapter.callService().subscribe(continenti => {
 				targetList.splice(0, targetList.length);
 				let datas : Data[] = this.continentAdapter.convert(continenti);
@@ -54,7 +101,7 @@ class ServiceAdapterContainer {
 				this.adapterSelector = ServiceAdapters.Pieces;
 			});
 		} else if(this.adapterSelector === ServiceAdapters.Pieces) {
-			this.piecesAdapter.idContinente = id;
+			this.piecesAdapter.continente = d;
 			this.piecesAdapter.callService().subscribe(pieces => {
 				targetList.splice(0, targetList.length);
 				this.piecesAdapter.convert(pieces).forEach(d => {
@@ -63,7 +110,7 @@ class ServiceAdapterContainer {
 				this.adapterSelector = ServiceAdapters.Stati;
 			});
 		} else if(this.adapterSelector === ServiceAdapters.Stati) {
-			this.statiAdapter.idPiece = id;
+			this.statiAdapter.piece = d;
 			this.statiAdapter.callService().subscribe(stati => {
 				targetList.splice(0, targetList.length);
 				this.statiAdapter.convert(stati).forEach(d => {
@@ -97,9 +144,11 @@ class ServiceAdapterContainer {
 class Data {
 	id : number;
 	testo : string;
+	parent : Data;
 	constructor(id : number, testo : string) {
 		this.id = id;
 		this.testo = testo;
+		this.parent = null;
 	}
 }
 interface ServiceAdapter<DTO> {
@@ -107,7 +156,7 @@ interface ServiceAdapter<DTO> {
 	convert(list : DTO[]) : Data[];
 }
 class ContinenteAdapter implements ServiceAdapter<Continente> {
-
+	main : Data;
 	constructor(private service : GamemapService) {}
 	
 	convert(list: Continente[]): Data[] {
@@ -115,6 +164,7 @@ class ContinenteAdapter implements ServiceAdapter<Continente> {
 		
 		list.forEach(element => {
 			let d : Data = new Data(element.id, element.nome.toString());
+			d.parent = this.main;
 			results.push(d);
 		})
 
@@ -125,7 +175,7 @@ class ContinenteAdapter implements ServiceAdapter<Continente> {
 	}
 }
 class ContinentePieceAdapter implements ServiceAdapter<ContinentePiece> {
-	idContinente : number = null;
+	continente : Data = null;
 	constructor(private service : GamemapService) {}
 	
 	convert(list: ContinentePiece[]): Data[] {
@@ -133,18 +183,19 @@ class ContinentePieceAdapter implements ServiceAdapter<ContinentePiece> {
 		
 		list.forEach(element => {
 			let d : Data = new Data(element.id, element.nome.toString());
+			d.parent = this.continente;
 			results.push(d);
 		})
 
 		return results;
 	}
 	callService(): Observable<ContinentePiece[]> {
-		return this.service.getContinentiPieces(this.idContinente);
+		return this.service.getContinentiPieces(this.continente.id);
 	}
 }
 
 class StatiAdapter implements ServiceAdapter<StatoDecorated> {
-	idPiece : number = null;
+	piece : Data = null;
 	constructor(private service : GamemapService) {}
 	
 	convert(list: StatoDecorated[]): Data[] {
@@ -152,13 +203,14 @@ class StatiAdapter implements ServiceAdapter<StatoDecorated> {
 		
 		list.forEach(element => {
 			let d : Data = new Data(element.id, element.name.toString());
+			d.parent = this.piece;
 			results.push(d);
 		})
 
 		return results;
 	}
 	callService(): Observable<StatoDecorated[]> {
-		return this.service.getStati(this.idPiece);
+		return this.service.getStati(this.piece.id);
 	}
 }
 

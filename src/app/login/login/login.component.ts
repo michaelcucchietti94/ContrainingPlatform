@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     /*this.login();*/
-    this.login(null);
+    /*this.login(null);*/
   }
   
 
   login(f: NgForm) {
-    //let credentials : LoginCredentials = new LoginCredentials(f.value.username, f.value.password);
-    let credentials : LoginCredentials = new LoginCredentials('user1', 'user');
+    let credentials : LoginCredentials = new LoginCredentials(f.value.username, f.value.password);
+    //let credentials : LoginCredentials = new LoginCredentials('user1', 'user');
     this.service.login(credentials).subscribe((user) => {
       if(user == null)
         return;

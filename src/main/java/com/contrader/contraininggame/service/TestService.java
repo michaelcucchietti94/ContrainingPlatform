@@ -26,11 +26,20 @@ public class TestService extends DefaultService<Test, Long> {
         return ((TestRepository)repository).countTest(livello);
     }
 
-    public List<Test> TestForUser(String username) {
+    public List<Test> testDoneForUser(String username) {
         return ((TestRepository)repository).TestDoneForUser(username);
     }
-    public List<Test> TestForUser(String username, Integer livello) {
+    public List<Test> testDoneForUser(String username, Integer livello) {
         return ((TestRepository)repository).TestDoneForUser(username, livello);
     }
+
+    public List<Test> testNotDoneForUser(String username) {
+        return ((TestRepository)repository).testNotDoneForUser(username);
+    }
+
+    public List<Test> testNotDoneForUser(String username, Integer livello) {
+        return ((TestRepository)repository).testNotDoneForUser(username, livello);
+    }
+
 
 }

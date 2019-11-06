@@ -41,6 +41,10 @@ public class GameMapController {
     private Mapper<Stato, StatoDecorated> statiMapper;
 
 
+    @GetMapping("/continenti")
+    public Iterable<Continente> getContinent() {
+        return continenteController.getAll();
+    }
 
     @GetMapping("/ContinenteByCategory_{id}")
     public List<Continente> getContinentiByCategory(@PathVariable("id") Long idCategoria) {
@@ -64,6 +68,8 @@ public class GameMapController {
                 .map(statiMapper)
                 .collect(Collectors.toList());
     }
+
+
 
     /**
      * Ritorna un array di città con il flag enabled impostato a seconda se l'utente può accedere o meno ad una determinata categoria di test
@@ -112,7 +118,7 @@ public class GameMapController {
         // unisci le due liste
         List<StatoDecorated> toAdd = new ArrayList<>();
         maybeAvailable.stream()
-                .filter(StatoDecorated::getEnabled)
+                //.filter(StatoDecorated::getEnabled)
                 .forEach(stato -> {
                     if(sureAvailable.stream().noneMatch((statoSure) -> statoSure.getId().equals(stato.getId()))) {
                         toAdd.add(stato);
@@ -161,6 +167,16 @@ public class GameMapController {
     @GetMapping("/user_{username}/testDone_level_{level}")
     public List<Test> testForUser(@PathVariable("username") String username, @PathVariable("level") Integer level){
         return testController.userDoneTest(username, level);
+    }
+
+    @GetMapping("/user_{username}/testNotDone")
+    public List<Test> testUndoneForUser(@PathVariable("username") String username){
+        return testController.userNotDoneTest(username);
+    }
+
+    @GetMapping("/user_{username}/testNotDone_level_{level}")
+    public List<Test> testUndoneForUser(@PathVariable("username") String username, @PathVariable("level") Integer level){
+        return testController.userNotDoneTest(username, level);
     }
 
     @GetMapping("/user_{username}/countTestDone")

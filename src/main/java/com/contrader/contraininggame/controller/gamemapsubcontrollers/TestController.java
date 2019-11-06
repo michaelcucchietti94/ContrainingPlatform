@@ -23,19 +23,28 @@ public class TestController extends AbstractController<Test, Long> {
     }
 
     public List<Test> userDoneTest(String username) {
-        return ((TestService)service).TestForUser(username);
+        return ((TestService)service).testDoneForUser(username);
     }
 
     public List<Test> userDoneTest(String username, Integer livello) {
-        return ((TestService)service).TestForUser(username, livello);
+        return ((TestService)service).testDoneForUser(username, livello);
     }
 
+    public List<Test> userNotDoneTest(String username) {
+        return ((TestService)service).testNotDoneForUser(username);
+    }
+
+    public List<Test> userNotDoneTest(String username, Integer livello) {
+        return ((TestService)service).testNotDoneForUser(username, livello);
+    }
+
+
     public Integer countUserDoneTest(String username) {
-        return ((TestService)service).TestForUser(username).size();
+        return ((TestService)service).testDoneForUser(username).size();
     }
 
     public Integer countUserDoneTest(String username, Integer livello) {
-        return ((TestService)service).TestForUser(username, livello).size();
+        return ((TestService)service).testDoneForUser(username, livello).size();
     }
 
 

@@ -58,5 +58,31 @@ public interface TestRepository extends CrudRepository<Test, Long> {
             "having (sum(risposta_domanda.corretta)*100/count(*)) >= 60", nativeQuery = true)
     List<Test> TestDoneForUser(String username, Integer testLevel);
 
+    @Query(value = "select test.id, test.nome, test.livello, test.descrizione, test.idcategoria " +
+            "from test where test.id not in (" +
+            "select distinct test.id " +
+            "from test " +
+            "join domanda on domanda.idtest = test.id " +
+            "join risposta_domanda on risposta_domanda.id_domanda = domanda.id " +
+            "join risposta_utente on risposta_utente.id_risposta = risposta_domanda.id " +
+            "join user on user.username like risposta_utente.id_utente " +
+            "where user.username like ?1 " +
+            "group by insertdate, test.id " +
+            "having (sum(risposta_domanda.corretta)*100/count(*)) >= 60)", nativeQuery = true)
+    List<Test> testNotDoneForUser(String username);
+
+    @Query(value = "select test.id, test.nome, test.livello, test.descrizione, test.idcategoria " +
+            "from test where test.livello = ?2 and test.id not in (" +
+            "select distinct test.id " +
+            "from test " +
+            "join domanda on domanda.idtest = test.id " +
+            "join risposta_domanda on risposta_domanda.id_domanda = domanda.id " +
+            "join risposta_utente on risposta_utente.id_risposta = risposta_domanda.id " +
+            "join user on user.username like risposta_utente.id_utente " +
+            "where user.username like ?1 and test.livello = ?2 " +
+            "group by insertdate, test.id " +
+            "having (sum(risposta_domanda.corretta)*100/count(*)) >= 60)", nativeQuery = true)
+    List<Test> testNotDoneForUser(String username, Integer testLevel);
+
 
 }

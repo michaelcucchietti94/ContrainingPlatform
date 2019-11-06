@@ -1,11 +1,10 @@
-<div class="matrix-container">
+<div class="matrix-container" id="matrix" >
 </div>
-<div class="disk">
+<div class="disk" id="cerchio">
 </div>
 <div class="container-background">
     <div class="map-container">
         <div class="cerchiologin">
-            <div>
                 <form #f="ngForm" class="centratologin">
                     <div class="lines">
                         <input class="form-control" type="text" id="user" name="username" ngModel  placeholder="Email">
@@ -14,12 +13,12 @@
                         <input class="form-control" type="password" id="pass" name="password" ngModel placeholder="Password">
                     </div>
                     <div class="loginButton">
-                        <button type="submit" (click)="login(f)" 
+                        <button type="submit" (click)="login(f);matrixEffect()" 
                         style="width: 10vh; height: 10vh; border-radius: 50%; color:rgb(6, 240, 228); font-size: 2vh; 
                         font-weight: bold; background: transparent; border-style: solid; border-width: 0.17vw;">Login</button>
                     </div>
                 </form>
-            </div>
         </div>
     </div>
 </div>
+<div class="logo" id="contrainingLogo"></div>

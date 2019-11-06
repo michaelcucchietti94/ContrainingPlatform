@@ -20,6 +20,7 @@
     left: 0;
     opacity: 0.1;
 }
+
 .disk{
     background-image: url("src/assets/login/center/cerchio login.svg");
     background-position: center;
@@ -37,6 +38,16 @@
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@keyframes fadeOut { 
+    0% {opacity : 1;}
+    100% { opacity:0;} 
+}
+
+@keyframes fadeIn { 
+    0% {opacity : 0.1;}
+    100% { opacity:0.22;} 
+}
 
 .cerchiologin{
     background-image: url("src/assets/login/center/cerchio blu.svg");
@@ -73,6 +84,7 @@
     border-color: rgb(6, 240, 228);
     width: 14vw;
     height: 6vh;
+    color: rgb(6, 240, 228);
 }
 .logo{
     background-image: url("src/assets/login/center/logo ConTraining1.svg");
@@ -81,11 +93,42 @@
     height: 100vh;
     width: 100vw;
     background-size: 45%;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    z-index: 9;
     display: flex;
     align-items: center;
     justify-content: center;   
     flex-direction: column;
+    top:0;
+    left:0;
+}
+.fadeOutAnimation {
+    animation-name: fadeOut;
+    animation-direction: normal;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+.fadeInAnimation {
+    animation-name: fadeIn;
+    animation-direction: normal;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+.speedUp {
+    animation-duration: 2.2s;
 }
 
+::placeholder {
+    color: rgb(6, 240, 228);
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: rgb(6, 240, 228);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: rgb(6, 240, 228);
+  }

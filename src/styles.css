@@ -50,7 +50,7 @@ div.defaultBox {
 }
 
 .displayNone {
-    display: none;
+    display: none!important;
 }
 .displayFlex {
     display: flex;

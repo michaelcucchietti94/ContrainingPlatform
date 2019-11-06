@@ -1,7 +1,7 @@
 .container-background{
     background-image: url("src/assets/login/center/backgroundcolor.svg");
     background-position: center;
-    overflow: hidden;
+    overflow: visible;
 }
 .map-container{
     background-image: url("src/assets/login/center/map backgroud.svg");
@@ -19,87 +19,73 @@
     top: 0;
     left: 0;
     opacity: 0.1;
-    z-index: 0;
 }
-.login-details{
-    background-image: url("src/assets/login/center/logo blue circle.svg");
+.disk{
+    background-image: url("src/assets/login/center/cerchio login.svg");
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 49%;
     height: 100vh;
     width: 100vw;
-    position: relative;
-    z-index: 1;
-}
-.vuoto{
-    background-image: url("src/assets/login/center/cerchio vuoto.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-position-x: 53.3%;
-    background-position-y: 59.7%;
-    height: 100vh;
-    width: 100vw;
-    background-size: 33.7%;
-    -webkit-animation:spin 150s linear infinite;
-    -moz-animation:spin 150s linear infinite;
-    animation:spin 150s linear infinite;
+    position: fixed;
+    -webkit-animation:spin 100s linear infinite;
+    -moz-animation:spin 100s linear infinite;
+    animation:spin 100s linear infinite;
+    top:0;
+    left:0;
 }
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-.cerchio-login{
-    background-image: url("src/assets/login/center/login.svg");
+
+.cerchiologin{
+    background-image: url("src/assets/login/center/cerchio blu.svg");
     background-position: center;
-    background-position-x: 52%;
-    background-position-y: 44%;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
-    background-size: 34%;
-}
-.cerchio-signup{
-    background-image: url("src/assets/login/center/signup.svg");
-    background-position: center;
-    background-position-x: 54%;
-    background-position-y: 84.4%;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-size: 39%;
-}
-.logo-contraining{
-    background-image: url("src/assets/login/center/logo ConTraining.svg");
-    background-position: center;
-    background-position-x: 51%;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-size: 30%;
-    opacity: 0.15;
+    background-size: 25.5%;
     position: relative;
     z-index: 0;
-}
-.centratologin{
-    height: auto;
-    width: auto;
-    position: absolute;
-    left: 43.5%;
-    top: 36%;
     display: flex;
     align-items: center;
     justify-content: center;   
     flex-direction: column;
-    z-index: 1;
-    
+}
+.centratologin{
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    z-index: 0;
 }
 .lines{
-    padding: 2px;
-    margin: 10px;
+    padding: 1vh;
+    margin: 0.7vh;
 }
 .form-control{
-    padding: 10px;
+    padding: 2vh;
     background: transparent;
     border-radius: 10px;
-    border-width: 2px;
+    border-width: 0.25vh;
     border-style: solid;
     border-color: rgb(6, 240, 228);
+    width: 14vw;
+    height: 6vh;
 }
+.logo{
+    background-image: url("src/assets/login/center/logo ConTraining1.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    background-size: 45%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    flex-direction: column;
+}
+

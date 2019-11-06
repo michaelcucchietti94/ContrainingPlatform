@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/dto/User';
 import { TestService } from 'src/service/test/Test.service';
 
@@ -20,6 +20,9 @@ export class ProfileComponent implements OnInit {
 	countTestUser_l2 : Number;
 	countTestUser_l3 : Number;
 
+	@Output() mapCall = new EventEmitter();
+	@Output() myTestCall = new EventEmitter()
+
 
 	constructor(private testService : TestService) { }
 
@@ -33,5 +36,12 @@ export class ProfileComponent implements OnInit {
 		this.testService.countLevelTestCompletedBy(this.user.username.toString(), 1).subscribe((n) => this.countTestUser_l1 = n);
 		this.testService.countLevelTestCompletedBy(this.user.username.toString(), 2).subscribe((n) => this.countTestUser_l2 = n);
 		this.testService.countLevelTestCompletedBy(this.user.username.toString(), 3).subscribe((n) => this.countTestUser_l3 = n);
+	}
+
+	myTestView(e: any) {
+		this.myTestCall.emit(e);
+	}
+	mapView(e : any) {
+		this.mapCall.emit(e);
 	}
 }

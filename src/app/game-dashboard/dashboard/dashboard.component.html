@@ -14,10 +14,11 @@
         </div>
         <div class="main">
             <div class="side_left">
-                <app-profile></app-profile>
+                <app-profile (myTestCall)="showMyTest()" (mapCall)="showMap()"></app-profile>
             </div>
             <div class="center" id="mainPlayControl">
-                <app-map></app-map>
+                <app-map id="mapView"></app-map>
+                <app-mytest id="myTestView" class="displayNone"></app-mytest>
             </div>
             <div class="side_right">
                 <app-ranking></app-ranking>

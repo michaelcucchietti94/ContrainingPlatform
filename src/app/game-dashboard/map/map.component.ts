@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, Input, ElementRef } from '@angular/core';
 import { Continente } from 'src/dto/game/Continente';
 import { GamemapService } from 'src/service/map/Gamemap.service';
 import { Observable } from 'rxjs';
 import { ContinentePiece } from 'src/dto/game/ContinentPiece';
 import { StatoDecorated } from 'src/dto/game/StatoDecorated';
+import { RequestState } from 'src/dto/game/RequestState';
+import { User } from 'src/dto/User';
 
 @Component({
   selector: 'app-map',
@@ -16,31 +18,56 @@ export class MapComponent implements OnInit {
 	private currentElement : Data;
 	private mainData = new Data(0, 'continente');
 	private mapCSS: MapCss;
+	private mapNavigatorElements : HTMLElement;
 
 	constructor(private service : GamemapService) {
 	}
 
+	private disableCheck() {
+		setInterval(() => {
+			if(this.mapNavigatorElements == null || typeof this.mapNavigatorElements === 'undefined')
+				return;
+
+			let aTags : HTMLCollection = this.mapNavigatorElements.getElementsByTagName("a");
+			for(let i = 0; i < aTags.length; i++) {
+				let a = aTags.item(i);
+				if(a.getAttribute('elementenabled') === 'false')
+					a.classList.add('disabled');
+			}
+		}, 50);
+		
+	}
+
 	ngOnInit() {
+		this.mainData.viewType = ViewType.World;
+		this.mapNavigatorElements = document.getElementById('mapElements');
 		this.serviceContainer = new ServiceAdapterContainer(this.service);
 		this.serviceContainer.getChildren(this.elements, this.mainData)				// we get Continenti
 		this.currentElement = this.mainData;
 		this.mapCSS = new MapCss();
 		this.updateMap();
+		this.disableCheck();
+
 	}
 	
 	goDown(d : Data) {
-		this.serviceContainer.getChildren(this.elements, d);
-		this.currentElement = d;
-		this.updateMap();
+		if(!d.enabled)
+			return;
+		if(d.viewType !== ViewType.State) {
+			this.serviceContainer.getChildren(this.elements, d);
+			this.currentElement = d;
+			this.updateMap();
+		}
 	}
 	goUp() {
-		this.serviceContainer.getParents(this.elements);
-		if(this.currentElement.parent != null)
+		if(this.currentElement.viewType !== ViewType.World) {
+			this.serviceContainer.getParents(this.elements);
 			this.currentElement = this.currentElement.parent;
 			this.updateMap();
+		}
 	}
 	
-	overSpecific(d : Data)  {
+	overSpecific(d : Data)  {		
 		this.mapCSS.applySpecific(this.currentElement, d.testo)
 	}
 	leaveSpecific() {
@@ -90,7 +117,7 @@ class ServiceAdapterContainer {
 		this.piecesAdapter = new ContinentePieceAdapter(service);
 		this.statiAdapter = new StatiAdapter(service);
 	}
-
+	
 	getChildren(targetList : Data[], d : Data) : void {
 		if(this.adapterSelector === ServiceAdapters.Continenti) {
 			this.continentAdapter.main = d;
@@ -145,11 +172,17 @@ class Data {
 	id : number;
 	testo : string;
 	parent : Data;
+	viewType : ViewType;
+	enabled : boolean = true;
+
 	constructor(id : number, testo : string) {
 		this.id = id;
 		this.testo = testo;
 		this.parent = null;
 	}
+}
+enum ViewType {
+	World, Continente, Piece, State
 }
 interface ServiceAdapter<DTO> {
 	callService() : Observable<DTO[]>;
@@ -165,6 +198,7 @@ class ContinenteAdapter implements ServiceAdapter<Continente> {
 		list.forEach(element => {
 			let d : Data = new Data(element.id, element.nome.toString());
 			d.parent = this.main;
+			d.viewType = ViewType.Continente;
 			results.push(d);
 		})
 
@@ -184,6 +218,7 @@ class ContinentePieceAdapter implements ServiceAdapter<ContinentePiece> {
 		list.forEach(element => {
 			let d : Data = new Data(element.id, element.nome.toString());
 			d.parent = this.continente;
+			d.viewType = ViewType.Piece;
 			results.push(d);
 		})
 
@@ -204,13 +239,22 @@ class StatiAdapter implements ServiceAdapter<StatoDecorated> {
 		list.forEach(element => {
 			let d : Data = new Data(element.id, element.name.toString());
 			d.parent = this.piece;
+			d.viewType = ViewType.State;
+			d.enabled = element.enabled.valueOf();
 			results.push(d);
 		})
 
 		return results;
 	}
 	callService(): Observable<StatoDecorated[]> {
-		return this.service.getStati(this.piece.id);
+		let request = new RequestState();
+		let piece = new ContinentePiece();
+		piece.id = this.piece.id;
+		let user : User = JSON.parse(localStorage.getItem("currentUser"));
+		request.continentPiece = piece;
+		request.user = user;
+
+		return this.service.getStati(request);
 	}
 }
 

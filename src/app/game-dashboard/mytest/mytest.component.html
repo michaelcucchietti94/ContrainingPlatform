@@ -1,0 +1,39 @@
+
+<div class="defaultBox">
+    <div class="testContainer">
+        <div class="testFilter">
+            <div id="setOfTests">
+                <a class="button active" (click)="selectSet($event.target, 0)">Completati</a> 
+                <a class="button" (click)="selectSet($event.target, 1)">Non Completati</a> 
+            </div>
+            <div id="filterLevel">
+                <a class="button active" (click)="selectFilterLevel($event.target, 0)">Tutti</a> 
+                <a class="button" (click)="selectFilterLevel($event.target, 1)">Livello 1</a> 
+                <a class="button" (click)="selectFilterLevel($event.target, 2)">Livello 2</a> 
+                <a class="button" (click)="selectFilterLevel($event.target, 3)">Livello 3</a> 
+            </div>
+        </div>
+        <div class="testMain">
+            <div class="testElement" *ngFor="let t of tests">
+                <div class="row">
+                    <p class="header">Nome</p>
+                    <p class="dataText">{{t.nome}}</p>
+                </div>
+                <div class="row">
+                    <p class="header">Categoria</p>
+                    <p class="dataText">{{t.categoria.argomento}}</p>
+                </div>
+                <div class="row">
+                    <p class="header">Lv.</p>
+                    <p class="dataText">{{t.livello}}</p>
+                </div>
+                <div class="row">
+                    <p class="fullHeader">Descrizione</p>
+                </div>
+                <div class="row">
+                    <p class="dataAreaText">{{t.descrizione}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

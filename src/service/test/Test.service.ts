@@ -13,6 +13,8 @@ export class TestService {
     private cmd_countTestLevel : string = 'countTest_level_{level}'
     private cmd_completedByUser : string = 'user_{username}/testDone';
     private cmd_completedByUserLevel : string = 'user_{username}/testDone_level_{level}';
+    private cmd_notCompletedByUser : string = 'user_{username}/testNotDone';
+    private cmd_notCompletedByUserLevel : string = 'user_{username}/testNotDone_level_{level}';
     private cmd_countTestOfUser : string = 'user_{username}/countTestDone';
     private cmd_countTestOfUserLevel : string = 'user_{username}/countTestDone_level_{level}';
     
@@ -38,13 +40,27 @@ export class TestService {
             )
         );
     }
-    getTestCompletedBy(username : string) : Observable<Test> {
-        return this.http.get<Test>(this.getServerCommand(this.cmd_completedByUser, new KeyField('username', username)));
+    getTestCompletedBy(username : string) : Observable<Test[]> {
+        return this.http.get<Test[]>(this.getServerCommand(this.cmd_completedByUser, new KeyField('username', username)));
     }
-    getLevelTestCompletedBy(username : string, level : number) : Observable<Test> {
-        return this.http.get<Test>(
+    getLevelTestCompletedBy(username : string, level : number) : Observable<Test[]> {
+        return this.http.get<Test[]>(
             this.getServerCommand(
                 this.cmd_completedByUserLevel, 
+                new KeyField('username', username), 
+                new KeyField('level', level.toString()
+                )
+            )
+        );
+    }
+    
+    getTestNotCompletedBy(username : string) : Observable<Test[]> {
+        return this.http.get<Test[]>(this.getServerCommand(this.cmd_notCompletedByUser, new KeyField('username', username)));
+    }
+    getLevelTestNotCompletedBy(username : string, level : number) : Observable<Test[]> {
+        return this.http.get<Test[]>(
+            this.getServerCommand(
+                this.cmd_notCompletedByUserLevel, 
                 new KeyField('username', username), 
                 new KeyField('level', level.toString()
                 )

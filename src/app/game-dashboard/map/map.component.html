@@ -4,9 +4,9 @@
         <div class="mapNavigator">
             <div>
                 <div class="back" (click)="goUp()"></div>
-                <div class="elements">
+                <div class="elements" id="mapElements">
                     <div *ngFor="let elem of elements">
-                        <a class="button" (click)="goDown(elem)" (mouseenter)="overSpecific(elem)" (mouseleave)="leaveSpecific()">{{elem.testo}}</a>
+                        <a class="button" [attr.elementenabled]="elem.enabled" (click)="goDown(elem)" (mouseenter)="overSpecific(elem)" (mouseleave)="leaveSpecific()">{{elem.testo}}</a>
                     </div>
                 </div>
             </div>

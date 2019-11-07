@@ -21,23 +21,81 @@
     opacity: 0.1;
 }
 
-.disk{
-    background-image: url("src/assets/login/center/cerchio login.svg");
+.cerchio1{
+    background-image: url("src/assets/login/center/1.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 49%;
+    background-size: 25%;
     height: 100vh;
     width: 100vw;
     position: fixed;
-    -webkit-animation:spin 100s linear infinite;
-    -moz-animation:spin 100s linear infinite;
-    animation:spin 100s linear infinite;
+    -webkit-animation:spin2 30s linear infinite;
+    -moz-animation:spin2 30s linear infinite;
+    animation:spin2 30s linear infinite;
     top:0;
     left:0;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+
+.cerchio2{
+    background-image: url("src/assets/login/center/2.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 29.5%;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    -webkit-animation:spin2 40s linear infinite;
+    -moz-animation:spin2 40s linear infinite;
+    animation:spin2 40s linear infinite;
+    animation-direction: reverse;
+    top:0;
+    left:0;
+}
+@-moz-keyframes spin2 { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+
+.cerchio3{
+    background-image: url("src/assets/login/center/3.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 37%;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    -webkit-animation:spin2 80s linear infinite;
+    -moz-animation:spin2 80s linear infinite;
+    animation:spin2 80s linear infinite;
+    top:0;
+    left:0;
+}
+
+
+
+.cerchio4{
+    background-image: url("src/assets/login/center/4.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40.5%;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    -webkit-animation:spin2 180s linear infinite;
+    -moz-animation:spin2 180s linear infinite;
+    animation:spin2 180s linear infinite;
+    animation-direction: reverse;
+    top:0;
+    left:0;
+}
+
+.disk{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
 
 @keyframes fadeOut { 
     0% {opacity : 1;}
@@ -46,7 +104,7 @@
 
 @keyframes fadeIn { 
     0% {opacity : 0.1;}
-    100% { opacity:0.22;} 
+    100% { opacity:0.25;} 
 }
 
 .cerchiologin{
@@ -92,7 +150,7 @@
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
-    background-size: 45%;
+    background-size: 45.7%;
     position: absolute;
     z-index: 9;
     display: flex;
@@ -117,7 +175,7 @@
     animation-play-state: running;
 }
 .speedUp {
-    animation-duration: 2.2s;
+    animation-duration: 10s;
 }
 
 ::placeholder {

@@ -32,9 +32,15 @@ export class LoginComponent implements OnInit {
   
   matrixEffect(){
     let matrixElement = document.getElementById('matrix');
-    let cerchioElement = document.getElementById('cerchio');
+    let cerchio1Element = document.getElementById('cerchio1');
+    let cerchio2Element = document.getElementById('cerchio2');
+    let cerchio3Element = document.getElementById('cerchio3');
+    let cerchio4Element = document.getElementById('cerchio4');
     matrixElement.classList.add('fadeInAnimation');
-    cerchioElement.classList.add('speedUp');
+    cerchio1Element.classList.add('speedUp');
+    cerchio2Element.classList.add('speedUp');
+    cerchio3Element.classList.add('speedUp');
+    cerchio4Element.classList.add('speedUp');
   }
 
   login(f: NgForm) {
@@ -51,7 +57,7 @@ export class LoginComponent implements OnInit {
         else 
           this.router.navigate(['/dashboard']);
       });
-    }, 1500);
+    }, 1000);
     
 
   }

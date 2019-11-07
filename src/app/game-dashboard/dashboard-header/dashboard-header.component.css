@@ -32,7 +32,7 @@ div.headerContainer div.logo {
     background-attachment: local;
     background-position: bottom;
     background-repeat: no-repeat;
-    background-size: 9vh;
+    background-size: 12vh;
     background-image: url('../../../assets/dashboard/logo.svg');
 }
 div.part div.img {

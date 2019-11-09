@@ -88,6 +88,10 @@ public class UserService extends DefaultService<User, Long> {
         return repo.getUserByLevel(livello);
     }
 
+    public void setAccessed(String username) {
+        ((UserRepository)repository).setAccessed(username);
+    }
+
 
 
     /* PRIVATE METHODS */

@@ -26,6 +26,7 @@ public class User implements Serializable {
 
     private Long livello;
     private Usertype usertype;
+    private Boolean firstAccess = true;
 
 
 }

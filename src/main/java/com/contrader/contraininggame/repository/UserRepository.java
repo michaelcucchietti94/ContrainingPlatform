@@ -1,6 +1,7 @@
 package com.contrader.contraininggame.repository;
 
 import com.contrader.contraininggame.model.User;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -33,5 +34,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query("select u from User u where u.livello = ?1")
     List<User> getUserByLevel(Long level);
+
+    @Modifying
+    @Query(value = "update user set first_access = false where username like ?1", nativeQuery = true)
+    void setAccessed(String username);
 
 }

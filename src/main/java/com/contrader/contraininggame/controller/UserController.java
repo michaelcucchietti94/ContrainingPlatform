@@ -56,5 +56,9 @@ public class UserController extends AbstractController<User, Long> {
         return userService.getUsersByLevel(level);
     }
 
+    @GetMapping("/setAccessed_{username}")
+    public void setAccessed(@PathVariable("username") String username) {
+        ((UserService)service).setAccessed(username);
+    }
 
 }

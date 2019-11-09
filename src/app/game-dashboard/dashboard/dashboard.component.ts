@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/dto/User';
 import { Router } from '@angular/router';
 import * as AnimaFramework from 'src/assets/animaframework/AnimaFramework.js';
 import { LoginService } from 'src/service/user/Login.service';
+import { TutorialComponent } from '../tutorial/tutorial.component';
+import { DashboardTutorialService } from 'src/service/frontend_scoped/dashboard_tutorial.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +20,7 @@ export class DashboardComponent implements OnInit {
 	private myTestView : HTMLElement;
 
 
-	constructor(private router : Router, private loginService : LoginService) { }
+	constructor(private router : Router, private loginService : LoginService, private DTService : DashboardTutorialService) { }
 
 	ngOnInit() {
 		let user : User = JSON.parse(localStorage.getItem("currentUser"));
@@ -37,6 +39,7 @@ export class DashboardComponent implements OnInit {
 		this.tutorialView = document.getElementById('tutorialView');
 		this.currentViewOpened = this.mapView;
 
+		this.DTService.dashboard = this;
 		this.displayFirstTimeTutorial();
 	}
 
@@ -106,6 +109,8 @@ export class DashboardComponent implements OnInit {
 	}
 	showTutorial() {
 		if(this.currentViewOpened !== this.tutorialView) {
+			this.DTService.hideTutorialCloseButton();
+			this.DTService.startTutorialAnimation();
 			this.hideCurrentView();
 			this.showView(this.tutorialView);
 		}

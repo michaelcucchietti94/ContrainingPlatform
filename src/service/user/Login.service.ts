@@ -22,4 +22,8 @@ export class LoginService {
         this.router.navigate(['/login']);
     }
 
+    setAccessed(username : string) : Observable<any> {
+        return this.http.get<any>('http://localhost:8080/user/setAccessed_' + username);
+    }
+
 }

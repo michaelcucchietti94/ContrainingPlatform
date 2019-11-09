@@ -1,3 +1,4 @@
+/* LOGOUT */
 div.logoutBox {
     position: absolute;
     height: 100vh;
@@ -65,6 +66,38 @@ div.controls a.button:hover {
     border: 0.1vh solid rgba(233, 155, 50, 0.7);
 }
 
+/* END LOGOUT */
+
+/* TUTORIAL */
+div.tutorialFullBox {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width:100%;
+    top:0;
+    left:0;
+    box-sizing: border-box;
+    padding: 2vw;
+    background-color: rgba(200,200,200, 0.15);
+}
+div.tutorialBox {
+    position: relative;
+    height: 100%;
+    width:100%;
+    top:0;
+    left:0;
+    box-sizing: border-box;
+    padding: 2vw;
+    background-color: rgba(200,200,200, 0.15);
+}
+
+app-tutorial {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* END TUTORIAL */
+
 div.backgroud {
     position: relative;
     top:0;
@@ -84,7 +117,7 @@ div.dashboardContainer {
     left:0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(200,200,200, 0.25);
+    background-color: rgba(200,200,200, 0.15);
 }
 
 div.dashboardContainer div {

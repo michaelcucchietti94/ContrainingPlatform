@@ -8,17 +8,21 @@
     </div>
 </div>
 <div class="backgroud">
-    <div class="dashboardContainer">
+    <div class="tutorialFullBox" id="tutorialBox_first">
+        <app-tutorial (closeClicked)="setAccessed()"></app-tutorial>
+    </div>
+    <div class="dashboardContainer" id="dashboardContainer">
         <div class="header">
             <app-dashboard-header (logout)="showLogoutBox()"></app-dashboard-header>
         </div>
         <div class="main">
             <div class="side_left">
-                <app-profile (myTestCall)="showMyTest()" (mapCall)="showMap()"></app-profile>
+                <app-profile (myTestCall)="showMyTest()" (mapCall)="showMap()" (tutorialCall)="showTutorial()"></app-profile>
             </div>
             <div class="center" id="mainPlayControl">
                 <app-map id="mapView"></app-map>
                 <app-mytest id="myTestView" class="displayNone"></app-mytest>
+                <app-tutorial id="tutorialView" class="displayNone" (closeClicked)="setAccessed()"></app-tutorial>
             </div>
             <div class="side_right">
                 <app-ranking></app-ranking>

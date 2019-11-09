@@ -1,0 +1,19 @@
+<div class="defaultBox">
+    <div class="tutorialContainer">
+        <div class="header">
+            <div class="title">
+                tutorial
+            </div>
+            <div class="closeBox" (click)="closeClickedAction()">
+                <div class="close">x</div>
+            </div>
+        </div>
+        <div class="rulesbody">
+            <div class="rules">
+                <div class="rule" *ngFor="let rule of regole" [textContent]="rule.testo">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

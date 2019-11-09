@@ -14,7 +14,9 @@ export class DashboardComponent implements OnInit {
 	private logoutBox : HTMLElement;
 	private currentViewOpened : HTMLElement = null;
 	private mapView : HTMLElement;
+	private tutorialView : HTMLElement;
 	private myTestView : HTMLElement;
+
 
 	constructor(private router : Router, private loginService : LoginService) { }
 
@@ -32,7 +34,37 @@ export class DashboardComponent implements OnInit {
 
 		this.mapView = document.getElementById('mapView');
 		this.myTestView = document.getElementById('myTestView');
+		this.tutorialView = document.getElementById('tutorialView');
 		this.currentViewOpened = this.mapView;
+
+		this.displayFirstTimeTutorial();
+	}
+
+	displayFirstTimeTutorial() {
+		let user : User = JSON.parse(localStorage.getItem("currentUser"));
+		console.log(user);
+		if(user.firstAccess) {
+			let tutorialFirst = document.getElementById('tutorialBox_first');
+			let dashboard = document.getElementById('dashboardContainer');
+
+			tutorialFirst.classList.add('displayFlex');
+			dashboard.classList.add('displayNone');
+		}
+	}
+	hideFirstTimeTutorial() {
+		let tutorialFirst = document.getElementById('tutorialBox_first');
+		let dashboard = document.getElementById('dashboardContainer');
+
+		tutorialFirst.classList.remove('displayFlex');
+		dashboard.classList.remove('displayNone');
+	}
+
+	setAccessed() {
+		let user : User = JSON.parse(localStorage.getItem("currentUser"));
+		this.loginService.setAccessed(user.username.toString()).subscribe(() => {
+			this.hideFirstTimeTutorial();
+		});
+
 	}
 
 	showLogoutBox() {
@@ -70,6 +102,12 @@ export class DashboardComponent implements OnInit {
 		if(this.currentViewOpened !== this.mapView) {
 			this.hideCurrentView();
 			this.showView(this.mapView);
+		}
+	}
+	showTutorial() {
+		if(this.currentViewOpened !== this.tutorialView) {
+			this.hideCurrentView();
+			this.showView(this.tutorialView);
 		}
 	}
   

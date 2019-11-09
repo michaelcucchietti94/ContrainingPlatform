@@ -1,0 +1,136 @@
+/* TUTORIAL */
+div.defaultBox {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left:0;
+}
+div.defaultBox div.tutorialContainer {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding:2vw;
+    background-color: rgba(0, 197, 194, 0.08);
+    border-radius: 1.9vw;
+    border: 0.2vh solid rgba(0, 197, 194, 0.7);
+}
+div.defaultBox div.tutorialContainer div.header {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 8vh;
+    width: 100%;
+
+    box-sizing: border-box;
+    padding: 1.5vh;
+    font-weight: bold;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.7);
+}
+div.defaultBox div.tutorialContainer div.header div {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: 5vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(220, 220, 220);
+}
+div.defaultBox div.tutorialContainer div.header div.title {
+    width: auto;
+    flex-grow: 1;
+
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 5vh;
+}
+div.defaultBox div.tutorialContainer div.header div.closeBox {
+    width: 5vh;
+    border-radius: 50%;
+}
+div.defaultBox div.tutorialContainer div.header div.closeBox div.close {
+    position: relative;
+    height: 3.5vh;
+    width: 3.5vh;
+    top:0;
+    left:0;
+    font-size: 3vh;
+
+}
+div.defaultBox div.tutorialContainer div.header div.closeBox:hover {
+    background-color: rgba(220,220,220,0.15);
+    cursor: pointer;
+}
+div.defaultBox div.tutorialContainer div.rulesbody {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: calc(100% - 8vh);
+    width: 100%;
+
+    box-sizing: border-box;
+    padding: 2vh;
+    font-size: 2.5vh;
+    color: rgb(220, 220, 220);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+div.rules {
+    display:flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 3vh;
+}
+
+div.rules div.rule {
+    display: flex;
+    position: relative;
+    left:0;
+    height: auto;
+    width: 100%;
+    padding: 0.8vh;
+
+    box-sizing: content-box;
+    font-size: 2.5vh;
+    color: rgb(220,220,220);
+}
+div.rules div.rule:nth-of-type(2) {
+    padding-bottom: 4.5vh;
+}
+div.rules div.rule:nth-last-of-type(1) {
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 4.5vh;
+}
+

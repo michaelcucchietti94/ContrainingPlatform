@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Exo+2:300&display');
 
+body {
+    overflow: hidden;
+}
+
 * {
     flex-grow: 0;
     flex-shrink: 0;
@@ -45,7 +49,7 @@ div.defaultBox {
     background-position: left top, right top, right bottom, left bottom;
     background-repeat: no-repeat;
     background-origin: border-box;
-    background-size: 1auto, auto, auto, auto;
+    background-size: auto, auto, auto, auto;
     background-image: url('assets/boxes/bAS.svg') ,url('assets/boxes/bAD.svg'),url('assets/boxes/bBD.svg'),url('assets/boxes/bBS.svg');
 }
 
@@ -53,5 +57,5 @@ div.defaultBox {
     display: none!important;
 }
 .displayFlex {
-    display: flex;
+    display: flex!important;
 }

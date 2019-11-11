@@ -1,0 +1,13 @@
+<div id="logoutBox" class="logoutBox">
+  <div class="message">
+     <div class="controls">
+          <a class="button" (click)="confirmLogout()">Si</a>
+          <a class="button" (click)="cancelLogout()">No</a>
+      </div>
+  </div>
+</div>
+<div class="background">
+  <div class="dashboardContainer">
+      <div class="header">
+          <app-admin-header (logout)="showLogoutBox()"></app-admin-header>
+      </div>

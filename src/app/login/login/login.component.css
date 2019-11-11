@@ -178,6 +178,7 @@
     animation-duration: 10s;
 }
 
+
 ::placeholder {
     color: rgb(6, 240, 228);
     opacity: 1; /* Firefox */
@@ -191,4 +192,11 @@
    color: rgb(6, 240, 228);
 
 
+  }
+
+  .login #signup{
+    position: absolute;
+      color: rgb(6, 240, 228);
+      right: 24%;
+      top: 68%;
   }

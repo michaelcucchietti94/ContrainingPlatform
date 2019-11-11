@@ -5,6 +5,7 @@ import * as AnimaFramework from 'src/assets/animaframework/AnimaFramework.js';
 import { LoginService } from 'src/service/user/Login.service';
 import { TutorialComponent } from '../tutorial/tutorial.component';
 import { DashboardTutorialService } from 'src/service/frontend_scoped/dashboard_tutorial.service';
+import { UtilityService } from 'src/service/utility/Utility.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -45,7 +46,6 @@ export class DashboardComponent implements OnInit {
 
 	displayFirstTimeTutorial() {
 		let user : User = JSON.parse(localStorage.getItem("currentUser"));
-		console.log(user);
 		if(user.firstAccess) {
 			let tutorialFirst = document.getElementById('tutorialBox_first');
 			let dashboard = document.getElementById('dashboardContainer');

@@ -1,0 +1,80 @@
+/* TIMER */
+div.timer {
+    position: relative;
+    top:0;
+    left:0;
+    height: 24vh;
+    width: 2vh;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.cerchio {
+    position: absolute;
+    
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0.2vh;
+    border-radius: 50%;
+}
+div.cerchio div.marker {
+    position: relative;
+    display: flex;
+    height: 3vh;
+    width: 3vh;
+    top: -1.5vh;
+    left: calc(50% - 1.5vh);
+
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+
+    font-size: 1.3vh;
+    color: rgb(220, 220, 220);
+}
+
+div.hours {
+    height: 19vh;
+    width:19vh;
+    top:0;
+    left:0;
+    border-color: hsl(0, 66%, 33%);
+}
+div.minutes {
+    border-color: black;
+    height: 12.5vh;
+    width:12.5vh;
+    top:calc((19vh - 12.5vh) / 2);
+    left:calc((19vh - 12.5vh) / 2);
+    border-color: hsl(120, 66%, 33%);
+}
+div.seconds {
+    border-color: black;
+    height: 6vh;
+    width:6vh;
+    top: 6.5vh;
+    left:6.5vh;
+    border-color: hsl(240, 66%, 33%);
+}
+
+div.cerchio div.markerH {
+    background-color: hsl(0, 66%, 33%);
+}
+div.cerchio div.markerM {
+    background-color: hsl(120, 66%, 33%);
+}
+div.cerchio div.markerS {
+    background-color: hsl(240, 66%, 33%);
+}
+
+
+/* TIMER */

@@ -186,6 +186,7 @@
 
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: rgb(6, 240, 228);
+
   }
 
   ::-ms-input-placeholder { /* Microsoft Edge */

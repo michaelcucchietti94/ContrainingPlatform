@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     LoginModule,
     GameDashboardModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

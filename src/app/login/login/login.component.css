@@ -97,14 +97,14 @@
     position: fixed;
 }
 
-@keyframes fadeOut { 
+@keyframes fadeOut {
     0% {opacity : 1;}
-    100% { opacity:0;} 
+    100% { opacity:0;}
 }
 
-@keyframes fadeIn { 
+@keyframes fadeIn {
     0% {opacity : 0.1;}
-    100% { opacity:0.25;} 
+    100% { opacity:0.25;}
 }
 
 .cerchiologin{
@@ -118,14 +118,14 @@
     z-index: 0;
     display: flex;
     align-items: center;
-    justify-content: center;   
+    justify-content: center;
     flex-direction: column;
 }
 .centratologin{
     height: auto;
     width: auto;
     display: flex;
-    align-items: center; 
+    align-items: center;
     flex-direction: column;
     z-index: 0;
 }
@@ -155,7 +155,7 @@
     z-index: 9;
     display: flex;
     align-items: center;
-    justify-content: center;   
+    justify-content: center;
     flex-direction: column;
     top:0;
     left:0;
@@ -182,11 +182,13 @@
     color: rgb(6, 240, 228);
     opacity: 1; /* Firefox */
   }
-  
+
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: rgb(6, 240, 228);
   }
-  
+
   ::-ms-input-placeholder { /* Microsoft Edge */
    color: rgb(6, 240, 228);
+
+
   }

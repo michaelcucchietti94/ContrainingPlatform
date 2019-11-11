@@ -1,0 +1,108 @@
+  <div class="row no-gutters" style="height: 92vh">
+    <div class="col-md-12 no-gutters" style="height: 72vh">
+      <form class="registerform" [formGroup]="angForm" (submit)="signUp()">
+        <div class="row">
+          <h1>Sign Up</h1>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="username">Username</label>
+            <div *ngIf="isInvalid('username')" class="alert alert-danger">
+              <div *ngIf="angForm.controls['username'].errors.required">
+                Required !
+              </div>
+            </div>
+          </div>
+          <div class="col-75">
+            <input type="text" id="username" name="username" placeholder="insert username" formControlName="username">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="pass">Password</label>
+            <div *ngIf="isInvalid('password')" class="alert alert-danger">
+                <div *ngIf="angForm.controls['password'].errors.required">
+                  Required !
+                </div>
+            </div>
+          </div>
+          <div class="col-75">
+            <input type="password" id="pass" name="password" placeholder="insert password" formControlName="password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="firstName">Nome</label>
+            <div *ngIf="isInvalid('nome')" class="alert alert-danger">
+                <div *ngIf="angForm.controls['nome'].errors.required">
+                  Required !
+                </div>
+              </div>
+          </div>
+          <div class="col-75">
+            <input type="text" id="nome" name="nome" placeholder="insert nome" formControlName="nome">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="cognome">cognome</label>
+            <div *ngIf="isInvalid('cognome')" class="alert alert-danger">
+                <div *ngIf="angForm.controls['cognome'].errors.required">
+                  Required !
+                </div>
+              </div>
+          </div>
+          <div class="col-75">
+            <input type="text" id="cognome" name="cognome" placeholder="insert cognome" formControlName="cognome">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="dataNascita">Data di nascita</label>
+            <div *ngIf="isInvalid('dataNascita')" class="alert alert-danger">
+                <div *ngIf="angForm.controls['dataNascita'].errors.required">
+                  Required !
+                </div>
+              </div>
+          </div>
+          <div class="col-75">
+            <input type="date" id="dataNascita" name="dataNascita" placeholder="insert data di nascita" formControlName="dataNascita">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="email">Email</label>
+            <div *ngIf="isInvalid('email')" class="alert alert-danger">
+                <div *ngIf="angForm.controls['email'].errors.required">
+                  Required !
+                </div>
+            </div>
+          </div>
+          <div class="col-75">
+            <input type="email" id="email" name="email" placeholder="insert email" formControlName="email">
+          </div>
+        </div>
+        <div class="row">
+          <button type="submit" >Sign Up</button>
+        </div>
+        <div class="row rowalert" *ngIf="errorUserExists">
+          <div class="alert alert-danger">
+            <strong>Login name already registered!</strong> Please choose another one.
+          </div>
+        </div>
+        <div class="row rowalert" *ngIf="errorEmailExists">
+          <div class="alert alert-danger">
+            <strong>Email is already in use!</strong> Please choose another one.
+          </div>
+        </div>
+        <div class="row rowalert" *ngIf="error">
+          <div class="alert alert-danger">
+            <strong>Registration Error.</strong>
+          </div>
+        </div>
+        <div class="row">
+            <a class="backlink" [routerLink] = "['/login']">&lt;--- Back</a>
+          </div>
+      </form>
+    </div>
+</div>

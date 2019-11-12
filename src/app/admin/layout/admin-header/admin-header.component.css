@@ -33,7 +33,7 @@ div.headerContainer div.logo {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: 12vh;
-    background-image: url('../../../assets/dashboard/logo.svg');
+    background-image: url('../../../../assets/dashboard/logo.svg');
 }
 div.part div.img {
     position: relative;
@@ -48,15 +48,15 @@ div.part div.img {
 }
 div.part div.profileImage {
     width: 20%;
-    background-image: url('../../../assets/dashboard/profile.svg');
+    background-image: url('../../../../assets/dashboard/profile.svg');
 }
 div.part div.mondo {
     width: 8vh;
-    background-image: url('../../../assets/dashboard/mondo.svg');
+    background-image: url('../../../../assets/dashboard/mondo.svg');
 }
 div.part div.globo {
     width: 8vh;
-    background-image: url('../../../assets/dashboard/globo.svg');
+    background-image: url('../../../../assets/dashboard/globo.svg');
 }
 div.part div.content {
     display: flex;
@@ -105,12 +105,12 @@ div.separatorContainer div.bar {
 }
 
 div.separatorContainer div.left {
-    background-image: url('../../../assets/dashboard/bar.svg');
+    background-image: url('../../../../assets/dashboard/bar.svg');
     transform: rotate(180deg);
 }
 
 div.separatorContainer div.right {
-    background-image: url('../../../assets/dashboard/bar.svg');
+    background-image: url('../../../../assets/dashboard/bar.svg');
 }
 
 div.separatorContainer div.spacer {

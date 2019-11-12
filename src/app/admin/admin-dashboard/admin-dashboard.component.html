@@ -1,6 +1,7 @@
 <div id="logoutBox" class="logoutBox">
   <div class="message">
-     <div class="controls">
+      <span class="text">Sei sicuro di voler smettere di giocare?</span>
+      <div class="controls">
           <a class="button" (click)="confirmLogout()">Si</a>
           <a class="button" (click)="cancelLogout()">No</a>
       </div>
@@ -9,5 +10,7 @@
 <div class="background">
   <div class="dashboardContainer">
       <div class="header">
-          <app-admin-header (logout)="showLogoutBox()"></app-admin-header>
       </div>
+      </div>
+  </div>
+

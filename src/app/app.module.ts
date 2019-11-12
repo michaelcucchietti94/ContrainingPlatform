@@ -6,7 +6,8 @@ import { LoginModule } from './login/login.module';
 import { GameDashboardModule } from './game-dashboard/game-dashboard.module';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AdminDashboardModule } from './admin/admin-dashboard.module';
+import { AdminModule } from './admin/admin-dashboard/admin.module';
+
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AdminDashboardModule } from './admin/admin-dashboard.module';
     AppRoutingModule,
     LoginModule,
     GameDashboardModule,
-    AdminDashboardModule
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

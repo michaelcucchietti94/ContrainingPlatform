@@ -13,21 +13,18 @@ export class AdminDashboardComponent implements OnInit {
   private logoutBox : HTMLElement;
 
 
-	constructor(private router : Router, private loginService : LoginService) { }
+constructor(private router : Router, private loginService : LoginService) { }
 
   ngOnInit() {
-    let user : User = JSON.parse(localStorage.getItem("currentUser"));
-		if(typeof user === 'undefined' || user == null) {
-			this.router.navigate(['/login']);
-		}
-		if(user.usertype.toString().toLowerCase() !== 'admin') {
-			alert('wrong usertype. See Game Dashboard init');
-    }
+    let user: User = JSON.parse(localStorage.getItem("currentUser"));
+		  if (typeof user === 'undefined' || user == null) {
+			  this.router.navigate(['/login']);
+      }
 
     this.logoutBox = document.getElementById('logoutBox');
-		this.logoutBox.classList.add('displayNone');
+    this.logoutBox.classList.add('displayNone');
 
-	}
+  }
 
 	showLogoutBox() {
 		this.logoutBox.classList.remove('displayNone');

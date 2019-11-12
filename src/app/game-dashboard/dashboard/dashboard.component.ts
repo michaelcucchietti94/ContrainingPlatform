@@ -23,9 +23,7 @@ export class DashboardComponent implements OnInit {
 		if(typeof user === 'undefined' || user == null) {
 			this.router.navigate(['/login']);
 		}
-		if(user.usertype.toString().toLowerCase() !== 'user') {
-			alert('wrong usertype. See Game Dashboard init');
-		}
+
 
 		this.logoutBox = document.getElementById('logoutBox');
 		this.logoutBox.classList.add('displayNone');
@@ -72,6 +70,6 @@ export class DashboardComponent implements OnInit {
 			this.showView(this.mapView);
 		}
 	}
-  
+
 
 }

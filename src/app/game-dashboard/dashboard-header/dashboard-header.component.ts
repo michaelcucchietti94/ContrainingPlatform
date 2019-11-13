@@ -9,14 +9,17 @@ import { LoginService } from 'src/service/user/Login.service';
 })
 export class DashboardHeaderComponent implements OnInit {
   user : User;
+  @Output() logout = new EventEmitter();
 
   constructor(private loginService : LoginService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
 
-
   }
 
+  logoutEvent(e) {
+    this.logout.emit(e);
+  }
 
 }

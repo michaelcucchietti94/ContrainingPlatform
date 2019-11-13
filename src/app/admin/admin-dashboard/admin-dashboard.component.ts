@@ -10,9 +10,6 @@ import { User } from 'src/dto/User';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  private logoutBox : HTMLElement;
-
-
 constructor(private router : Router, private loginService : LoginService) { }
 
   ngOnInit() {
@@ -21,27 +18,8 @@ constructor(private router : Router, private loginService : LoginService) { }
 			  this.router.navigate(['/login']);
       }
 
-    this.logoutBox = document.getElementById('logoutBox');
-    this.logoutBox.classList.add('displayNone');
-
   }
 
-	showLogoutBox() {
-		this.logoutBox.classList.remove('displayNone');
-		this.logoutBox.classList.add('displayFlex');
-	}
-	hideLogoutBox() {
-		this.logoutBox.classList.remove('displayFlex');
-		this.logoutBox.classList.add('displayNone');
-	}
-
-	confirmLogout() {
-		this.hideLogoutBox();
-		this.loginService.logout();
-	}
-	cancelLogout() {
-		this.hideLogoutBox();
-	}
 
 
 }

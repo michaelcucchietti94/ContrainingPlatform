@@ -195,9 +195,88 @@
 
   }
 
-  .login #signup{
-    position: absolute;
-      color: rgb(6, 240, 228);
-      right: 24%;
-      top: 68%;
+  
+.disk2{
+    height: 20vh;
+    width: 20vw;
+    position: fixed;
+}
+ 
+
+.disco1{
+    background-image: url("src/assets/login/center/1.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 19%;
+    height: 100%;
+    width: 33%;
+    position: fixed;
+    -webkit-animation:spin2 30s linear infinite;
+    -moz-animation:spin2 30s linear infinite;
+    animation:spin2 30s linear infinite;
+    left: 60%;
+    top: 20%;
+}
+
+
+.disco2{
+    background-image: url("src/assets/login/center/4.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 36%;
+    height: 100%;
+    width: 33%;
+    position: fixed;
+    -webkit-animation:spin2 40s linear infinite;
+    -moz-animation:spin2 40s linear infinite;
+    animation:spin2 40s linear infinite;
+    animation-direction: reverse;
+    left: 60%;
+    top: 20%;
+}
+
+.disco3{
+    background-image: url("src/assets/login/center/2.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25.5%;
+    height: 100%;
+    width: 33%;
+    position: fixed;
+    -webkit-animation:spin2 40s linear infinite;
+    -moz-animation:spin2 40s linear infinite;
+    animation:spin2 40s linear infinite;
+    animation-direction: reverse;
+    left: 60%;
+    top: 20%;
   }
+  @-moz-keyframes spin2 { 100% { -moz-transform: rotate(-360deg); } }
+  @-webkit-keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); } }
+  @keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+  
+  
+  .disco4{
+    background-image: url("src/assets/login/center/3.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32.5%;
+    height: 100%;
+    width: 33%;
+    position: fixed;
+    -webkit-animation:spin2 80s linear infinite;
+    -moz-animation:spin2 80s linear infinite;
+    animation:spin2 80s linear infinite;
+    left: 60%;
+    top: 20%;
+  }
+.signupCircles{
+    top: 68%;
+    left: 74.5%;;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+a {
+    text-decoration: none;
+   }
+  

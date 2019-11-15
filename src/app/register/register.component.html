@@ -1,109 +1,126 @@
-<img class="registerimg" src="../../assets/dashboard/background.svg">
-<div class="row no-gutters" style="height: 92vh">
-    <div class="col-md-12 no-gutters" style="height: 72vh">
-      <form class="registerform" [formGroup]="angForm" (submit)="signUp()">
-        <div class="row">
-          <h1>Sign Up</h1>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="username">Username</label>
-            <div *ngIf="isInvalid('username')" class="alert alert-danger">
-              <div *ngIf="angForm.controls['username'].errors.required">
-                Required !
-              </div>
-            </div>
-          </div>
-          <div class="col-75">
-            <input type="text" id="username" name="username" placeholder="Inserisci il tuo username" formControlName="username">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="pass">Password</label>
-            <div *ngIf="isInvalid('password')" class="alert alert-danger">
-                <div *ngIf="angForm.controls['password'].errors.required">
-                  Required !
+<div class="matrix-container" id="matrix" >
+</div>
+
+<div class="disk2">
+  <div class="cr1" id="cr1">
+  </div>
+  <div class="cr2" id="cr2">
+  </div>
+  <div class="cr3" id="cr3">
+  </div>
+  <div class="cr4" id="cr4">
+  </div>
+</div>
+
+
+<div class="container-background">
+    <div class="map-container">
+        
+        <div class="containerLogin">
+              
+            <form class="registerform" [formGroup]="angForm" (submit)="signUp()">
+                
+                
+                <div class="classeUsername">
+                    <div class="cad">
+                        <label for="username" class="lbl">Username</label>
+                        <div *ngIf="isInvalid('username')" class="alert alert-danger" class="allert">
+                            <div *ngIf="angForm.controls['username'].errors.required" class="allerta">
+                                Required !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cph">
+                        <input type="text" id="username" name="username" placeholder="Inserisci il tuo username" formControlName="username" class="ph">
+                    </div>
                 </div>
-            </div>
-          </div>
-          <div class="col-75">
-            <input type="password" id="pass" name="password" placeholder="Inserisci la tua password" formControlName="password">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="nome">Nome</label>
-            <div *ngIf="isInvalid('nome')" class="alert alert-danger">
-                <div *ngIf="angForm.controls['nome'].errors.required">
-                  Required !
+
+
+                <div class="classePassword">
+                    <div class="cad">
+                        <label for="pass" class="lbl">Password</label>
+                        <div *ngIf="isInvalid('password')" class="alert alert-danger" class="allert">
+                           <div *ngIf="angForm.controls['password'].errors.required" class="allerta">
+                                Required !
+                           </div>
+                        </div>
+                    </div>
+                    <div class="cph">
+                      <input type="password" id="pass" name="password" placeholder="Inserisci la tua password" formControlName="password" class="ph">
+                    </div>
                 </div>
-              </div>
-          </div>
-          <div class="col-75">
-            <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" formControlName="nome">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="cognome">cognome</label>
-            <div *ngIf="isInvalid('cognome')" class="alert alert-danger">
-                <div *ngIf="angForm.controls['cognome'].errors.required">
-                  Required !
+
+
+                <div class="classeEmail">
+                    <div class="cad">
+                        <label for="email" class="lbl">Email</label>
+                        <div *ngIf="isInvalid('email')" class="alert alert-danger" class="allert">
+                            <div *ngIf="angForm.controls['email'].errors.required" class="allerta">
+                                Required !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cph">
+                        <input type="email" id="email" name="email" placeholder="Inserisci la tua email" formControlName="email" class="ph">
+                    </div>
                 </div>
-              </div>
-          </div>
-          <div class="col-75">
-            <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome" formControlName="cognome">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="dataNascita">Data di nascita</label>
-            <div *ngIf="isInvalid('dataNascita')" class="alert alert-danger">
-                <div *ngIf="angForm.controls['dataNascita'].errors.required">
-                  Required !
+
+                <div class="classeNome">
+                    <div class="cad">
+                        <label for="nome" class="lbl">Nome</label>
+                        <div *ngIf="isInvalid('nome')" class="alert alert-danger" class="allert">
+                            <div *ngIf="angForm.controls['nome'].errors.required" class="allerta">
+                                Required !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cph">
+                        <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" formControlName="nome" class="ph">
+                    </div>
                 </div>
-              </div>
-          </div>
-          <div class="col-75">
-            <input type="date" id="dataNascita" name="dataNascita" placeholder="Inserisci la tua data di nascita" formControlName="dataNascita">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="email">Email</label>
-            <div *ngIf="isInvalid('email')" class="alert alert-danger">
-                <div *ngIf="angForm.controls['email'].errors.required">
-                  Required !
+
+
+                <div class="classeCongnome">
+                    <div class="cad">
+                        <label for="cognome" class="lbl">cognome</label>
+                        <div *ngIf="isInvalid('cognome')" class="alert alert-danger" class="allert">
+                            <div *ngIf="angForm.controls['cognome'].errors.required" class="allerta">
+                                Required !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cph">
+                        <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome" formControlName="cognome" class="ph">
+                    </div>
                 </div>
-            </div>
-          </div>
-          <div class="col-75">
-            <input type="email" id="email" name="email" placeholder="Inserisci la tua email" formControlName="email">
-          </div>
+
+
+
+                <div class="classeData">
+                    <div class="cad">
+                        <label for="dataNascita" class="lbl">Data di nascita</label>
+                        <div *ngIf="isInvalid('dataNascita')" class="alert alert-danger" class="allert">
+                            <div *ngIf="angForm.controls['dataNascita'].errors.required" class="allerta">
+                                Required !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cph">
+                        <input type="date" id="dataNascita" name="dataNascita" placeholder="Inserisci la tua data di nascita" formControlName="dataNascita" class="ph">
+                    </div>
+                </div>
+
+
+
+                <div class="buttone">
+                    <button type="submit" style="width: 20vh; height: 6vh; border-radius: 1vw; color:rgb(6, 240, 228); font-size: 2vh;
+                    font-weight: bold; background: transparent; border-style: solid; border-width: 0.17vw;">Sign Up</button>
+                </div>
+
+
+                
+            </form>
         </div>
-        <div class="row">
-          <button type="submit" >Sign Up</button>
-        </div>
-        <div class="row rowalert" *ngIf="errorUserExists">
-          <div class="alert alert-danger">
-            <strong>Login name already registered!</strong> Please choose another one.
-          </div>
-        </div>
-        <div class="row rowalert" *ngIf="errorEmailExists">
-          <div class="alert alert-danger">
-            <strong>Email is already in use!</strong> Please choose another one.
-          </div>
-        </div>
-        <div class="row rowalert" *ngIf="error">
-          <div class="alert alert-danger">
-            <strong>Registration Error.</strong>
-          </div>
-        </div>
-        <div class="row">
-            <a class="backlink" [routerLink] = "['/login']">&lt;--- Back</a>
-          </div>
-      </form>
     </div>
 </div>
+<div class="logo"></div>

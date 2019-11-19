@@ -1,0 +1,126 @@
+div.window {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+}
+div.header {
+    position:relative;
+    top:0;
+    left:0;
+    height:12vh;
+    width:100vw;
+}
+
+div.container {
+    display: flex;
+    position:relative;
+    height:88vh;
+    width: 100vw;
+    top:0;
+    left:0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.container div.menu {
+    display: flex;
+    position:relative;
+    top:0;
+    left:0;
+    height:100%;
+    width:30vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+div.container div.data {
+    position:relative;
+    top:0;
+    left:0;
+    height:100%;
+    width:70vh;
+}
+
+div.logoutBox {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left:0;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(40,40,40, 0.9);
+    z-index: 10000;
+}
+
+div.logoutBox div.exit {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: 40vh;
+    width: 50vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding:2vw;
+    background-color: rgba(233, 155, 50, 0.22);
+    border-radius: 1.3vw;
+    border: 0.2vh solid rgba(233, 155, 50, 0.7);
+}
+
+div.logoutBox div.exit * {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    min-height: 5vh;
+    width: 100%;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.exit span.text {
+    height: 20vh;
+    color: rgb(220, 220, 220);
+    font-size: 5vh;
+}
+div.exit div.controls {
+    height: 10vh;
+}
+div.controls a.button {
+    margin-right: 2vw;
+    margin-left: 2vw;
+    padding-right: 4vw;
+    padding-left: 4vw;
+    width: auto!important;
+    box-sizing: content-box;
+    border: 0.1vh solid rgba(233, 155, 50, 0.5);
+    background-color: rgba(233, 155, 50, 0.08);
+}
+div.controls a.button:hover {
+    background-color: rgba(233, 155, 50, 0.18);
+    border: 0.1vh solid rgba(233, 155, 50, 0.7);
+}
+div.background {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../../../assets/dashboard/background.svg");
+}

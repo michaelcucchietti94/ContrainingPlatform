@@ -1,0 +1,24 @@
+<div class="background"></div>
+<div id="logoutBox" class="logoutBox">
+  <div class="exit">
+    <span class="text">Sei sicuro di voler uscire dalla pagina?</span>
+      <div class="controls">
+        <a class="button" (click)="confirmLogout()">Si</a>
+        <a class="button" (click)="cancelLogout()">No</a>
+      </div>
+  </div>
+</div>
+<div class="window">
+    <div class="header">
+        <app-admin-header (logout)="showLogoutBox()"></app-admin-header>
+    </div>
+    <div class= "container">
+      <div class="menu">
+        <app-admin-menu></app-admin-menu>
+      </div>
+      <div class="data">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>
+

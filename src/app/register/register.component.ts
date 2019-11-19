@@ -3,6 +3,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { UserService } from 'src/service/user/User.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { User } from 'src/dto/User';
 
 @Component({
   selector: 'app-register',
@@ -38,7 +39,15 @@ export class RegisterComponent implements OnInit {
     this.resetErrors();
     this.submitted = true;
     if (this.angForm.valid) {
-      this.service.insert(this.angForm.value).subscribe(() => {
+      let user: User = new User();
+      user.username = this.angForm.controls['username'].value;
+      user.password = this.angForm.controls['password'].value;
+      user.nome = this.angForm.controls['nome'].value;
+      user.cognome = this.angForm.controls['cognome'].value;
+      user.dataNascita = this.angForm.controls['dataNascita'].value;
+      user.email = this.angForm.controls['email'].value;
+      console.log(user);
+      this.service.insert(user).subscribe(() => {
         this.router.navigateByUrl('/login');
       },
       response => this.processError(response));

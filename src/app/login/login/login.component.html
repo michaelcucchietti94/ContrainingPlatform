@@ -10,12 +10,23 @@
     <div class="cerchio4" id="cerchio4">
     </div>
 </div>
+<div class="disk2">
+    <div class="disco1" id="disco1">
+    </div>
+    <div class="disco2" id="disco2">
+    </div>
+    <div class="disco3" id="disco3">
+    </div>
+    <div class="disco4" id="disco4">
+    </div>
+</div>
 <div class="container-background">
+    
     <div class="map-container">
         <div class="cerchiologin">
                 <form #f="ngForm" class="centratologin">
                     <div class="lines">
-                        <input class="form-control" type="text" id="user" name="username" ngModel  placeholder="Email">
+                        <input class="form-control" type="text" id="user" name="username" ngModel  placeholder="Username">
                     </div>
                     <div class="lines">
                         <input class="form-control" type="password" id="pass" name="password" ngModel placeholder="Password">
@@ -25,7 +36,11 @@
                         style="width: 10vh; height: 10vh; border-radius: 50%; color:rgb(6, 240, 228); font-size: 2vh;
                         font-weight: bold; background: transparent; border-style: solid; border-width: 0.17vw;">Login</button>
                     </div>
-                    <a [routerLink]="['/register']" id="signup" >Sign Up</a>
+                    <div class="signupCircles">
+                        <a [routerLink]="['/register']" class="signupLogo" id="signup" style="width: 10vh; height: 10vh; color:rgb(6, 240, 228); font-size: 2.5vh;
+                        font-weight: bold; background: transparent;">Sign Up</a>
+                    </div>
+                    
                 </form>
         </div>
     </div>

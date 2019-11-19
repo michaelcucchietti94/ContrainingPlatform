@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Test } from 'src/dto/testing/Test';
+import { DomandaDecorated } from 'src/dto/testing/DomandaDecorated';
+import { UserTestScore } from 'src/dto/testing/UserTestScore';
+import { RispostaUtente } from 'src/dto/testing/RispostaUtente';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +20,13 @@ export class TestService {
     private cmd_notCompletedByUserLevel : string = 'user_{username}/testNotDone_level_{level}';
     private cmd_countTestOfUser : string = 'user_{username}/countTestDone';
     private cmd_countTestOfUserLevel : string = 'user_{username}/countTestDone_level_{level}';
+
+    private cmd_startest : string = 'test/user_{username}/start_test_{idTest}';
+    private cmd_nextquestion : string = 'test/user_{username}/getNextQuestion';
+    private cmd_addresponse : string = 'test/user/addResponse';
+    private cmd_endtest : string = 'test/user_{username}/end_test';
+    private cmd_hasMoreQuestion : string = 'test/user_{username}/hasMoreQuestion';
+    
     
 
     constructor(protected http : HttpClient) {}
@@ -79,6 +89,45 @@ export class TestService {
                 )
             )
         );
+    }
+
+    startTest(username : string, idTest : number) : any {
+        return this.http.get<void>(
+            this.getServerCommand( 
+                this.cmd_startest,
+                new KeyField('username', username),
+                new KeyField('idTest', idTest.toString())
+            )
+        )
+    }
+
+    getNextQuestion(username : string) : Observable<DomandaDecorated> {
+        return this.http.get<DomandaDecorated>(
+            this.getServerCommand(
+                this.cmd_nextquestion,
+                new KeyField('username', username)
+            )
+        )
+    }
+
+    addResponse(risposta : RispostaUtente) : any {
+        return this.http.post<void>(this.getServerCommand(
+            this.cmd_addresponse
+        ), risposta);
+    }
+
+    endTest(username : string) : Observable<UserTestScore> {
+        return this.http.get<UserTestScore>(this.getServerCommand(
+            this.cmd_endtest,
+            new KeyField('username', username)
+        ))
+    }
+
+    hasMoreQuestion(username : string) : Observable<Boolean> {
+        return this.http.get<Boolean>(this.getServerCommand(
+            this.cmd_hasMoreQuestion,
+            new KeyField('username', username)
+        ));
     }
 }
 

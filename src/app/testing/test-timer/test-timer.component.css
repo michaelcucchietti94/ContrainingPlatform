@@ -1,0 +1,84 @@
+/* TIMER */
+div.timer {
+    position: relative;
+    top:0;
+    left:0;
+    height: 30vh;
+    width: 30vh;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.cerchio {
+    position: absolute;
+    
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0.1vh;
+    border-radius: 50%;
+    border-color: rgb(0, 197, 194);
+    background-color: rgba(0, 197, 194, 0.1);
+}
+div.cerchio div.marker {
+    position: relative;
+    display: flex;
+    height: 2vh;
+    width: 2vh;
+    top: -1vh;
+    left: calc(50% - 1vh);
+
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+
+    font-size: 1.3vh;
+    color: rgb(20,20,20);
+    font-weight: bold;
+    background-color: rgba(0, 197, 194, 1);
+}
+
+div.hours {
+    height: 29vh;
+    width:29vh;
+    top:0;
+    left:0;
+}
+div.minutes {
+    height: 25vh;
+    width:25vh;
+    top:2vh;
+    left:2vh;
+}
+div.seconds {
+    height: 21vh;
+    width:21vh;
+    top: 4vh;
+    left:4vh;
+}
+div.text {
+    background-color: rgba(0, 197, 194, 1);
+    color: rgb(220,220,220);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 6vh;
+    left: 6vh;
+    height: 17vh;
+    width: 17vh;
+
+    font-size: 3vh;
+}
+
+
+
+/* TIMER */

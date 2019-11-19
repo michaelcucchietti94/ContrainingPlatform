@@ -1,0 +1,63 @@
+div.background {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width:100vw;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../../../assets/dashboard/background.svg');
+}
+
+div.header {
+    position: relative;
+    width: 100vw;
+    height: 12vh;
+    top:0;
+    left:0;
+}
+div.testBody {
+    display: flex;
+    position: relative;
+    height: 88vh;
+    width: 100vw;
+    top:0;
+    left:0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+div.testBody div.test {
+    position: relative;
+    height: 100%;
+    width: 70vw;
+    top:0;
+    left:0;
+    box-sizing: border-box;
+    padding: 2vw;
+    margin:0;
+    border:0;
+}
+div.testBody div.timer {
+    position: relative;
+    height: 100%;
+    width: 30vw;
+    top:0;
+    left:0;
+    box-sizing: border-box;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+app-usertest {
+    position: relative;
+    display: flex;
+    height: 95%;
+    width: 100%;
+}

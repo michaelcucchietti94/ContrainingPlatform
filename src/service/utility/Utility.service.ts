@@ -129,6 +129,10 @@ class PreloadEngine {
 })
 export class UtilityService {
     extendedDocument : ExtendedDocument;
+
+    constructor() {
+        this.extendedDocument = extendedDocument;
+    }
     
     preload(element : HTMLElement) {
         (new PreloadEngine(element)).preload();
@@ -136,3 +140,155 @@ export class UtilityService {
 
 }
 /* PRELOAD MODULE */
+
+/* Utilities (JS) */
+/* Utilities */
+function pxFromVh(vhValue) {
+    var clientHeight = window.innerHeight;
+    return vhValue*clientHeight/100;
+}
+function pxFromVw(vwValue) {
+    var clientWidth = window.innerWidth;
+    return vwValue*clientWidth/100;
+}
+function pxFromPercentageWidth(percentValue, elem) {
+    if(!isPercentValue(percentValue))
+        return 0;
+	var parent = elem.parentElement;
+
+
+    percentValue = percentValue.replace("%", "");
+	if(parent == null) {
+		// allora la percentuale equivale ai vw perché il parent è lo schermo
+		return pxFromVw(percentValue);
+	}
+
+	var width = parent.offsetWidth;
+    return width * parseFloat(percentValue) / 100.0;
+}
+function pxFromPercentageHeight(percentValue, elem) {
+    if(!isPercentValue(percentValue))
+        return 0;
+	var parent = elem.parentElement;
+
+    percentValue = percentValue.replace("%", "");
+	if(parent == null) {
+		// allora la percentuale equivale ai vh perché il parent è lo schermo
+		return pxFromVh(percentValue);
+	}
+
+	var height = parent.offsetHeight;
+    return height * parseFloat(percentValue) / 100.0;
+}
+function isVhValue(value) {
+	return (value.toString().toLowerCase().indexOf("vh") >= 0);
+}
+function isVwValue(value) {
+    return (value.toString().toLowerCase().indexOf("vw") >= 0);
+}
+function isPercentValue(value) {
+    return (value.toString().toLowerCase().indexOf("%") >= 0);
+}
+function isPxValue(value) {
+	return (value.toString().toLowerCase().indexOf("px") >= 0);
+}
+function convertValue(value) {
+    if(isVwValue(value)) {
+        value = value.replace("vw", "");
+        value = pxFromVw(value);
+    }
+    else if(isVhValue(value)) {
+        value = value.replace("vh", "");
+        value = pxFromVh(value);
+    }
+    else if(isPxValue(value)) {
+        value = value.replace("px", "");
+    }
+    else
+        return value;
+
+    return value
+}
+function rgbtohsl(r, g, b) {
+    var R,G,B, CM, Cm, D;
+    R = r/255;
+    G = g/255;
+    B = b/255;
+
+    CM = Math.max(R, G, B);
+    Cm = Math.min(R, G, B);
+    D = CM-Cm;
+
+    var h,s,l;
+    l = (Cm+CM)/2;
+    if(l === 0)
+        return [0,0,0];
+
+    s = D/(1-Math.abs(2*l-1));
+
+    if(D === 0)
+        h = 0;
+    else if(CM === R)
+        h = (((G-B)/D) % 6) * 60;
+    else if(CM === G)
+        h = ((B-R)/D + 2) * 60;
+    else
+        h = ((R-G)/D + 4) * 60;
+
+    return [h,s*100,l*100];
+
+}
+function toInt(value) {
+	if(value == null || value.length == 0)
+		return 0;
+
+	value = value.toString();
+
+	var integerValueString = "";
+	var integerValue;
+	/*while(value.charAt(0) == '0' && value.length > 1)		// elimina tutti gli 0 iniziali tranne, eventualmente, l'ultimo se è anche l'ultimo carattere
+		value = value.substring(1);*/
+
+	var sign = value[0] == '-' ? -1 : 1;
+	if(sign < 0)
+	    value = value.substr(1);
+
+	for(var i = 0; i < value.length; i++) {
+		if(value.charAt(i) < '0' || value.charAt(i) > '9')
+			break;
+
+        integerValueString += value.charAt(i);
+	}
+
+	integerValue = parseInt(integerValueString);
+
+	return integerValue * sign;
+
+}
+function toFloat(value) {
+    if(value == null || value.length == 0)
+        return 0;
+
+    value = value.toString();
+
+    var floatValueString = "";
+    var floatValue;
+    /*while(value.charAt(0) == '0' && value.length > 1)		// elimina tutti gli 0 iniziali tranne, eventualmente, l'ultimo se è anche l'ultimo carattere
+     value = value.substring(1);*/
+
+    var sign = value[0] == '-' ? -1 : 1;
+    if(sign < 0)
+        value = value.substr(1);
+
+    for(var i = 0; i < value.length; i++) {
+        if((value.charAt(i) < '0' || value.charAt(i) > '9') && value.charAt(i) != '.')
+            break;
+
+        floatValueString += value.charAt(i);
+    }
+
+    floatValue = parseFloat(floatValueString);
+
+    return floatValue * sign;
+}
+/* UTILITIES (JS) */

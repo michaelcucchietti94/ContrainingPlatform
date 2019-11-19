@@ -1,0 +1,157 @@
+div.defaultBox {
+    position:absolute;
+    height: 100%;
+    width:100%;
+    top:0;
+    left:0;
+}
+div.userTestContainer {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding:2vw;
+    background-color: rgba(0, 197, 194, 0.08);
+    border-radius: 1.9vw;
+    border: 0.2vh solid rgba(0, 197, 194, 0.7);
+}
+
+
+
+
+div.userTestContainer div.header {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 10vh;
+    width: 100%;
+    padding: 2vh;
+    box-sizing: border-box;
+    border: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.userTestContainer div.header a.button {
+    position: relative;
+    top: 0;
+    left: 0;    
+    width: 5vw;
+}
+
+div.userTestContainer div.header p.title {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: 100%;
+    width: calc(100% - 17vw);
+    color: rgb(220, 220, 220);
+    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.8);
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 4vh;
+}
+
+div.userTestContainer div.testRow {
+    position: relative;
+    top:0;
+    left:0;
+    height: calc(100% - 10vh);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}  
+
+div.userTestContainer div.testRow div.slider {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 400%;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.slider div {
+    position: relative;
+    display: flex;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 25%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.slider div.starter {
+    background-color: rgba(0, 100, 100, 0.9);
+}
+div.slider div.tester {
+    background-color: rgba(0, 100, 5, 0.9);
+}
+div.slider div.answer {
+    background-color: rgba(18, 0, 100, 0.9);
+}
+div.slider div.score {
+    background-color: rgba(100, 60, 0, 0.9);
+}
+
+
+/* Animations */
+@keyframes OneToTwo {
+    0% {left: 0;}
+    100% {left:-100%;}
+}
+@keyframes TwoToThree {
+    0% {left: -100%;}
+    100% {left:-200%;}
+}
+@keyframes TwoToThreeReversed {
+    0% {left: -200%;}
+    100% {left:-100%;}
+}
+@keyframes ThreeToFour {
+    0% {left: -200%;}
+    100% {left:-300%;}
+}
+
+.animable {
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-play-state: running;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+}
+
+.A_12 {
+    animation-name: OneToTwo;
+}
+.A_23 {
+    animation-name: TwoToThree;
+}
+.A_32 {
+    animation-name: TwoToThreeReversed;
+}
+.A_34 {
+    animation-name: ThreeToFour;
+}
+/* Animations */

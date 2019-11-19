@@ -1,0 +1,250 @@
+disk2{
+  height:100%;
+  width:33%;
+  overflow:visible;
+  float: center;
+}
+
+
+.matrix-container{
+  position: fixed;
+  background-image: url("src/assets/login/center/matrixeffectbckrnd.svg");
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.container-background{
+  background-image: url("src/assets/login/center/backgroundcolor.svg");
+  background-position: center;
+  overflow: visible;
+}
+
+.map-container{
+  background-image: url("src/assets/login/center/map backgroud.svg");
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+
+.containerLogin{
+  position: absolute;
+  z-index: 9;
+}
+
+.logo{
+  background-image: url("src/assets/login/center/logo ConTraining1.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 75%;
+  background-size: 25.7%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top:-15%;
+  left:12.3%;
+}
+
+
+
+
+
+
+
+
+.cr1{
+  background-image: url("src/assets/login/center/1.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26.5%;
+  height: 100%;
+  width: 75%;
+  position: fixed;
+  -webkit-animation:spin2 30s linear infinite;
+  -moz-animation:spin2 30s linear infinite;
+  animation:spin2 30s linear infinite;
+  top:-15%;
+  left:12.3%;
+}
+
+
+
+.cr2{
+  background-image: url("src/assets/login/center/2.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32.5%;
+  height: 100%;
+  width: 75%;
+  position: fixed;
+  top:-15%;
+  left:12.3%;
+}
+@-moz-keyframes spin2 { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+
+
+
+.cr4{
+  background-image: url("src/assets/login/center/1.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40.5%;
+  height: 100%;
+  width: 75%;
+  position: fixed;
+  -webkit-animation:spin2 180s linear infinite;
+  -moz-animation:spin2 180s linear infinite;
+  animation:spin2 180s linear infinite;
+  animation-direction: reverse;
+  top:-15%;
+  left:12.3%;
+}
+
+containerLogin{
+  z-index: 7;
+}
+
+.lbl{
+  padding: 1.6vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.allert{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+
+
+.ph{
+  padding: 2vh;
+  background: transparent;
+  border-radius: 10px;
+  border-width: 0.25vh;
+  border-style: solid;
+  border-color: rgb(6, 240, 228);
+  width: 14vw;
+  height: 6vh;
+  color: rgb(6, 240, 228);
+}
+
+
+.cad{
+  padding: 1vh;
+  background: transparent;
+  color: rgb(6, 240, 228);
+  display: flex;
+  flex-direction: row;
+}
+
+.allerta{
+  padding: 2.5vh 0 0 5vh;
+  background-color: rgba(255, 255, 255, 0.178);
+  border-style: solid;
+  height: 5vh;
+  width: 6vw;
+  border-radius: 1vh;
+  color: rgb(255, 115, 0);
+  font-style: italic;
+  font-size: 1.5vh;
+  float: none;
+}
+
+
+::placeholder {
+  color: rgb(6, 240, 228);
+  opacity: 1; /* Firefox */
+  background: transparent;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: rgb(6, 240, 228);
+ background: transparent;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: rgb(6, 240, 228);
+ background: transparent;
+
+}
+
+registerform{
+  height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9;
+}
+
+.buttone{
+  top: 80%;
+  left: 45%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.classeUsername{
+  top: 6%;
+  left: 20%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.classePassword{
+  top: 26.7%;
+  left: 17%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.classeEmail{
+  top: 50%;
+  left: 20%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.classeNome{
+  top: 6%;
+  left: 65.5%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.classeCongnome{
+  top: 26.7%;
+  left: 68.5%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.classeData{
+  top: 50%;
+  left: 65.5%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}

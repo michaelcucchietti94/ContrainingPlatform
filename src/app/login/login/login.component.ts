@@ -14,9 +14,11 @@ export class LoginComponent implements OnInit {
   constructor(private service : LoginService, private router : Router) { }
 
   ngOnInit() {
+    /*this.login();*/
+    /*this.login(null);*/
     this.logoFadeOut();
   }
-  
+
   logoFadeOut() {
     setTimeout(() => {
       let logoElement = document.getElementById('contrainingLogo');
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
       logoElement.classList.add('displayNone');
     }, 4500);
   }
-  
+
   matrixEffect(){
     let matrixElement = document.getElementById('matrix');
     let cerchio1Element = document.getElementById('cerchio1');
@@ -46,17 +48,20 @@ export class LoginComponent implements OnInit {
       let credentials : LoginCredentials = new LoginCredentials(f.value.username, f.value.password);
       //let credentials : LoginCredentials = new LoginCredentials('user1', 'user');
       this.service.login(credentials).subscribe((user) => {
-        if(user == null)
+        if(user == null) {
           return;
-
+        }
         localStorage.setItem('currentUser', JSON.stringify(user));
-        if(user.usertype.toString().toUpperCase() === 'ADMIN')
-          alert('no admin for now');
-        else 
+        console.log(user.usertype.toString());
+        if(user.usertype.toString().toUpperCase() === 'ADMIN'){
+          this.router.navigate(['/admin-dashboard']);
+        }
+        else{
           this.router.navigate(['/dashboard']);
+        }
       });
     }, 1500);
-    
+
 
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UtilityService } from 'src/service/utility/Utility.service';
+import { TestTimerBridge } from '../TestTimerBridge.service';
 
 @Component({
   selector: 'app-test-timer',
@@ -20,7 +21,8 @@ export class TestTimerComponent implements OnInit {
 	@Output() timerEnd = new EventEmitter();
 
 
-	constructor(private utility : UtilityService) {
+	constructor(private utility : UtilityService, private timerBridge : TestTimerBridge) {
+		timerBridge.timer = this;
 	}
 
 
@@ -144,6 +146,8 @@ export class TestTimerComponent implements OnInit {
 	this.minuteDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'minutes')[0];
 	this.secondDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'seconds')[0];
 	this.timeWrite = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'text')[0];
+	this.timerValue = 0;
+	this.setRemainingText();
   }
 
 }

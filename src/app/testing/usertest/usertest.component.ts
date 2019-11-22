@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TestService } from 'src/service/test/Test.service';
 import { User } from 'src/dto/User';
 import { Observable } from 'rxjs';
@@ -15,15 +15,20 @@ import { RispostaDomanda } from 'src/dto/testing/RispostaDomanda';
 })
 export class UsertestComponent implements OnInit {
 	manager : PageManager;
+	@Output('start') startEvent = new EventEmitter();
 
 	constructor(private utilityService : UtilityService, private testService : TestService) { }
 
 	ngOnInit() {
-		this.manager = new PageManager(this.utilityService, this.testService);
+		this.manager = new PageManager(this.utilityService, this.testService, this);
 	}
 
 	buttonClick() : void {
 		this.manager.callAction();
+	}
+
+	start() {
+		this.startEvent.emit();
 	}
 
 }
@@ -33,6 +38,10 @@ class PageManager {
 	private functionMap : Map<PageFunctionType, PageManagerCall> = new Map();
 	private animations : Animations;
 	private tester : HTMLElement;
+	private nextButton : HTMLElement;
+	private counter : number = 1;
+
+	private usertestComponent : UsertestComponent;
 
 	private startAction: StartAction;
 	private getNQAction : NextQuestionAction;
@@ -44,7 +53,9 @@ class PageManager {
 	risposta : RispostaDomanda;
 
 	
-	constructor(private utilityService : UtilityService, private testService : TestService) {
+	constructor(private utilityService : UtilityService, private testService : TestService, ut : UsertestComponent) {
+		this.usertestComponent = ut;
+
 		this.slider = document.getElementById('testSlider');
 		this.animations = new Animations(this.slider);
 		this.tester = <HTMLElement>this.utilityService.extendedDocument.getElementsByAttributeNameOf(this.slider, "tester")[0];
@@ -61,6 +72,14 @@ class PageManager {
 		this.functionMap.set(PageFunctionType.ENDTEST, new EndTestCall(this));
 
 		this.actionToCall = PageFunctionType.START;
+		this.hideButton();
+	}
+
+	private hideButton() : void {
+		document.getElementById('testControlButton').classList.add("displayNone");
+	}
+	private showButton() : void {
+		document.getElementById('testControlButton').classList.remove("displayNone");
 	}
 
 	callAction() : void {
@@ -69,7 +88,11 @@ class PageManager {
 
 	startFunction() : void {
 		this.animations.animate(AnimationType.A12);
-		this.startAction.doAction().subscribe(() => {
+		this.showButton();
+		this.usertestComponent.start();
+		this.actionToCall = PageFunctionType.ADDRESPONSE;
+		
+		/*this.startAction.doAction().subscribe(() => {
 			this.getNQAction.doAction().subscribe((domanda) => {
 				let testo : string = domanda.testo.toString();
 				testo += '<br />';
@@ -80,14 +103,20 @@ class PageManager {
 				this.tester.innerHTML = testo;
 				this.actionToCall = PageFunctionType.ADDRESPONSE;
 			});
-		})
+		})*/
 
 		
 	}
 	ARFunction() : void {
 		this.animations.animate(AnimationType.A23);
+		if(this.counter > 0) {
+			this.actionToCall = PageFunctionType.NEXTQUESTION
+			this.counter--;
+		} else {
+			this.actionToCall = PageFunctionType.ENDTEST
+		}
 
-		this.addResponseAction.doAction().subscribe(() => {
+		/*this.addResponseAction.doAction().subscribe(() => {
 			this.hasMoreQuestion.doAction().subscribe(more => {
 				if(more) {
 					this.actionToCall = PageFunctionType.NEXTQUESTION
@@ -95,20 +124,21 @@ class PageManager {
 					this.actionToCall = PageFunctionType.ENDTEST
 				}
 			})
-		});
+		});*/
 		
 		
 	}
 	NQFunction() : void {
 		this.animations.animate(AnimationType.A32);
-		this.getNQAction.doAction().subscribe((domanda) => {
+		this.actionToCall = PageFunctionType.ADDRESPONSE;
+		/*this.getNQAction.doAction().subscribe((domanda) => {
 			this.tester.innerHTML = domanda.id.toString();
 			this.actionToCall = PageFunctionType.ADDRESPONSE;
-		});
+		});*/
 	}
 	endTestFunction() : void {
 		this.animations.animate(AnimationType.A34);
-		this.endTestAction.doAction();
+		/*this.endTestAction.doAction();*/
 	}
 }
 

@@ -102,16 +102,24 @@ div.slider div {
 }
 
 div.slider div.starter {
-    background-color: rgba(0, 100, 100, 0.9);
+    /*background-color: rgba(0, 100, 100, 0.9);*/
+}
+div.slider div.starter a.roundButton {
+    height: 35vh;
+    width: 35vh;
+    border-radius: 50%;
+    padding:0;
+    box-sizing: border-box;
+    font-size: 8vh;
 }
 div.slider div.tester {
-    background-color: rgba(0, 100, 5, 0.9);
+    /*background-color: rgba(0, 100, 5, 0.9);*/
 }
 div.slider div.answer {
-    background-color: rgba(18, 0, 100, 0.9);
+    /*background-color: rgba(18, 0, 100, 0.9);*/
 }
 div.slider div.score {
-    background-color: rgba(100, 60, 0, 0.9);
+    /*background-color: rgba(100, 60, 0, 0.9);*/
 }
 
 
@@ -137,7 +145,7 @@ div.slider div.score {
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-play-state: running;
-    animation-duration: 2s;
+    animation-duration: 500ms;
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
 }
@@ -155,3 +163,104 @@ div.slider div.score {
     animation-name: ThreeToFour;
 }
 /* Animations */
+
+
+/* QUESTION STYLE */
+div.slider * {
+    color: rgb(220, 220, 220);
+}
+div.slider div.question, div.slider div.answerBox {
+    display: flex;
+    height:auto;
+    width: 80%;
+    top: 0;
+    left:0;
+    position: relative;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div.slider div.question span.questionTitle {
+    display: flex;
+    position: relative;
+    height: 7vh;
+    width: 100%;
+    top: 0;
+    left:0;
+    font-size: 3vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+div.slider div.question form {
+    display: flex;
+    height:auto;
+    width: 100%;
+    top: 0;
+    left:0;
+    position: relative;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+div.question form label {
+    display: block;
+    position: relative;
+    height: 5vh;
+    width: auto;
+    text-indent: 5vh;
+    color: rgb(220, 220, 220);
+    font-size: 2.5vh;
+}
+div.question form label:hover {
+    cursor: pointer;
+}
+div.question form label input {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 3vh;
+    width: 3vh;
+    opacity: 0;
+}
+div.question form label span.radio {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 3vh;
+    width: 3vh;
+    background-color: rgb(170, 170, 170);
+    border-radius: 50%;
+}
+
+div.question form label:hover span.radio {
+    background-color: hsl(179,70%, 33%);
+}
+div.question form input:checked ~ span.radio {
+    background-color: hsl(179, 90%, 35%);
+}
+div.question form input ~ span.round {
+    display: none;
+    height: 1vh;
+    width: 1vh;
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    border-radius: 50%;
+
+    background-color: rgb(220, 220, 220);
+    box-shadow: 0 0 2vh 0 rgba(40, 40, 40, 0.2);
+}
+div.question form input:checked ~ span.round {
+    display: block;
+}
+
+/* QUESTION STYLE */
+
+/* ANSWER STYLE */
+
+/* ANSWER STYLE */
+

@@ -3,6 +3,7 @@ package com.contrader.contraininggame.controller;
 import com.contrader.contraininggame.model.LoginCredentials;
 import com.contrader.contraininggame.model.Ranking;
 import com.contrader.contraininggame.model.User;
+import com.contrader.contraininggame.model.Usertype;
 import com.contrader.contraininggame.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,5 +61,6 @@ public class UserController extends AbstractController<User, Long> {
     public void setAccessed(@PathVariable("username") String username) {
         ((UserService)service).setAccessed(username);
     }
+
 
 }

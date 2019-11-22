@@ -40,6 +40,7 @@ public class UserTestService implements IUserTestService {
     public void startTest(String username, Long idTest) {
         repository.addTest(username);
         repository.getTest(username).setDomande(testService.getDomandeOfTest(idTest).iterator());
+
     }
 
     @Override
@@ -48,6 +49,10 @@ public class UserTestService implements IUserTestService {
         if(t == null)
             return null;
 
+        if(t.isLastQuestion()) {
+            return null;
+        }
+
         Domanda d = t.getNextQuestion();
         t.setRisposteDomande(d, rispostaDomandaService.getByDomanda(d.getId()));
 
@@ -55,10 +60,18 @@ public class UserTestService implements IUserTestService {
         dd.setLast(t.isLastQuestion());
         dd.setRisposte(t.getRisposteDomanda(d));
 
+
         // set initial time for calculing scores
         this.questionGotAt = LocalTime.now();
 
         return dd;
+    }
+
+    @Override
+    public Boolean hasMoreQuestions(String username) {
+        UserTest t = repository.getTest(username);
+        return t != null && !t.isLastQuestion();
+
     }
 
     @Override

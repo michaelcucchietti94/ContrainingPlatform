@@ -86,3 +86,10 @@ public interface TestRepository extends CrudRepository<Test, Long> {
 
 
 }
+
+
+/*
+   select user.username, sum(ru.questionScore) as punteggio
+   from
+
+ */

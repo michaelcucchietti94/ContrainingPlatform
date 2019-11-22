@@ -144,6 +144,11 @@ public class GameMapController {
         userTestController.addRisposta(risposta);
     }
 
+    @GetMapping("/test/user_{username}/hasMoreQuestion")
+    public Boolean hasMoreQuestion(@PathVariable("username") String username) {
+        return userTestController.hasMoreQuestion(username);
+    }
+
     @GetMapping("/test/user_{username}/end_test")
     public UserTestScore endTest(@PathVariable("username") String username) {
         return this.userTestController.endTest(username);

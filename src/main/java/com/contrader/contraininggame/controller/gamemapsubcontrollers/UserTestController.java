@@ -18,6 +18,9 @@ public class UserTestController {
     public DomandaDecorated getNextQuestion(String username) {
         return userTestService.getNextQuestion(username);
     }
+    public Boolean hasMoreQuestion(String username) {
+        return userTestService.hasMoreQuestions(username);
+    }
     public void addRisposta(RispostaUtente rispostaUtente) {
         this.userTestService.addRisposta(rispostaUtente);
     }

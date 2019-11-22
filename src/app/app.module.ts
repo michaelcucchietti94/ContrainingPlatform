@@ -6,6 +6,7 @@ import { LoginModule } from './login/login.module';
 import { GameDashboardModule } from './game-dashboard/game-dashboard.module';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { TestingModule } from './testing/testing.module';
 import { AdminModule } from './admin/admin-dashboard/admin.module';
 
 
@@ -21,6 +22,7 @@ import { AdminModule } from './admin/admin-dashboard/admin.module';
     AppRoutingModule,
     LoginModule,
     GameDashboardModule,
+    TestingModule,
     AdminModule
   ],
   providers: [],

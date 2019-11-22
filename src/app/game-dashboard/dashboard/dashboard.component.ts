@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/dto/User';
 import { Router } from '@angular/router';
 import * as AnimaFramework from 'src/assets/animaframework/AnimaFramework.js';
 import { LoginService } from 'src/service/user/Login.service';
+import { TutorialComponent } from '../tutorial/tutorial.component';
+import { DashboardTutorialService } from 'src/service/frontend_scoped/dashboard_tutorial.service';
+import { UtilityService } from 'src/service/utility/Utility.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,9 +17,11 @@ export class DashboardComponent implements OnInit {
 	private logoutBox : HTMLElement;
 	private currentViewOpened : HTMLElement = null;
 	private mapView : HTMLElement;
+	private tutorialView : HTMLElement;
 	private myTestView : HTMLElement;
 
-	constructor(private router : Router, private loginService : LoginService) { }
+
+	constructor(private router : Router, private loginService : LoginService, private DTService : DashboardTutorialService) { }
 
 	ngOnInit() {
 		let user : User = JSON.parse(localStorage.getItem("currentUser"));
@@ -30,7 +35,37 @@ export class DashboardComponent implements OnInit {
 
 		this.mapView = document.getElementById('mapView');
 		this.myTestView = document.getElementById('myTestView');
+		this.tutorialView = document.getElementById('tutorialView');
 		this.currentViewOpened = this.mapView;
+
+		this.DTService.dashboard = this;
+		this.displayFirstTimeTutorial();
+	}
+
+	displayFirstTimeTutorial() {
+		let user : User = JSON.parse(localStorage.getItem("currentUser"));
+		if(user.firstAccess) {
+			let tutorialFirst = document.getElementById('tutorialBox_first');
+			let dashboard = document.getElementById('dashboardContainer');
+
+			tutorialFirst.classList.add('displayFlex');
+			dashboard.classList.add('displayNone');
+		}
+	}
+	hideFirstTimeTutorial() {
+		let tutorialFirst = document.getElementById('tutorialBox_first');
+		let dashboard = document.getElementById('dashboardContainer');
+
+		tutorialFirst.classList.remove('displayFlex');
+		dashboard.classList.remove('displayNone');
+	}
+
+	setAccessed() {
+		let user : User = JSON.parse(localStorage.getItem("currentUser"));
+		this.loginService.setAccessed(user.username.toString()).subscribe(() => {
+			this.hideFirstTimeTutorial();
+		});
+
 	}
 
 	showLogoutBox() {
@@ -70,6 +105,14 @@ export class DashboardComponent implements OnInit {
 			this.showView(this.mapView);
 		}
 	}
-
+	showTutorial() {
+		if(this.currentViewOpened !== this.tutorialView) {
+			this.DTService.hideTutorialCloseButton();
+			this.DTService.startTutorialAnimation();
+			this.hideCurrentView();
+			this.showView(this.tutorialView);
+		}
+	}
+  
 
 }

@@ -7,11 +7,12 @@ import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.co
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { MytestComponent } from './mytest/mytest.component';
+import { TutorialComponent } from './tutorial/tutorial.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardHeaderComponent, ProfileComponent, RankingComponent, MapComponent, MytestComponent],
+  declarations: [DashboardComponent, DashboardHeaderComponent, ProfileComponent, RankingComponent, MapComponent, MytestComponent, TutorialComponent],
   imports: [
     CommonModule,
     GameRoutingModule

@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
 
 	@Output() mapCall = new EventEmitter();
 	@Output() myTestCall = new EventEmitter()
+	@Output() tutorialCall = new EventEmitter();
 
 
 	constructor(private testService : TestService) { }
@@ -43,5 +44,8 @@ export class ProfileComponent implements OnInit {
 	}
 	mapView(e : any) {
 		this.mapCall.emit(e);
+	}
+	tutorialShow(e : any) {
+		this.tutorialCall.emit(e);
 	}
 }

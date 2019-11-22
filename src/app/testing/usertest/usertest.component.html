@@ -1,0 +1,45 @@
+<div class="defaultBox">
+    <div class="userTestContainer">
+        <div class="header">
+            <p class="title">[Titolo test]</p>
+            <a class="button" id="testControlButton" (click)="buttonClick()">Next</a>
+        </div>
+        <div class="testRow">
+            <div id="testSlider" class="slider animable">
+                <div starter class="starter">
+                    <a class="button roundButton" (click)="buttonClick()">START</a>
+                </div>
+                <div tester class="tester">
+                    <div class="question">
+                        <span class="questionTitle">[INSERIRE TITOLO DOMANDA]</span>
+                        <form action="">
+                            <label>[Inserire testo risposta 1]
+                                <input type="radio" name="risposta"/>
+                                <span class="radio"></span>
+                                <span class="round"></span>
+                            </label>
+                            <label>[Inserire testo risposta 2]
+                                <input type="radio" name="risposta"/>
+                                <span class="radio"></span>
+                                <span class="round"></span>
+                            </label>
+                            <label>[Inserire testo risposta 3]
+                                <input type="radio" name="risposta"/>
+                                <span class="radio"></span>
+                                <span class="round"></span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div answer class="answer">
+                    <div class="answerBox">
+                        La risposta corretta &egrave; [Inserire testo risposta 2]
+                    </div>
+                </div>
+                <div score class="score">
+                    Qui verrà mostrato il punteggio in base alla correttezza delle domande
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

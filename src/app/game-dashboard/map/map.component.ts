@@ -6,6 +6,7 @@ import { ContinentePiece } from 'src/dto/game/ContinentPiece';
 import { StatoDecorated } from 'src/dto/game/StatoDecorated';
 import { RequestState } from 'src/dto/game/RequestState';
 import { User } from 'src/dto/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -20,7 +21,7 @@ export class MapComponent implements OnInit {
 	private mapCSS: MapCss;
 	private mapNavigatorElements : HTMLElement;
 
-	constructor(private service : GamemapService) {
+	constructor(private service : GamemapService, private router : Router) {
 	}
 
 	private disableCheck() {
@@ -57,6 +58,8 @@ export class MapComponent implements OnInit {
 			this.serviceContainer.getChildren(this.elements, d);
 			this.currentElement = d;
 			this.updateMap();
+		} else {
+			this.router.navigate(['/test']);
 		}
 	}
 	goUp() {

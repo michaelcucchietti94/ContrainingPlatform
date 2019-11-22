@@ -9,4 +9,5 @@ export class User {
     dataNascita : Date;
     livello : number;
     usertype : Usertype;
+    firstAccess : Boolean;
 }

@@ -4,11 +4,11 @@ import { LoginService } from 'src/service/user/Login.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard-header',
-  templateUrl: './dashboard-header.component.html',
-  styleUrls: ['./dashboard-header.component.css']
+  selector: 'app-test-header',
+  templateUrl: './test-header.component.html',
+  styleUrls: ['./test-header.component.css']
 })
-export class DashboardHeaderComponent implements OnInit {
+export class TestHeaderComponent implements OnInit {
   user : User;
   @Output() logout = new EventEmitter();
 
@@ -16,7 +16,6 @@ export class DashboardHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
-
   }
 
   logoutEvent(e) {
@@ -24,7 +23,6 @@ export class DashboardHeaderComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['/dashboard']);
   }
-
 }

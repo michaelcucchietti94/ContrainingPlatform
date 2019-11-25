@@ -24,16 +24,17 @@ div.headerContainer div.part {
 }
 div.headerContainer div.logo {
     position: relative;
-    top:0;
-    left:0;
-    height: 9vh;
-    width: 15vh;
+    top: 33vh;
+    left:-15vh;
+    height: 45vh;
+    width: 45vh;
 
     background-attachment: local;
     background-position: bottom;
     background-repeat: no-repeat;
-    background-size: 12vh;
-    background-image: url('../../../../assets/dashboard/logo.svg');
+    background-size: 44vh;
+    background-image: url('../../../../assets/login/center/logo ConTraining1.svg');
+    opacity: 0.3;
 }
 div.part div.img {
     position: relative;
@@ -50,14 +51,7 @@ div.part div.profileImage {
     width: 20%;
     background-image: url('../../../../assets/dashboard/profile.svg');
 }
-div.part div.mondo {
-    width: 8vh;
-    background-image: url('../../../../assets/dashboard/mondo.svg');
-}
-div.part div.globo {
-    width: 8vh;
-    background-image: url('../../../../assets/dashboard/globo.svg');
-}
+
 div.part div.content {
     display: flex;
     position: relative;
@@ -104,14 +98,7 @@ div.separatorContainer div.bar {
     background-repeat: no-repeat;
 }
 
-div.separatorContainer div.left {
-    background-image: url('../../../../assets/dashboard/bar.svg');
-    transform: rotate(180deg);
-}
 
-div.separatorContainer div.right {
-    background-image: url('../../../../assets/dashboard/bar.svg');
-}
 
 div.separatorContainer div.spacer {
     position: relative;

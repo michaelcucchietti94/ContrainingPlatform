@@ -165,3 +165,7 @@ div.main div.side_right {
 div.main div.center {
     width: 56vw;
 }
+.side_left {
+    width: 100vw;
+    height: 10vh;
+}

@@ -30,6 +30,7 @@ a.button {
     align-items: center;
     text-decoration: none;
     color: rgb(220, 220, 220);
+    border-radius: 6px;
 }
 
 a.button:hover {

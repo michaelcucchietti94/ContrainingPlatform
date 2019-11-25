@@ -328,3 +328,7 @@ div.main div.description {
 
 
 
+.side_left {
+    width: 100vw;
+    height: 10vh;
+}

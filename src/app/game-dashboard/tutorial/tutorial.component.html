@@ -1,18 +1,16 @@
+<div class="background"></div>
 <div class="defaultBox">
-    <div class="tutorialContainer">
-        <div class="header">
-            <div class="title">
-                tutorial
-            </div>
-            <div class="closeBox" name="closeButton" (click)="closeClickedAction()">
-                <div class="close">x</div>
-            </div>
+    <div class="title">
+        <div class="angolo_sinistro"></div>
+        <div class="content">
+            tutorial
         </div>
-        <div class="rulesbody">
-            <div class="rules">
-                <div class="rule" *ngFor="let rule of regole" [textContent]="rule.testo">
-                    
-                </div>
+        <div class="angolo_destro"></div>
+    </div>
+    <div class="rulesbody">
+        <div class="rules">
+            <div class="rule" *ngFor="let rule of regole" [textContent]="rule.testo">
+                
             </div>
         </div>
     </div>

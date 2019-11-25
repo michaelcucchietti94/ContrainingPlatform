@@ -98,18 +98,6 @@ app-tutorial {
 }
 /* END TUTORIAL */
 
-div.backgroud {
-    position: relative;
-    top:0;
-    left:0;
-    height: 100vh;
-    width:100vw;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%, contain, cover;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0, 161, 159, 0.89) 30%, rgba(0, 0, 0, 0.62) 100%), url('../../../assets/dashboard/mondo.svg'), url('../../../assets/login/center/backgroundcolor.svg');
-}
 
 div.dashboardContainer {
     position: relative;
@@ -122,16 +110,16 @@ div.dashboardContainer {
 
 div.dashboardContainer div {
     position: relative;
-    width: 100vw;
     top:0;
     left:0;
     padding: 0;
-    padding-left: 2vw;
-    padding-right: 2vw;
     box-sizing: border-box;
 }
 div.dashboardContainer div.header {
     height:12vh;
+    width: 100vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 div.dashboardContainer div.main {
     display: flex;
@@ -140,66 +128,15 @@ div.dashboardContainer div.main {
     justify-content: flex-start;
     align-items: center;
     padding: 2vw;
+    width: 100vw;
 }
 
-div.main div.container {
-    display: flex;
-    position: relative;
-    top:0;
-    left:0;
+div.main div.defaultBox {
     height: 50vh;
-    width: 100%;
-
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-    background-color: rgba(40, 40, 40, 0.7);
-    border-radius: 5vh;
-}
-div.main div.container div.title {
-    position: relative;
-    height: 5vh;
-    width: 35vh;
-    top: 0;
-    left:0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding:0;
-
-}
-div.main div.container div.title div.quadratino {
-    position: relative;
-    height: 5vh;
-    width: 5vh;
-    top:0;
-    left:0;
-
-    background-image: linear-gradient(45deg, transparent 0%, transparent 49.99%, rgb(0, 197, 194) 50%);
-}
-div.main div.container div.title div.reversed {
-    background-image: linear-gradient(-45deg, transparent 0%, transparent 49.99%, rgb(0, 197, 194) 50%);
-}
-div.main div.container div.title div.content {
-    position: relative;
-    height: 5vh;
-    width: 25vh;
-    top:0;
-    left:0;
-    padding:0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
-    background-color: rgb(0, 197, 194);
-    color: rgb(40,40,40);
-    text-transform: uppercase;
 }
 
-div.main div.container div.dashboard {
+
+div.main div.defaultBox div.dashboard {
     display: flex;
     position: relative;
     top: 0vh;
@@ -213,7 +150,7 @@ div.main div.container div.dashboard {
 }
 
 
-div.main div.container div.dashboard div.line {
+div.main div.defaultBox div.dashboard div.line {
     position: relative;
     top:0;
     left:0;
@@ -227,7 +164,7 @@ div.main div.container div.dashboard div.line {
     background-color: rgb(0, 197, 194);
 }
 
-div.main div.container div.dashboard div.element {
+div.main div.defaultBox div.dashboard div.element {
     position: relative;
     display: flex;
     height: 25vh;
@@ -249,7 +186,7 @@ div.main div.container div.dashboard div.element {
     padding:0;
 }
 
-div.main div.container div.dashboard div.element:hover {
+div.main div.defaultBox div.dashboard div.element:hover {
     animation-name: elementHover;
     cursor: pointer;
 }
@@ -275,7 +212,7 @@ div.main div.container div.dashboard div.element:hover {
     }
 }
 
-div.main div.container div.dashboard div.element div.disco {
+div.main div.defaultBox div.dashboard div.element div.disco {
     position: relative;
     height: calc(100% - 4vh);
     width: 100%;
@@ -284,7 +221,7 @@ div.main div.container div.dashboard div.element div.disco {
     padding:0;
 }
 
-div.main div.container div.dashboard div.element div.disco div {
+div.main div.defaultBox div.dashboard div.element div.disco div {
     position: absolute;
 
     background-position: center;
@@ -300,7 +237,7 @@ div.main div.container div.dashboard div.element div.disco div {
     padding:0;
 }
 
-div.main div.container div.dashboard div.element div.disco div.disco1{
+div.main div.defaultBox div.dashboard div.element div.disco div.disco1{
     background-image: url("src/assets/login/center/1.svg");
     height: 20%;
     width: 20%;
@@ -309,7 +246,7 @@ div.main div.container div.dashboard div.element div.disco div.disco1{
     animation-duration: 30s;
     animation-direction: normal;
 }
-div.main div.container div.dashboard div.element div.disco div.disco2{
+div.main div.defaultBox div.dashboard div.element div.disco div.disco2{
     background-image: url("src/assets/login/center/2.svg");
     height: 42%;
     width: 42%;
@@ -318,7 +255,7 @@ div.main div.container div.dashboard div.element div.disco div.disco2{
     animation-duration: 40s;
     animation-direction: reverse;
   }
-  div.main div.container div.dashboard div.element div.disco div.disco3{
+  div.main div.defaultBox div.dashboard div.element div.disco div.disco3{
     background-image: url("src/assets/login/center/3.svg");
     animation-duration: 80s;
     animation-direction: normal;
@@ -329,7 +266,7 @@ div.main div.container div.dashboard div.element div.disco div.disco2{
     left: 18%;
   }
 
-  div.main div.container div.dashboard div.element div.disco div.disco4{
+  div.main div.defaultBox div.dashboard div.element div.disco div.disco4{
     background-image: url("src/assets/login/center/4.svg");
     animation-duration: 40s;
     animation-direction: reverse;
@@ -345,7 +282,7 @@ div.main div.container div.dashboard div.element div.disco div.disco2{
   @keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
   
   
-div.main div.container div.dashboard div.element div.text {
+div.main div.defaultBox div.dashboard div.element div.text {
     position: relative;
     height: 4vh;
     width: 100%;
@@ -379,6 +316,8 @@ div.main div.description {
     background-color: rgba(0, 197, 194, 0.08);
     border-radius: 1.9vw;
     border: 0.2vh solid rgba(0, 197, 194, 0.7);
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 
 

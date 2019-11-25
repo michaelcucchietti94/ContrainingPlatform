@@ -16,6 +16,19 @@ body {
     font-family: 'Exo 2', 'Agency FB',sans-serif;
 }
 
+div.background {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width:100vw;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%, contain, cover;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0, 161, 159, 0.89) 30%, rgba(0, 0, 0, 0.62) 100%), url('./assets/dashboard/mondo.svg'), url('./assets/login/center/backgroundcolor.svg');
+}
+
 a.button {
     display: flex;
     height: auto;
@@ -41,24 +54,73 @@ a.button:hover {
 
 }
 
-div.defaultBox {
-    box-sizing: content-box;
-    height: auto;
-    width: auto;
-    padding: 0.2vw;
-    margin:0;
-
-    background-attachment: local, local, local, local;
-    background-position: left top, right top, right bottom, left bottom;
-    background-repeat: no-repeat;
-    background-origin: border-box;
-    background-size: auto, auto, auto, auto;
-    background-image: url('assets/boxes/bAS.svg') ,url('assets/boxes/bAD.svg'),url('assets/boxes/bBD.svg'),url('assets/boxes/bBS.svg');
-}
-
 .displayNone {
     display: none!important;
 }
 .displayFlex {
     display: flex!important;
 }
+
+/* DEFAULT BOXING */
+div.defaultBox {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    min-height: 5vh;
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: rgba(40, 40, 40, 0.7);
+    border-radius: 5vh;
+
+    padding:0;
+    margin:0;
+    border:0;
+    box-sizing: border-box;
+    padding-left: 5vh;
+    padding-right: 5vh;
+}
+div.defaultBox div.title {
+    position: relative;
+    height: 5vh;
+    width: 35vh;
+    top: 0;
+    left:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+}
+div.defaultBox div.title div {
+    position: relative;
+    height: 5vh;
+    top:0;
+    left:0;
+}
+div.defaultBox div.title div.angolo_sinistro {
+    width: 5vh;
+    background-image: linear-gradient(45deg, transparent 0%, transparent 49.99%, rgb(0, 197, 194) 50%);
+}
+div.defaultBox div.title div.angolo_destro {
+    width: 5vh;
+    background-image: linear-gradient(-45deg, transparent 0%, transparent 49.99%, rgb(0, 197, 194) 50%);
+}
+div.defaultBox div.title div.content {
+    width: 25vh;
+    padding:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(0, 197, 194);
+    color: rgb(40,40,40);
+    text-transform: uppercase;
+}
+
+/* DEFAULT BOXING */

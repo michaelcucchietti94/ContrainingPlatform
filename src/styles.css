@@ -22,6 +22,7 @@ a.button {
     width: auto;
     box-sizing: content-box;
     padding: 1vh 2vw;
+    border-radius: 1vh;
 
     background-color: rgba(220, 220, 200, 0.05);
     border: 0.1vh solid rgba(0, 197, 194, 0.3);

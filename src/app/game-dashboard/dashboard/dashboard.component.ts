@@ -5,7 +5,7 @@ import * as AnimaFramework from 'src/assets/animaframework/AnimaFramework.js';
 import { LoginService } from 'src/service/user/Login.service';
 import { TutorialComponent } from '../tutorial/tutorial.component';
 import { DashboardTutorialService } from 'src/service/frontend_scoped/dashboard_tutorial.service';
-import { UtilityService } from 'src/service/utility/Utility.service';
+import { UtilityService, TypingManager } from 'src/service/utility/Utility.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,9 +19,11 @@ export class DashboardComponent implements OnInit {
 	private mapView : HTMLElement;
 	private tutorialView : HTMLElement;
 	private myTestView : HTMLElement;
+	private decriptionElement : HTMLElement;
+	private typingManager : TypingManager;
 
 
-	constructor(private router : Router, private loginService : LoginService, private DTService : DashboardTutorialService) { }
+	constructor(private router : Router, private loginService : LoginService, private DTService : DashboardTutorialService, private utility : UtilityService) { }
 
 	ngOnInit() {
 		let user : User = JSON.parse(localStorage.getItem("currentUser"));
@@ -29,6 +31,9 @@ export class DashboardComponent implements OnInit {
 			this.router.navigate(['/login']);
 		}
 
+		this.decriptionElement = document.getElementById('menuEntryDescriptor');
+		this.typingManager = this.utility.createTypingManager(this.decriptionElement);
+		this.typingManager.typingTimeout=8;
 
 		this.logoutBox = document.getElementById('logoutBox');
 		this.logoutBox.classList.add('displayNone');
@@ -39,6 +44,7 @@ export class DashboardComponent implements OnInit {
 		this.currentViewOpened = this.mapView;
 
 		this.DTService.dashboard = this;
+		
 	}
 
 	showLogoutBox() {
@@ -85,6 +91,23 @@ export class DashboardComponent implements OnInit {
 			this.hideCurrentView();
 			this.showView(this.tutorialView);
 		}
+	}
+
+	type(element : HTMLElement) {
+		let desc : HTMLElement = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(element, 'description')[0];
+		
+		if(desc == null)
+			return;		
+
+		if(this.decriptionElement.classList.contains('displayNone'))
+			this.decriptionElement.classList.remove('displayNone');
+		this.typingManager.type(desc.innerHTML);
+	}
+	resetType() {
+		this.typingManager.clean();
+		
+		this.decriptionElement.classList.add('displayNone');
+
 	}
 
 	

@@ -4,14 +4,13 @@ import { GameRoutingModule } from './game-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
-import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardHeaderComponent, ProfileComponent, RankingComponent, MapComponent, TutorialComponent],
+  declarations: [DashboardComponent, DashboardHeaderComponent, RankingComponent, MapComponent, TutorialComponent],
   imports: [
     CommonModule,
     GameRoutingModule

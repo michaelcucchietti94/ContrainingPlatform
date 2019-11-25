@@ -123,6 +123,47 @@ class PreloadEngine {
     }
 }
 
+/* Typing */
+export class TypingManager {
+    private target : HTMLElement = null;
+    private data : string = null;
+    private timeouts = [];
+    typingTimeout : number = 5;
+
+    constructor(target : HTMLElement) {
+        this.target = target;
+        this.data = "";
+    }
+
+    private updateText(s : string) {
+        if(this.target != null) {
+            this.target.innerHTML = s;
+        }
+    }
+    private cleanTimeouts() {
+        this.timeouts.forEach(t => clearTimeout(t));
+    }
+
+
+    clean() {
+        this.data = "";
+        this.cleanTimeouts();
+        this.updateText("");
+    }
+
+    type(data : string) {
+        this.clean();
+        for(let i = 0; i < data.length; i++) {
+            let s = this.data + data.charAt(i);
+            this.data = s;
+            this.timeouts.push(setTimeout((s : string) => {
+                this.updateText(s);
+            }, i*this.typingTimeout, s));
+        }
+    }
+
+}
+/* Typing */
 
 @Injectable({
     providedIn: 'root'
@@ -130,12 +171,17 @@ class PreloadEngine {
 export class UtilityService {
     extendedDocument : ExtendedDocument;
 
+
     constructor() {
         this.extendedDocument = extendedDocument;
     }
     
     preload(element : HTMLElement) {
         (new PreloadEngine(element)).preload();
+    }
+
+    createTypingManager(typingTarget : HTMLElement) : TypingManager {
+        return new TypingManager(typingTarget);
     }
 
 }

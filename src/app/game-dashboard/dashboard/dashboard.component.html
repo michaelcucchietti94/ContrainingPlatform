@@ -13,69 +13,79 @@
             <app-dashboard-header (logout)="showLogoutBox()"></app-dashboard-header>
         </div>
         <div class="main">
-            <div class="dashboard">
-                <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
-                    <div class="displayNone" description>
-                        Visualizza e gestisci le tue informazioni personali.
+            <div class="container">
+                <div class="title">
+                    <div class="quadratino"></div>
+                    <div class="content">
+                        dashboard
                     </div>
-                    <div class="disco">
-                        <div class="disco1"></div>
-                        <div class="disco2"></div>
-                        <div class="disco3"></div>
-                        <div class="disco4"></div>
-                    </div>
-                    <div class="text">
-                        Profile
-                    </div>
+                    <div class="quadratino reversed"></div>
                 </div>
-                <div class="line"></div>
-                <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
-                    <div class="displayNone" description>
-                        ENTRA IN UNA PARTITA APERTA E SFIDA I TUOI AMICI!
+                <div class="dashboard">
+                    <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
+                        <div class="displayNone" description>
+                            Visualizza e gestisci le tue informazioni personali.
+                        </div>
+                        <div class="disco">
+                            <div class="disco1"></div>
+                            <div class="disco2"></div>
+                            <div class="disco3"></div>
+                            <div class="disco4"></div>
+                        </div>
+                        <div class="text">
+                            Profile
+                        </div>
                     </div>
-                    <div class="disco">
-                        <div class="disco1"></div>
-                        <div class="disco2"></div>
-                        <div class="disco3"></div>
-                        <div class="disco4"></div>
+                    <div class="line"></div>
+                    <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
+                        <div class="displayNone" description>
+                            ENTRA IN UNA PARTITA APERTA E SFIDA I TUOI AMICI!
+                        </div>
+                        <div class="disco">
+                            <div class="disco1"></div>
+                            <div class="disco2"></div>
+                            <div class="disco3"></div>
+                            <div class="disco4"></div>
+                        </div>
+                        <div class="text">
+                            Game
+                        </div>
                     </div>
-                    <div class="text">
-                        Game
+                    <div class="line"></div>
+                    <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
+                        
+                        <div class="displayNone" description>
+                            Scopri chi sono i top players del mese
+                        </div>
+                        <div class="disco">
+                            <div class="disco1"></div>
+                            <div class="disco2"></div>
+                            <div class="disco3"></div>
+                            <div class="disco4"></div>
+                        </div>
+                        <div class="text">
+                            Ranking
+                        </div>
                     </div>
-                </div>
-                <div class="line"></div>
-                <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
-                    
-                    <div class="displayNone" description>
-                        Scopri chi sono i top players del mese
-                    </div>
-                    <div class="disco">
-                        <div class="disco1"></div>
-                        <div class="disco2"></div>
-                        <div class="disco3"></div>
-                        <div class="disco4"></div>
-                    </div>
-                    <div class="text">
-                        Ranking
-                    </div>
-                </div>
-                <div class="line"></div>
-                <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
-                    
-                    <div class="displayNone" description>
-                        Visualizza e gestisci le tue informazioni personali.
-                    </div>
-                    <div class="disco">
-                        <div class="disco1"></div>
-                        <div class="disco2"></div>
-                        <div class="disco3"></div>
-                        <div class="disco4"></div>
-                    </div>
-                    <div class="text">
-                        Tutorial
+                    <div class="line"></div>
+                    <div class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
+                        
+                        <div class="displayNone" description>
+                            Visualizza e gestisci le tue informazioni personali.
+                        </div>
+                        <div class="disco">
+                            <div class="disco1"></div>
+                            <div class="disco2"></div>
+                            <div class="disco3"></div>
+                            <div class="disco4"></div>
+                        </div>
+                        <div class="text">
+                            Tutorial
+                        </div>
                     </div>
                 </div>
             </div>
+            
             <div class="description displayNone" id="menuEntryDescriptor">
 
             </div>

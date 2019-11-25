@@ -8,9 +8,6 @@
     </div>
 </div>
 <div class="backgroud">
-    <div class="tutorialFullBox" id="tutorialBox_first">
-        <app-tutorial (closeClicked)="setAccessed()"></app-tutorial>
-    </div>
     <div class="dashboardContainer" id="dashboardContainer">
         <div class="header">
             <app-dashboard-header (logout)="showLogoutBox()"></app-dashboard-header>
@@ -21,7 +18,6 @@
             </div>
             <div class="center" id="mainPlayControl">
                 <app-map id="mapView"></app-map>
-                <app-mytest id="myTestView" class="displayNone"></app-mytest>
                 <app-tutorial id="tutorialView" class="displayNone" [typeTiming]="4" [ruleTiming]="0"></app-tutorial>
             </div>
             <div class="side_right">

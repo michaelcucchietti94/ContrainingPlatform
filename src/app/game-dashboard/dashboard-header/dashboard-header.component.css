@@ -122,5 +122,18 @@ div.separatorContainer div.spacer {
 }
 
 
+/* MENU */
+div.menu {
+    display: flex;
+    position: relative;
+    top:0;
+    left:0;
+    height: auto;
+    width: 20vw;
 
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+/* MENU */
 

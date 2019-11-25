@@ -39,33 +39,6 @@ export class DashboardComponent implements OnInit {
 		this.currentViewOpened = this.mapView;
 
 		this.DTService.dashboard = this;
-		this.displayFirstTimeTutorial();
-	}
-
-	displayFirstTimeTutorial() {
-		let user : User = JSON.parse(localStorage.getItem("currentUser"));
-		if(user.firstAccess) {
-			let tutorialFirst = document.getElementById('tutorialBox_first');
-			let dashboard = document.getElementById('dashboardContainer');
-
-			tutorialFirst.classList.add('displayFlex');
-			dashboard.classList.add('displayNone');
-		}
-	}
-	hideFirstTimeTutorial() {
-		let tutorialFirst = document.getElementById('tutorialBox_first');
-		let dashboard = document.getElementById('dashboardContainer');
-
-		tutorialFirst.classList.remove('displayFlex');
-		dashboard.classList.remove('displayNone');
-	}
-
-	setAccessed() {
-		let user : User = JSON.parse(localStorage.getItem("currentUser"));
-		this.loginService.setAccessed(user.username.toString()).subscribe(() => {
-			this.hideFirstTimeTutorial();
-		});
-
 	}
 
 	showLogoutBox() {
@@ -113,6 +86,8 @@ export class DashboardComponent implements OnInit {
 			this.showView(this.tutorialView);
 		}
 	}
+
+	
   
 
 }

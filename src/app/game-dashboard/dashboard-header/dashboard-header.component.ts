@@ -16,7 +16,6 @@ export class DashboardHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
-
   }
 
   logoutEvent(e) {
@@ -26,5 +25,6 @@ export class DashboardHeaderComponent implements OnInit {
   goHome() {
     this.router.navigate(['dashboard']);
   }
+
 
 }

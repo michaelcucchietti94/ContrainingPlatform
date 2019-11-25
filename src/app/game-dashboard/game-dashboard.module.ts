@@ -6,17 +6,17 @@ import { RankingComponent } from './ranking/ranking.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
-import { MytestComponent } from './mytest/mytest.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardHeaderComponent, ProfileComponent, RankingComponent, MapComponent, MytestComponent, TutorialComponent],
+  declarations: [DashboardComponent, DashboardHeaderComponent, ProfileComponent, RankingComponent, MapComponent, TutorialComponent],
   imports: [
     CommonModule,
     GameRoutingModule
   ]
 })
 export class GameDashboardModule {
+  
 }

@@ -66,19 +66,19 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #00faed11;
-    border-color: rgba(32, 178, 171, 0.377);
+    background-color: #1f837e25;
+    border-color:transparent;
     border-style: solid;
     border-width: 0.2vh;
     border-radius: 6px;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0);
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.411);
     z-index: 1;
   }
   
   .dropdown-content a {
     color: rgb(255, 255, 255);
-    padding: 10px 14px;
+    padding: 10px 10px;
     text-decoration: none;
     display: block;
     text-align: left;

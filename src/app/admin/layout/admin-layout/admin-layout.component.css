@@ -36,9 +36,9 @@ div.container div.menu {
 div.contenitoreHome1{
     display: flex;
     position:relative;
-    top:0;
+    top:4vh;
     left:2.2vw;
-    height:72vh;
+    height:70vh;
     width: 23vw;
     flex-direction: row;
     justify-content: center;
@@ -52,9 +52,9 @@ div.contenitoreHome1{
 div.contenitoreHome2{
     display: flex;
     position:relative;
-    top:-72vh;
+    top:-66vh;
     left:27vw;
-    height:72vh;
+    height:70vh;
     width: 70.8vw;
     flex-direction: row;
     justify-content: center;
@@ -173,9 +173,11 @@ h1{
     display: flex;
     color: white;
     align-content: center;
+    padding: 2vh;
 }
 h2{
     display: flex;
     color: white;
     align-content: center;
+    padding: 2vh;
 }

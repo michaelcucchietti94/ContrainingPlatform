@@ -1,73 +1,3 @@
-/* LOGOUT */
-div.logoutBox {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    top:0;
-    left:0;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: rgba(40,40,40, 0.9);
-    z-index: 10000;
-}
-
-div.logoutBox div.message {
-    display: flex;
-    position: relative;
-    top:0;
-    left:0;
-    height: 40vh;
-    width: 50vw;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding:2vw;
-    background-color: rgba(233, 155, 50, 0.22);
-    border-radius: 1.3vw;
-    border: 0.2vh solid rgba(233, 155, 50, 0.7);
-}
-
-div.logoutBox div.message * {
-    display: flex;
-    position: relative;
-    top:0;
-    left:0;
-    min-height: 5vh;
-    width: 100%;
-
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-div.message span.text {
-    height: 20vh;
-    color: rgb(220, 220, 220);
-    font-size: 5vh;
-}
-div.message div.controls {
-    height: 10vh;
-}
-div.controls a.button {
-    margin-right: 2vw;
-    margin-left: 2vw;
-    padding-right: 4vw;
-    padding-left: 4vw;
-    width: auto!important;
-    box-sizing: content-box;
-    border: 0.1vh solid rgba(233, 155, 50, 0.5);
-    background-color: rgba(233, 155, 50, 0.08);
-}
-div.controls a.button:hover {
-    background-color: rgba(233, 155, 50, 0.18);
-    border: 0.1vh solid rgba(233, 155, 50, 0.7);
-}
-
-/* END LOGOUT */
-
 /* TUTORIAL */
 div.tutorialFullBox {
     display: none;
@@ -99,44 +29,12 @@ app-tutorial {
 /* END TUTORIAL */
 
 
-div.dashboardContainer {
-    position: relative;
-    top: 0;
-    left:0;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(200,200,200, 0.15);
-}
-
-div.dashboardContainer div {
-    position: relative;
-    top:0;
-    left:0;
-    padding: 0;
-    box-sizing: border-box;
-}
-div.dashboardContainer div.header {
-    height:12vh;
-    width: 100vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
-}
-div.dashboardContainer div.main {
-    display: flex;
-    height: 88vh;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 2vw;
-    width: 100vw;
-}
-
-div.main div.defaultBox {
+div.defaultBox {
     height: 50vh;
 }
 
 
-div.main div.defaultBox div.dashboard {
+div.defaultBox div.dashboard {
     display: flex;
     position: relative;
     top: 0vh;
@@ -150,21 +48,21 @@ div.main div.defaultBox div.dashboard {
 }
 
 
-div.main div.defaultBox div.dashboard div.line {
+div.defaultBox div.dashboard div.line {
     position: relative;
     top:0;
     left:0;
     height: 0.1vh;
-    width: 5vw;
+    width: 8vw;
     box-sizing: border-box;
     padding:0;
     margin:0;
     border:0;
 
-    background-color: rgb(0, 197, 194);
+    background-color: rgba(0, 197, 194, 0.25);
 }
 
-div.main div.defaultBox div.dashboard div.element {
+div.defaultBox div.dashboard a.element {
     position: relative;
     display: flex;
     height: 25vh;
@@ -184,9 +82,10 @@ div.main div.defaultBox div.dashboard div.element {
     animation-name: elementLeave;
 
     padding:0;
+    text-decoration: none;
 }
 
-div.main div.defaultBox div.dashboard div.element:hover {
+div.defaultBox div.dashboard a.element:hover {
     animation-name: elementHover;
     cursor: pointer;
 }
@@ -212,7 +111,7 @@ div.main div.defaultBox div.dashboard div.element:hover {
     }
 }
 
-div.main div.defaultBox div.dashboard div.element div.disco {
+div.defaultBox div.dashboard a.element div.disco {
     position: relative;
     height: calc(100% - 4vh);
     width: 100%;
@@ -221,7 +120,7 @@ div.main div.defaultBox div.dashboard div.element div.disco {
     padding:0;
 }
 
-div.main div.defaultBox div.dashboard div.element div.disco div {
+div.defaultBox div.dashboard a.element div.disco div {
     position: absolute;
 
     background-position: center;
@@ -237,7 +136,7 @@ div.main div.defaultBox div.dashboard div.element div.disco div {
     padding:0;
 }
 
-div.main div.defaultBox div.dashboard div.element div.disco div.disco1{
+div.defaultBox div.dashboard a.element div.disco div.disco1{
     background-image: url("src/assets/login/center/1.svg");
     height: 20%;
     width: 20%;
@@ -246,7 +145,7 @@ div.main div.defaultBox div.dashboard div.element div.disco div.disco1{
     animation-duration: 30s;
     animation-direction: normal;
 }
-div.main div.defaultBox div.dashboard div.element div.disco div.disco2{
+div.defaultBox div.dashboard a.element div.disco div.disco2{
     background-image: url("src/assets/login/center/2.svg");
     height: 42%;
     width: 42%;
@@ -255,7 +154,7 @@ div.main div.defaultBox div.dashboard div.element div.disco div.disco2{
     animation-duration: 40s;
     animation-direction: reverse;
   }
-  div.main div.defaultBox div.dashboard div.element div.disco div.disco3{
+  div.defaultBox div.dashboard a.element div.disco div.disco3{
     background-image: url("src/assets/login/center/3.svg");
     animation-duration: 80s;
     animation-direction: normal;
@@ -266,7 +165,7 @@ div.main div.defaultBox div.dashboard div.element div.disco div.disco2{
     left: 18%;
   }
 
-  div.main div.defaultBox div.dashboard div.element div.disco div.disco4{
+  div.defaultBox div.dashboard a.element div.disco div.disco4{
     background-image: url("src/assets/login/center/4.svg");
     animation-duration: 40s;
     animation-direction: reverse;
@@ -282,7 +181,7 @@ div.main div.defaultBox div.dashboard div.element div.disco div.disco2{
   @keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
   
   
-div.main div.defaultBox div.dashboard div.element div.text {
+div.defaultBox div.dashboard a.element div.text {
     position: relative;
     height: 4vh;
     width: 100%;
@@ -298,7 +197,7 @@ div.main div.defaultBox div.dashboard div.element div.text {
 }
 
 /* END DaSHBOARD */
-div.main div.description {
+div.description {
     position: relative;
     display: flex;
     height: calc(100% - 60vh);

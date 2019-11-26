@@ -125,7 +125,7 @@ div.defaultBox div.title div.content {
 
 /* DEFAULT BOXING */
 
-app-dashboard {
+app-dashboard, app-tutorial {
     height: 100%; 
     width: 100%;
 }

@@ -2,8 +2,10 @@
     <div class="part">
         <div class="img profileImage"></div>
         <div class="content name">Welcome {{user.nome}}</div>
-        <a class="button" (click)="logoutEvent($event)">Logout</a>
-        
+        <div class="menu">
+            <a class="button" (click)="goHome()">Dashboard</a>
+            <a class="button" (click)="logoutEvent($event)">Logout</a>
+        </div>        
     </div>
     <div class="logo"></div>
     <div class="part">

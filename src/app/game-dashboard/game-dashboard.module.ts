@@ -3,20 +3,21 @@ import { CommonModule } from '@angular/common';
 import { GameRoutingModule } from './game-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RankingComponent } from './ranking/ranking.component';
-import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
-import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
-import { MytestComponent } from './mytest/mytest.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { UserLayoutModule } from './user-layout/user-layout.module';
+import { MainUserLayoutComponent } from './user-layout/main-user-layout/main-user-layout.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardHeaderComponent, ProfileComponent, RankingComponent, MapComponent, MytestComponent, TutorialComponent],
+  declarations: [DashboardComponent, RankingComponent, MapComponent, TutorialComponent],
   imports: [
     CommonModule,
-    GameRoutingModule
+    GameRoutingModule,
+    UserLayoutModule
   ]
 })
 export class GameDashboardModule {
+  
 }

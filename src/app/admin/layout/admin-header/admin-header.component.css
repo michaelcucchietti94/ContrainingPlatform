@@ -25,7 +25,7 @@ div.headerContainer div.part {
 div.headerContainer div.logo {
     position: relative;
     top: 33vh;
-    left:-15vh;
+    left:0;
     height: 45vh;
     width: 45vh;
 
@@ -34,7 +34,7 @@ div.headerContainer div.logo {
     background-repeat: no-repeat;
     background-size: 44vh;
     background-image: url('../../../../assets/login/center/logo ConTraining1.svg');
-    opacity: 0.3;
+    opacity: 0.4;
 }
 div.part div.img {
     position: relative;
@@ -101,10 +101,10 @@ div.separatorContainer div.spacer {
     height: 10vh;
     width: 15vh;
 }
-.button{
+/*div.button{
     display: flex;
     margin-left: 26vh;
-}
+}*/
 div.headerContainer div.part1{
     justify-content: flex-end;
     padding-right: 1vh;

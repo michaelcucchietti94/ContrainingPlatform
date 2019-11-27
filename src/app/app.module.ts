@@ -8,12 +8,12 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TestingModule } from './testing/testing.module';
 import { AdminModule } from './admin/admin-dashboard/admin.module';
-
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,8 @@ import { AdminModule } from './admin/admin-dashboard/admin.module';
     LoginModule,
     GameDashboardModule,
     TestingModule,
-    AdminModule
+    AdminModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,6 +20,11 @@ export class DashboardComponent implements OnInit {
 
 	constructor(private router : Router, private DTService : DashboardTutorialService, private utility : UtilityService) { }
 
+
+	profileButtonClick():void {
+		this.router.navigate(['/user-dashboard']);
+	}
+
 	ngOnInit() {
 		this.decriptionElement = document.getElementById('menuEntryDescriptor');
 		this.typingManager = this.utility.createTypingManager(this.decriptionElement);

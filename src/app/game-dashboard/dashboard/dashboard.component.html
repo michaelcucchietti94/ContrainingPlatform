@@ -8,7 +8,7 @@
         <div class="angolo_destro"></div>
     </div>
     <div class="dashboard">
-        <a class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
+        <a class="element" [routerLink]="['/dashboard/profile']" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
             <div class="displayNone" description>
                 Visualizza e gestisci le tue informazioni personali.
             </div>

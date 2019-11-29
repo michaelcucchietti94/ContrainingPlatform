@@ -23,7 +23,7 @@
             </div>
         </a>
         <div class="line"></div>
-        <a class="element" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
+        <a class="element" [routerLink]="['/dashboard/gamechoices']" (mouseenter)="type($event.target)" (mouseleave)="resetType()">
             <div class="displayNone" description>
                 ENTRA IN UNA PARTITA APERTA E SFIDA I TUOI AMICI!
             </div>

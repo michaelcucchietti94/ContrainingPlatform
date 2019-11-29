@@ -8,11 +8,12 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { UserLayoutModule } from './user-layout/user-layout.module';
 import { MainUserLayoutComponent } from './user-layout/main-user-layout/main-user-layout.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
+import { GameChoiceComponent } from './game-choice/game-choice.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, RankingComponent, MapComponent, TutorialComponent],
+  declarations: [DashboardComponent, RankingComponent, MapComponent, TutorialComponent, GameChoiceComponent],
   imports: [
     CommonModule,
     GameRoutingModule,

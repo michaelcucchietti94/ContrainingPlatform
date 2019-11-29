@@ -7,6 +7,7 @@ import { UtilityService } from 'src/service/utility/Utility.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  private clicked : boolean = false;
 
   constructor(private utility : UtilityService) { }
 
@@ -14,8 +15,17 @@ export class UserProfileComponent implements OnInit {
     
   }
 
-  inputMouseHover(elem : HTMLElement) : void {
-    this.utility.animationFactory.AnimationLeft(elem, 1, 'linear', '30vh').start();
+  cevent(elem : HTMLElement) : void {
+    if(!this.clicked) {
+      this.utility.animationFactory.AnimationLeft(elem, 1, this.utility.animationCurves.exponential, '30vh').start();
+    } else {
+      let an = this.utility.animationFactory.AnimationLeft(elem, 1.5, this.utility.animationCurves.exponentialsincos, '0vh');
+      an.start();
+    }
+
+    this.clicked = !this.clicked;
   }
+
+
 
 }

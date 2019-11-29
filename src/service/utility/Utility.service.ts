@@ -790,7 +790,7 @@ export class GraphicMethods  {
             setTimeout((animationObj, elem, height) => {
                 graphicFunction.setHeight(animationObj,elem, height);
                 animationObject.stop();
-            }, timeToStable*1000, animationObject, elem, height)
+            }, timeToStable*1000, animationObject, elem, nHeight)
         );
     }
     /*
@@ -846,7 +846,7 @@ export class GraphicMethods  {
             setTimeout((animationObj, elem, width) => {
                 graphicFunction.setWidth(animationObj,elem, width);
                 animationObject.stop();
-            }, timeToStable*1000, animationObject, elem, width)
+            }, timeToStable*1000, animationObject, elem, nWidth)
         );
 
     }
@@ -900,7 +900,7 @@ export class GraphicMethods  {
             setTimeout((animationObj, elem, left) => {
                 graphicFunction.setLeft(animationObj,elem, left);
                 animationObject.stop();
-            }, timeToStable*1000, animationObject, elem, left)
+            }, timeToStable*1000, animationObject, elem, nLeft)
         );
 
     }
@@ -953,7 +953,7 @@ export class GraphicMethods  {
             setTimeout((animationObj, elem, top) => {
                 graphicFunction.setTop(animationObj,elem, top);
                 animationObject.stop();
-            }, timeToStable*1000, animationObject, elem, top)
+            }, timeToStable*1000, animationObject, elem, nTop)
         );
     }
     /*setBottomFunction(animationObject, elem, timeToStable, typeOfCurve, args) {
@@ -1460,12 +1460,14 @@ export class UtilityService {
     extendedDocument : ExtendedDocument;
     converterUnits : ConverterUnits;
     animationFactory : AnimationFactory;
+    animationCurves : AnimationCurves;
 
 
     constructor() {
         this.extendedDocument = extendedDocument;
         this.converterUnits = converterUnits;
         this.animationFactory = animationFactory;
+        this.animationCurves = curves;
     }
     
     preload(element : HTMLElement) {

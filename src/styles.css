@@ -125,7 +125,7 @@ div.defaultBox div.title div.content {
 
 /* DEFAULT BOXING */
 
-app-dashboard, app-tutorial, app-chart,app-user-profile {
+app-dashboard, app-tutorial, app-chart,app-user-profile,app-game-choice, app-map {
     height: 100%;
     width: 100%;
 }

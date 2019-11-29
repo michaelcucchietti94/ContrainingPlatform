@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Grafico, Serie, Dato } from 'src/app/admin/layout/grafico';
+import { LoginService } from 'src/service/user/Login.service';
 import { UtilityService } from 'src/service/utility/Utility.service';
 
 @Component({
@@ -9,23 +11,50 @@ import { UtilityService } from 'src/service/utility/Utility.service';
 export class UserProfileComponent implements OnInit {
   private clicked : boolean = false;
 
-  constructor(private utility : UtilityService) { }
+  @Output() logout = new EventEmitter();
+  private logoutBox : HTMLElement;
+  gProva : Grafico;
+  provaDataset : Array<any> = [];
+  provaLabels : Array<any> = [];
 
-  ngOnInit() {
-    
+  constructor(private utility : UtilityService) {
   }
-
-  cevent(elem : HTMLElement) : void {
-    if(!this.clicked) {
-      this.utility.animationFactory.AnimationLeft(elem, 1, this.utility.animationCurves.exponential, '30vh').start();
-    } else {
-      let an = this.utility.animationFactory.AnimationLeft(elem, 1.5, this.utility.animationCurves.exponentialsincos, '0vh');
-      an.start();
+  
+  ngOnInit() {this.gProva = new Grafico();
+    this.gProva.addXValue('CSS');
+    this.gProva.addXValue('Java');
+    this.gProva.addXValue('SQL');
+    this.gProva.addXValue('Angular');
+    this.gProva.addXValue('HTML');
+    this.gProva.addXValue('PHP');
+    
+    let s : Serie = this.gProva.createSerie('HTML');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s.createDato();
+      d.data = x;
+      s.addDato(d);
     }
 
-    this.clicked = !this.clicked;
-  }
+    let s1 : Serie = this.gProva.createSerie('Java');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s1.createDato();
+      d.data = Math.random()*3+3;
+      s1.addDato(d);
+    }
+    
+    let s2 : Serie = this.gProva.createSerie('PHP');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s2.createDato();
+      d.data = Math.random()*4+2;
+      s2.addDato(d);
+    }
+  
 
-
-
+    this.provaDataset = this.gProva.createDataset();
+    this.provaLabels = this.gProva.getXAxis();
+  
+    }
+  
 }
+
+

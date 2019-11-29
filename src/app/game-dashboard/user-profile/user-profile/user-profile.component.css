@@ -59,3 +59,9 @@ div.rules div.rule:nth-last-of-type(1) {
     font-size: 4.5vh;
 }
 
+div.grafico1{
+    height: 60vh;
+    width: 60vw;
+    top: 5vh;
+    left: 20vw;
+}

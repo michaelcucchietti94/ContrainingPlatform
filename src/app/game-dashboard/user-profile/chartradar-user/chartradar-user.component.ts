@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Grafico } from 'src/app/admin/layout/grafico';
 
+
 @Component({
-  selector: 'app-chartradar',
-  templateUrl: './chartradar.component.html',
-  styleUrls: ['./chartradar.component.css']
+  selector: 'app-chartradar-user',
+  templateUrl: './chartradar-user.component.html',
+  styleUrls: ['./chartradar-user.component.css']
 })
-export class ChartradarComponent implements OnInit {
-  
+export class ChartradarUserComponent implements OnInit {
+
   public chartType: string = 'radar';
 
   @Input() chartDatasets: Array<any> = [

@@ -29,12 +29,26 @@ export class AdminLayoutComponent implements OnInit {
 	this.gProva.addXValue('4');
 	this.gProva.addXValue('5');
 	
-	let s : Serie = this.gProva.createSerie('Dured');
-	for(let x = 0; x < 6; x++) {
-		let d : Dato = s.createDato();
-		d.data = x;
-		s.addDato(d);
-	}
+	let s : Serie = this.gProva.createSerie('HTML');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s.createDato();
+      d.data = x;
+      s.addDato(d);
+    }
+
+    let s1 : Serie = this.gProva.createSerie('Java');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s1.createDato();
+      d.data = Math.random()*3+3;
+      s1.addDato(d);
+    }
+    
+    let s2 : Serie = this.gProva.createSerie('PHP');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s2.createDato();
+      d.data = Math.random()*4+2;
+      s2.addDato(d);
+    }
 
 	this.provaDataset = this.gProva.createDataset();
 	this.provaLabels = this.gProva.getXAxis();

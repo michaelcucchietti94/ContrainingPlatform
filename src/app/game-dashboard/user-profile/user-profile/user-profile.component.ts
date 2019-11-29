@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Grafico, Serie, Dato } from 'src/app/admin/layout/grafico';
+import { LoginService } from 'src/service/user/Login.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +9,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  @Output() logout = new EventEmitter();
+  private logoutBox : HTMLElement;
+  gProva : Grafico;
+  provaDataset : Array<any> = [];
+  provaLabels : Array<any> = [];
 
-  ngOnInit() {
+  constructor() {
   }
+  
+  ngOnInit() {this.gProva = new Grafico();
+    this.gProva.addXValue('CSS');
+    this.gProva.addXValue('Java');
+    this.gProva.addXValue('SQL');
+    this.gProva.addXValue('Angular');
+    this.gProva.addXValue('HTML');
+    this.gProva.addXValue('PHP');
+    
+    let s : Serie = this.gProva.createSerie('HTML');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s.createDato();
+      d.data = x;
+      s.addDato(d);
+    }
 
+    let s1 : Serie = this.gProva.createSerie('Java');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s1.createDato();
+      d.data = Math.random()*3+3;
+      s1.addDato(d);
+    }
+    
+    let s2 : Serie = this.gProva.createSerie('PHP');
+    for(let x = 0; x < 6; x++) {
+      let d : Dato = s2.createDato();
+      d.data = Math.random()*4+2;
+      s2.addDato(d);
+    }
+  
+
+    this.provaDataset = this.gProva.createDataset();
+    this.provaLabels = this.gProva.getXAxis();
+  
+    }
+  
 }
+
+

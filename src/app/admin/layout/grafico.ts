@@ -97,7 +97,7 @@ export class Grafico{
         this.series.forEach(s => {
             a.push(s.createDataset())
         })
-
+        console.log(a);
         return a;
     }
 }

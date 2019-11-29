@@ -24,15 +24,15 @@ div.headerContainer div.part {
 }
 div.headerContainer div.logo {
     position: relative;
-    top:0;
-    left:0;
-    height: 9vh;
+    top:2vh;
+    left:0.7;
+    height: 10.5vh;
     width: 15vh;
 
     background-attachment: local;
     background-position: bottom;
     background-repeat: no-repeat;
-    background-size: 12vh;
+    background-size: 15vh;
     background-image: url('../../../../assets/dashboard/logo.svg');
 }
 div.part div.img {
@@ -111,6 +111,8 @@ div.separatorContainer div.left {
 
 div.separatorContainer div.right {
     background-image: url('../../../../assets/dashboard/bar.svg');
+    left: -0.5vh;
+    top: -0.1vw;
 }
 
 div.separatorContainer div.spacer {

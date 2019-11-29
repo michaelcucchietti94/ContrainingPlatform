@@ -1,14 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Grafico } from 'src/app/admin/layout/grafico';
 
+
 @Component({
-  selector: 'app-chartradar',
-  templateUrl: './chartradar.component.html',
-  styleUrls: ['./chartradar.component.css']
+  selector: 'app-chartline-user',
+  templateUrl: './chartline-user.component.html',
+  styleUrls: ['./chartline-user.component.css']
 })
-export class ChartradarComponent implements OnInit {
-  
-  public chartType: string = 'radar';
+export class ChartlineUserComponent implements OnInit {
+
+  public chartType: string = 'line';
 
   @Input() chartDatasets: Array<any> = [
   ];
@@ -22,14 +23,8 @@ export class ChartradarComponent implements OnInit {
       borderWidth: 2,
     },
     {
-      backgroundColor: 'rgba(100, 197, 194, .2)',
-      borderColor: 'rgba(172, 150, 251, .8)',
-      borderWidth: 2,
-    },
-
-    {
-      backgroundColor: 'rgba(150, 297, 94, .2)',
-      borderColor: 'rgba(12, 250, 51, .8)',
+      backgroundColor: 'rgba(0, 197, 194, .2)',
+      borderColor: 'rgba(72, 255, 251, .8)',
       borderWidth: 2,
     }
   ];

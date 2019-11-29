@@ -26,8 +26,8 @@ export class TestService {
     private cmd_addresponse : string = 'test/user/addResponse';
     private cmd_endtest : string = 'test/user_{username}/end_test';
     private cmd_hasMoreQuestion : string = 'test/user_{username}/hasMoreQuestion';
-    
-    
+
+
 
     constructor(protected http : HttpClient) {}
 
@@ -37,6 +37,7 @@ export class TestService {
         })
         return this.serverMapping + command;
     }
+
 
     countTest() : Observable<Number> {
         return this.http.get<Number>(this.getServerCommand(this.cmd_countTest));
@@ -56,22 +57,22 @@ export class TestService {
     getLevelTestCompletedBy(username : string, level : number) : Observable<Test[]> {
         return this.http.get<Test[]>(
             this.getServerCommand(
-                this.cmd_completedByUserLevel, 
-                new KeyField('username', username), 
+                this.cmd_completedByUserLevel,
+                new KeyField('username', username),
                 new KeyField('level', level.toString()
                 )
             )
         );
     }
-    
+
     getTestNotCompletedBy(username : string) : Observable<Test[]> {
         return this.http.get<Test[]>(this.getServerCommand(this.cmd_notCompletedByUser, new KeyField('username', username)));
     }
     getLevelTestNotCompletedBy(username : string, level : number) : Observable<Test[]> {
         return this.http.get<Test[]>(
             this.getServerCommand(
-                this.cmd_notCompletedByUserLevel, 
-                new KeyField('username', username), 
+                this.cmd_notCompletedByUserLevel,
+                new KeyField('username', username),
                 new KeyField('level', level.toString()
                 )
             )
@@ -83,8 +84,8 @@ export class TestService {
     countLevelTestCompletedBy(username : string, level : number) : Observable<Number> {
         return this.http.get<Number>(
             this.getServerCommand(
-                this.cmd_countTestOfUserLevel, 
-                new KeyField('username', username), 
+                this.cmd_countTestOfUserLevel,
+                new KeyField('username', username),
                 new KeyField('level', level.toString()
                 )
             )
@@ -93,7 +94,7 @@ export class TestService {
 
     startTest(username : string, idTest : number) : any {
         return this.http.get<void>(
-            this.getServerCommand( 
+            this.getServerCommand(
                 this.cmd_startest,
                 new KeyField('username', username),
                 new KeyField('idTest', idTest.toString())

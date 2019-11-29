@@ -1,0 +1,13 @@
+<div style="display:block; height: 100%;">
+    <canvas baseChart
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+        style="height: 100%">
+    </canvas>
+  </div>

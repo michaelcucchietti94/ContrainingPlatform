@@ -125,7 +125,68 @@ div.defaultBox div.title div.content {
 
 /* DEFAULT BOXING */
 
-app-dashboard, app-tutorial {
-    height: 100%; 
+app-dashboard, app-tutorial, app-chart,app-user-profile,app-game-choice, app-map {
+    height: 100%;
     width: 100%;
 }
+
+/* INPUT */
+div.inputContainer {
+    position: relative;
+    top:0;
+    left:0;
+    height: 3.5vh;
+    width: 10vh;
+    box-sizing: border-box;
+    
+    overflow: hidden;
+
+}
+div.inputContainer div {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 200%;
+
+    transform: translateX(-50%);
+    background-image: linear-gradient(to right, hsl(179, 100%, 39%) 0%,hsl(179, 100%, 39%) 49.95%, hsl(179, 0%, 39%) 50.05%, hsl(179, 0%, 39%) 100%);
+
+    
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-direction: normal;
+    animation-play-state: running;
+    animation-iteration-count: 1;
+}
+
+
+div.inputContainer > input[type="text"], div.inputContainer > input[type="password"] {
+    background-color: rgb(0, 29, 28);
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 3vh;
+    width: 10vh;
+    box-sizing: border-box;
+    padding-left:2vh;
+    padding-right: 2vh;
+    padding-top:0.5vh;
+    padding-bottom: 0.5vh;
+    border:0;
+}
+
+div.inputContainer div:hover {
+    animation-name: inputHover;
+}
+@keyframes inputHover {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* INPUT */

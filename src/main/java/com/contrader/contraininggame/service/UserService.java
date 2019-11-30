@@ -78,15 +78,6 @@ public class UserService extends DefaultService<User, Long> {
         return map(rankings);
     }
 
-    /**
-     * Ottiene una lista di utenti filtrati per livello
-     * @param livello livello degli utenti da recuperare
-     * @return lista di utenti
-     */
-    public List<User> getUsersByLevel(Long livello) {
-        UserRepository repo = (UserRepository)this.repository;
-        return repo.getUserByLevel(livello);
-    }
 
     public void setAccessed(String username) {
         ((UserRepository)repository).setAccessed(username);

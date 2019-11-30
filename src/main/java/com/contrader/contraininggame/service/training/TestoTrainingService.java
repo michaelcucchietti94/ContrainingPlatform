@@ -1,11 +1,8 @@
 package com.contrader.contraininggame.service.training;
 
-import com.contrader.contraininggame.model.Continente;
 import com.contrader.contraininggame.model.training.TestoTraining;
-import com.contrader.contraininggame.repository.ContinenteRepository;
 import com.contrader.contraininggame.repository.training.TestoTrainingRepository;
 import com.contrader.contraininggame.service.DefaultService;
-import com.contrader.contraininggame.utils.data.ContinentName;
 import com.contrader.contraininggame.utils.data.training.TestiEnum;
 import org.springframework.stereotype.Service;
 

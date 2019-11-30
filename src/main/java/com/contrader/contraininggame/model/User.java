@@ -24,7 +24,6 @@ public class User implements Serializable {
     private String email;
     private Date dataNascita;
 
-    private Long livello;
     private Usertype usertype;
     private Boolean firstAccess = true;
 

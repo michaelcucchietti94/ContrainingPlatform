@@ -29,7 +29,9 @@ public class UserTestService implements IUserTestService {
     @Autowired
     private DefaultService<RispostaUtente, Long> rispostaUtenteService;
     @Autowired
-    private TestService testService;
+    private DomandaService domandaService;
+    @Autowired
+    private CategoriaService categoriaService;
 
 
     private LocalTime questionGotAt;
@@ -37,9 +39,13 @@ public class UserTestService implements IUserTestService {
 
 
     @Override
-    public void startTest(String username, Long idTest) {
+    public void startTest(String username, String argomento) {
         repository.addTest(username);
-        repository.getTest(username).setDomande(testService.getDomandeOfTest(idTest).iterator());
+        repository.getTest(username)
+                .setDomande(
+                        domandaService.getRandomDomandeByCategory(
+                                categoriaService.getCategoriaFromArgomento(argomento)
+                        ).iterator());
 
     }
 
@@ -107,10 +113,7 @@ public class UserTestService implements IUserTestService {
         long partialScore[] = {0};
         responses.forEach(r -> {
             if(r.getRisposta().getCorretta()) {
-                long parole = getParoleOfDomanda(r.getRisposta().getDomanda());
-                long timeToRespond = r.getSecondsForAnswering();
-
-                long responseScore = (long)(Math.floor(100*calculateCoefficentScore(timeToRespond, parole)));
+                long responseScore = 100;
                 r.setQuestionScore(responseScore);
                 partialScore[0] += responseScore;
             } else {
@@ -135,19 +138,6 @@ public class UserTestService implements IUserTestService {
         return parole[0];
     }
 
-    private double calculateCoefficentScore(long timeToRespond, long numberOfWords) {
-        double media = timeChecker.calcolaMediaPer(numberOfWords);
-        double scarto = Math.pow(timeChecker.calcolaVarianzaPer(numberOfWords), 0.5);
-
-        long tempoThreshold = (long)(Math.floor(media + 2*scarto));       // confidenza 95%
-        double maxTempo = tempoThreshold * 4.0;
-
-        timeToRespond -= tempoThreshold;
-        double coeff = 1 - timeToRespond / maxTempo;
-        if(coeff < 0) coeff = 0;
-        if(coeff > 1) coeff = 1;
-        return coeff;
-    }
 
     private void trainTheSystem(String username) {
         UserTest t = repository.getTest(username);

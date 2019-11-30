@@ -51,11 +51,6 @@ public class UserController extends AbstractController<User, Long> {
         return uService.getLevelRanking(level);
     }
 
-    @GetMapping("/usersByLevel_{level}")
-    public List<User> getUsersByLevel(@PathVariable("level") Long level) {
-        UserService userService = (UserService)service;
-        return userService.getUsersByLevel(level);
-    }
 
     @GetMapping("/setAccessed_{username}")
     public void setAccessed(@PathVariable("username") String username) {

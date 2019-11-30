@@ -32,8 +32,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query(value = "select u.username, sum(question_score) as score from User u LEFT join Risposta_utente ru on u.username like ru.id_utente where u.livello = ?1 group by u.username order by score DESC", nativeQuery = true)
     List<Object[]> getLevelRanking(Integer level);
 
-    @Query("select u from User u where u.livello = ?1")
-    List<User> getUserByLevel(Long level);
 
     @Modifying
     @Query(value = "update user set first_access = false where username like ?1", nativeQuery = true)

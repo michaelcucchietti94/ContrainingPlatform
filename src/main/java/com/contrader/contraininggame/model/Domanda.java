@@ -21,7 +21,7 @@ public class Domanda implements Serializable {
     private String spiegazione;
 
     @ManyToOne
-    @JoinColumn(name="idtest")
-    private Test test;
+    @JoinColumn(name="idCategory")
+    private Categoria categoria;
 
 }

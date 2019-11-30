@@ -12,8 +12,8 @@ public class UserTestController {
     @Autowired
     private IUserTestService userTestService;
 
-    public void startTest(String username, Long idTest) {
-        userTestService.startTest(username, idTest);
+    public void startTest(String username, String argomento) {
+        userTestService.startTest(username, argomento);
     }
     public DomandaDecorated getNextQuestion(String username) {
         return userTestService.getNextQuestion(username);

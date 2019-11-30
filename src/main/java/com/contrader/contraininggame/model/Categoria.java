@@ -18,4 +18,6 @@ public class Categoria implements Serializable {
 
     @Column(unique = true)
     private String argomento;
+    @Column
+    private String descrizione;
 }

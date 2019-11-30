@@ -43,6 +43,6 @@ public class UserTest {
         if(isLastQuestion())
             return null;
 
-        return this.domande.next();
+        return getDomande().next();
     }
 }

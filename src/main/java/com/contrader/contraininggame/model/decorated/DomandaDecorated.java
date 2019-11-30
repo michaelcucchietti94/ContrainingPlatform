@@ -21,7 +21,7 @@ public class DomandaDecorated extends Domanda {
         DomandaDecorated dd = new DomandaDecorated();
         dd.setId(d.getId());
         dd.setSpiegazione(d.getSpiegazione());
-        dd.setTest(d.getTest());
+        dd.setCategoria(d.getCategoria());
         dd.setTesto(d.getTesto());
         dd.setLast(false);
         dd.risposte = new ArrayList<>();

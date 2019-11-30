@@ -12,16 +12,8 @@ import { RispostaUtente } from 'src/dto/testing/RispostaUtente';
 export class TestService {
     private serverMapping : string = 'http://localhost:8080/game/';
 
-    private cmd_countTest : string = 'countTest';
-    private cmd_countTestLevel : string = 'countTest_level_{level}'
-    private cmd_completedByUser : string = 'user_{username}/testDone';
-    private cmd_completedByUserLevel : string = 'user_{username}/testDone_level_{level}';
-    private cmd_notCompletedByUser : string = 'user_{username}/testNotDone';
-    private cmd_notCompletedByUserLevel : string = 'user_{username}/testNotDone_level_{level}';
-    private cmd_countTestOfUser : string = 'user_{username}/countTestDone';
-    private cmd_countTestOfUserLevel : string = 'user_{username}/countTestDone_level_{level}';
 
-    private cmd_startest : string = 'test/user_{username}/start_test_{idTest}';
+    private cmd_startest : string = 'test/user_{username}/start_test_{category}';
     private cmd_nextquestion : string = 'test/user_{username}/getNextQuestion';
     private cmd_addresponse : string = 'test/user/addResponse';
     private cmd_endtest : string = 'test/user_{username}/end_test';
@@ -39,65 +31,14 @@ export class TestService {
     }
 
 
-    countTest() : Observable<Number> {
-        return this.http.get<Number>(this.getServerCommand(this.cmd_countTest));
-    }
-    countLevelTest(level : number) : Observable<Number> {
-        return this.http.get<Number>(
-            this.getServerCommand(
-                this.cmd_countTestLevel,
-                new KeyField('level', level.toString()
-                )
-            )
-        );
-    }
-    getTestCompletedBy(username : string) : Observable<Test[]> {
-        return this.http.get<Test[]>(this.getServerCommand(this.cmd_completedByUser, new KeyField('username', username)));
-    }
-    getLevelTestCompletedBy(username : string, level : number) : Observable<Test[]> {
-        return this.http.get<Test[]>(
-            this.getServerCommand(
-                this.cmd_completedByUserLevel,
-                new KeyField('username', username),
-                new KeyField('level', level.toString()
-                )
-            )
-        );
-    }
+    
 
-    getTestNotCompletedBy(username : string) : Observable<Test[]> {
-        return this.http.get<Test[]>(this.getServerCommand(this.cmd_notCompletedByUser, new KeyField('username', username)));
-    }
-    getLevelTestNotCompletedBy(username : string, level : number) : Observable<Test[]> {
-        return this.http.get<Test[]>(
-            this.getServerCommand(
-                this.cmd_notCompletedByUserLevel,
-                new KeyField('username', username),
-                new KeyField('level', level.toString()
-                )
-            )
-        );
-    }
-    countTestCompletedBy(username : string) : Observable<Number> {
-        return this.http.get<Number>(this.getServerCommand(this.cmd_countTestOfUser, new KeyField('username', username)));
-    }
-    countLevelTestCompletedBy(username : string, level : number) : Observable<Number> {
-        return this.http.get<Number>(
-            this.getServerCommand(
-                this.cmd_countTestOfUserLevel,
-                new KeyField('username', username),
-                new KeyField('level', level.toString()
-                )
-            )
-        );
-    }
-
-    startTest(username : string, idTest : number) : any {
+    startTest(username : string, category : string) : any {
         return this.http.get<void>(
             this.getServerCommand(
                 this.cmd_startest,
                 new KeyField('username', username),
-                new KeyField('idTest', idTest.toString())
+                new KeyField('category', category)
             )
         )
     }

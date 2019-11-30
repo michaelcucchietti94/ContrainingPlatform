@@ -60,7 +60,7 @@ class PageManager {
 		this.animations = new Animations(this.slider);
 		this.tester = <HTMLElement>this.utilityService.extendedDocument.getElementsByAttributeNameOf(this.slider, "tester")[0];
 
-		this.startAction = new StartAction(this.testService, 1);
+		this.startAction = new StartAction(this.testService, "Java");
 		this.getNQAction = new NextQuestionAction(this.testService);
 		this.addResponseAction = new AddResponseAction(this.testService);
 		this.endTestAction = new EndTestAction(this.testService);
@@ -191,15 +191,15 @@ class HasMoreQuestionAction extends TestAction<Observable<Boolean>> {
 	
 }
 class StartAction extends TestAction<any> {
-	private idTest : number;
+	private category : string;
 
-	constructor(protected testService : TestService, idTest : number) {
+	constructor(protected testService : TestService, category : string) {
 		super(testService);
-		this.idTest = idTest;
+		this.category = category;
 	}
 
 	doAction(): any {
-		return this.testService.startTest(this.user.username.toString(), this.idTest);
+		return this.testService.startTest(this.user.username.toString(), this.category);
 	}
 }
 class AddResponseAction extends TestAction<any> {

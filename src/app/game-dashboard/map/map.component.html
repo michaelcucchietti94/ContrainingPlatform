@@ -1,16 +1,25 @@
-
-<div class="defaultBox">
-    <div class="mapContainer">
+<div class="componentContainer">
+    <div class="defaultBox mapBox">
+        <div class="mapContainer">
+            <div class="map continente" id="contrainingMap"></div>
+        </div>
+    </div>
+    <div class="defaultBox navBox">
+        <div class="title">
+            <div class="angolo_sinistro"></div>
+            <div class="content">
+                Pannello
+            </div>
+            <div class="angolo_destro"></div>
+        </div>
         <div class="mapNavigator">
             <div>
-                <div class="back" (click)="goUp()"></div>
                 <div class="elements" id="mapElements">
-                    <div *ngFor="let elem of elements">
-                        <a class="button" [attr.elementenabled]="elem.enabled" (click)="goDown(elem)" (mouseenter)="overSpecific(elem)" (mouseleave)="leaveSpecific()">{{elem.testo}}</a>
+                    <div *ngFor="let n of createRange(42); let i = index;">
+                        <a class="button" (mouseenter)="overElement($event.target)" (mouseleave)="leaveElement()">{{n}}</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="map continente" id="contrainingMap"></div>
     </div>
 </div>

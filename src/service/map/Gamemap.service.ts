@@ -12,13 +12,4 @@ import { RequestState } from 'src/dto/game/RequestState';
 export class GamemapService {
     constructor(private http : HttpClient) {}
 
-    getContinenti() : Observable<Continente[]> {
-        return this.http.get<Continente[]>('http://localhost:8080/game/continenti');
-    }
-    getContinentiPieces(idContinente : number) : Observable<ContinentePiece[]> {
-        return this.http.get<ContinentePiece[]>('http://localhost:8080/game/PiecesByContinente_' + idContinente);
-    }
-    getStati(request : RequestState) : Observable<StatoDecorated[]> {
-        return this.http.post<StatoDecorated[]>('http://localhost:8080/game/StatiAvailable', request);
-    }
 }

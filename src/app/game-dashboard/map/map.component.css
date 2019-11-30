@@ -1,6 +1,22 @@
+div.componentContainer {
+    position: relative;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 div.defaultBox {
     height: 100%;
-    width:100%;
+}
+div.mapBox {
+    width:75%;
+}
+div.navBox {
+    width: 24%;
 }
 div.mapContainer {
     position: relative;
@@ -12,25 +28,21 @@ div.mapContainer {
     box-sizing: border-box;
 
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
-
-    padding:2vw;
 }
 div.mapNavigator {
     position: relative;
-    height: 12vh;
+    height: calc(100% - 5vh);
     width: 100%;
     display: flex;
     top:0;
     left:0;
     padding:0;
-    padding-bottom: 2vh;
 
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.7);
 }
 div.mapNavigator div {
     display: flex;
@@ -42,8 +54,8 @@ div.mapNavigator div {
     padding:0;
     box-sizing: border-box;
 
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -68,20 +80,21 @@ div.mapNavigator div div.back:hover {
 div.mapNavigator div div.elements {
     display: flex;
     position: relative;
-    height: 100%;
-    width: calc(100% - 9vh);
+    height: calc(100% - 9vh);
+    width: 100%;
     top:0;
     left:0;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 div.mapNavigator div div.elements div {
     position: relative;
     top:0;
     left:0;
-    height: 9vh;
-    width: 19%;
+    height: 5vh;
+    width: 17%;
     box-sizing: border-box;
     padding:0;
     margin:0;
@@ -111,7 +124,6 @@ div.map {
     height: calc(100% - 12vh);
     width: 100%;
     box-sizing: border-box;
-    padding: 5vh;
     
     font-size: 0;
     background-origin: content-box;
@@ -125,316 +137,129 @@ div.map {
 .continente {
     background-image: url('../../../assets/map/continente.svg');
 }
-.continente_Africa {
-    background-image: url('../../../assets/map/africa.svg');
+.continente_1 {
+    background-image: url('../../../assets/map/parts/part_1.svg');
 }
-.continente_Americhe {
-    background-image: url('../../../assets/map/america.svg');
+.continente_2 {
+    background-image: url('../../../assets/map/parts/part_2.svg');
 }
-.continente_Asia {
-    background-image: url('../../../assets/map/asia.svg');
+.continente_3 {
+    background-image: url('../../../assets/map/parts/part_3.svg');
 }
-.continente_Europa {
-    background-image: url('../../../assets/map/europa.svg');
+.continente_4 {
+    background-image: url('../../../assets/map/parts/part_4.svg');
 }
-.continente_Oceania {
-    background-image: url('../../../assets/map/oceania.svg');
+.continente_5 {
+    background-image: url('../../../assets/map/parts/part_5.svg');
 }
-
-/* AFRICA, blank + colors */
-.Africa {
-    background-image: url('../../../assets/map/continente/africa/africa_blank.svg');
+.continente_6 {
+    background-image: url('../../../assets/map/parts/part_6.svg');
 }
-.Africa_Africa_Nord {
-    background-image: url('../../../assets/map/continente/africa/africa_nord.svg');
+.continente_7 {
+    background-image: url('../../../assets/map/parts/part_7.svg');
 }
-.Africa_Africa_Sud {
-    background-image: url('../../../assets/map/continente/africa/africa_sud.svg');
+.continente_8 {
+    background-image: url('../../../assets/map/parts/part_8.svg');
 }
-.Africa_Africa_Est {
-    background-image: url('../../../assets/map/continente/africa/africa_est.svg');
+.continente_9 {
+    background-image: url('../../../assets/map/parts/part_9.svg');
 }
-.Africa_Africa_Nord-Ovest {
-    background-image: url('../../../assets/map/continente/africa/africa_no.svg');
+.continente_10 {
+    background-image: url('../../../assets/map/parts/part_10.svg');
 }
-.Africa_Africa_Sud-Ovest {
-    background-image: url('../../../assets/map/continente/africa/africa_so.svg');
+.continente_11 {
+    background-image: url('../../../assets/map/parts/part_11.svg');
 }
-
-/* AFRICA PIECES, blank */
-.Africa_Nord {
-    background-image: url('../../../assets/map/continente/africa/stati/nord/africa_nord_blank.svg');
+.continente_12 {
+    background-image: url('../../../assets/map/parts/part_12.svg');
 }
-.Africa_Nord_Marocco {
-    background-image: url('../../../assets/map/continente/africa/stati/nord/marocco.svg');
+.continente_13 {
+    background-image: url('../../../assets/map/parts/part_13.svg');
 }
-.Africa_Nord_Algeria {
-    background-image: url('../../../assets/map/continente/africa/stati/nord/algeria.svg');
+.continente_14 {
+    background-image: url('../../../assets/map/parts/part_14.svg');
 }
-.Africa_Nord_Egitto {
-    background-image: url('../../../assets/map/continente/africa/stati/nord/egitto.svg');
+.continente_15 {
+    background-image: url('../../../assets/map/parts/part_15.svg');
 }
-.Africa_Sud {
-    background-image: url('../../../assets/map/continente/africa/stati/sud/africa_sud_blank.svg');
+.continente_16 {
+    background-image: url('../../../assets/map/parts/part_16.svg');
 }
-.Africa_Sud_Sud_Africa {
-    background-image: url('../../../assets/map/continente/africa/stati/sud/sud_africa.svg');
+.continente_17 {
+    background-image: url('../../../assets/map/parts/part_17.svg');
 }
-.Africa_Sud_Angola {
-    background-image: url('../../../assets/map/continente/africa/stati/sud/angola.svg');
+.continente_18 {
+    background-image: url('../../../assets/map/parts/part_18.svg');
 }
-.Africa_Sud_Madagascar {
-    background-image: url('../../../assets/map/continente/africa/stati/sud/madagascar.svg');
+.continente_19 {
+    background-image: url('../../../assets/map/parts/part_19.svg');
 }
-.Africa_Est {
-    background-image: url('../../../assets/map/continente/africa/stati/est/africa_est_blank.svg');
+.continente_20 {
+    background-image: url('../../../assets/map/parts/part_20.svg');
 }
-.Africa_Est_Tanzania {
-    background-image: url('../../../assets/map/continente/africa/stati/est/tanzania.svg');
+.continente_21 {
+    background-image: url('../../../assets/map/parts/part_21.svg');
 }
-.Africa_Est_Etiopia {
-    background-image: url('../../../assets/map/continente/africa/stati/est/etiopia.svg');
+.continente_22 {
+    background-image: url('../../../assets/map/parts/part_22.svg');
 }
-.Africa_Est_Kenya {
-    background-image: url('../../../assets/map/continente/africa/stati/est/kenya.svg');
+.continente_23 {
+    background-image: url('../../../assets/map/parts/part_23.svg');
 }
-
-.Africa_Nord-Ovest {
-    background-image: url('../../../assets/map/continente/africa/stati/no/africa_no_blank.svg');
+.continente_24 {
+    background-image: url('../../../assets/map/parts/part_24.svg');
 }
-.Africa_Nord-Ovest_Guinea {
-    background-image: url('../../../assets/map/continente/africa/stati/no/guinea.svg');
+.continente_25 {
+    background-image: url('../../../assets/map/parts/part_25.svg');
 }
-.Africa_Nord-Ovest_Mali {
-    background-image: url('../../../assets/map/continente/africa/stati/no/mali.svg');
+.continente_26 {
+    background-image: url('../../../assets/map/parts/part_26.svg');
 }
-.Africa_Nord-Ovest_Nigeria {
-    background-image: url('../../../assets/map/continente/africa/stati/no/nigeria.svg');
+.continente_27 {
+    background-image: url('../../../assets/map/parts/part_27.svg');
 }
-
-.Africa_Sud-Ovest {
-    background-image: url('../../../assets/map/continente/africa/stati/so/africa_so_blank.svg');
+.continente_28 {
+    background-image: url('../../../assets/map/parts/part_28.svg');
 }
-.Africa_Sud-Ovest_Cameroon {
-    background-image: url('../../../assets/map/continente/africa/stati/so/cameroon.svg');
+.continente_29 {
+    background-image: url('../../../assets/map/parts/part_29.svg');
 }
-.Africa_Sud-Ovest_Congo {
-    background-image: url('../../../assets/map/continente/africa/stati/so/congo.svg');
+.continente_30 {
+    background-image: url('../../../assets/map/parts/part_30.svg');
 }
-.Africa_Sud-Ovest_Repubblica_Del_Congo {
-    background-image: url('../../../assets/map/continente/africa/stati/so/repubblica_congo.svg');
+.continente_31 {
+    background-image: url('../../../assets/map/parts/part_31.svg');
 }
-
-/* ASIA, blank + color */
-.Asia {
-    background-image: url('../../../assets/map/continente/asia/asia_blank.svg');
+.continente_32 {
+    background-image: url('../../../assets/map/parts/part_32.svg');
 }
-.Asia_Asia_Nord {
-    background-image: url('../../../assets/map/continente/asia/asia_nord.svg');
+.continente_33 {
+    background-image: url('../../../assets/map/parts/part_33.svg');
 }
-.Asia_Asia_Sud {
-    background-image: url('../../../assets/map/continente/asia/asia_sud.svg');
+.continente_34 {
+    background-image: url('../../../assets/map/parts/part_34.svg');
 }
-.Asia_Asia_Ovest {
-    background-image: url('../../../assets/map/continente/asia/asia_ovest.svg');
+.continente_35 {
+    background-image: url('../../../assets/map/parts/part_35.svg');
 }
-.Asia_Asia_Est {
-    background-image: url('../../../assets/map/continente/asia/asia_est.svg');
+.continente_36 {
+    background-image: url('../../../assets/map/parts/part_36.svg');
 }
-
-/* ASIA PIECES, blank */
-.Asia_Nord {
-    background-image: url('../../../assets/map/continente/asia/stati/nord/asia_nord_blank.svg');
+.continente_37 {
+    background-image: url('../../../assets/map/parts/part_37.svg');
 }
-.Asia_Nord_Kazakistan {
-    background-image: url('../../../assets/map/continente/asia/stati/nord/kazakistan.svg');
+.continente_38 {
+    background-image: url('../../../assets/map/parts/part_38.svg');
 }
-.Asia_Nord_Mongolia {
-    background-image: url('../../../assets/map/continente/asia/stati/nord/mongolia.svg');
+.continente_39 {
+    background-image: url('../../../assets/map/parts/part_39.svg');
 }
-.Asia_Nord_Russia {
-    background-image: url('../../../assets/map/continente/asia/stati/nord/russia.svg');
+.continente_40 {
+    background-image: url('../../../assets/map/parts/part_40.svg');
 }
-
-.Asia_Sud {
-    background-image: url('../../../assets/map/continente/asia/stati/sud/asia_sud_blank.svg');
+.continente_41 {
+    background-image: url('../../../assets/map/parts/part_41.svg');
 }
-.Asia_Sud_Filippine {
-    background-image: url('../../../assets/map/continente/asia/stati/sud/filippine.svg');
+.continente_42 {
+    background-image: url('../../../assets/map/parts/part_42.svg');
 }
-.Asia_Sud_India {
-    background-image: url('../../../assets/map/continente/asia/stati/sud/india.svg');
-}
-.Asia_Sud_Tailandia {
-    background-image: url('../../../assets/map/continente/asia/stati/sud/tailandia.svg');
-}
-
-.Asia_Ovest {
-    background-image: url('../../../assets/map/continente/asia/stati/ovest/asia_ovest_blank.svg');
-}
-.Asia_Ovest_Arabia_Saudita {
-    background-image: url('../../../assets/map/continente/asia/stati/ovest/arabia_saudita.svg');
-}
-.Asia_Ovest_Iran {
-    background-image: url('../../../assets/map/continente/asia/stati/ovest/iran.svg');
-}
-.Asia_Ovest_Turchia {
-    background-image: url('../../../assets/map/continente/asia/stati/ovest/turchia.svg');
-}
-
-
-.Asia_Est {
-    background-image: url('../../../assets/map/continente/asia/stati/est/asia_est_blank.svg');
-}
-.Asia_Est_Cina {
-    background-image: url('../../../assets/map/continente/asia/stati/est/cina.svg');
-}
-.Asia_Est_Giappone {
-    background-image: url('../../../assets/map/continente/asia/stati/est/giappone.svg');
-}
-.Asia_Est_Sud_Korea {
-    background-image: url('../../../assets/map/continente/asia/stati/est/sud_korea.svg');
-}
-
-/* AMERICA, blank + color */
-.Americhe {
-    background-image: url('../../../assets/map/continente/america/america_blank.svg');
-}
-.Americhe_America_Nord {
-    background-image: url('../../../assets/map/continente/america/america_nord.svg');
-}
-.Americhe_America_Sud {
-    background-image: url('../../../assets/map/continente/america/america_sud.svg');
-}
-
-/* America pieces, blank */
-.America_Nord {
-    background-image: url('../../../assets/map/continente/america/stati/nord/america_nord_blank.svg');
-}
-.America_Nord_USA {
-    background-image: url('../../../assets/map/continente/america/stati/nord/usa.svg');
-}
-.America_Nord_Canada {
-    background-image: url('../../../assets/map/continente/america/stati/nord/canada.svg');
-}
-.America_Nord_Messico {
-    background-image: url('../../../assets/map/continente/america/stati/nord/messico.svg');
-}
-
-.America_Sud {
-    background-image: url('../../../assets/map/continente/america/stati/sud/america_sud_blank.svg');
-}
-.America_Sud_Brasile {
-    background-image: url('../../../assets/map/continente/america/stati/sud/brasile.svg');
-}
-.America_Sud_Argentina {
-    background-image: url('../../../assets/map/continente/america/stati/sud/argentina.svg');
-}
-.America_Sud_Colombia {
-    background-image: url('../../../assets/map/continente/america/stati/sud/colombia.svg');
-}
-
-/* EUROPA, blank + color */
-.Europa {
-    background-image: url('../../../assets/map/continente/europa/europa_blank.svg');
-}
-.Europa_Europa_Nord {
-    background-image: url('../../../assets/map/continente/europa/europa_nord.svg');
-}
-.Europa_Europa_Sud {
-    background-image: url('../../../assets/map/continente/europa/europa_sud.svg');
-}
-.Europa_Europa_Est {
-    background-image: url('../../../assets/map/continente/europa/europa_est.svg');
-}
-.Europa_Europa_Ovest {
-    background-image: url('../../../assets/map/continente/europa/europa_ovest.svg');
-}
-.Europa_Europa_Centro {
-    background-image: url('../../../assets/map/continente/europa/europa_centro.svg');
-}
-
-/* EUROPA PIECES, blank */
-.Europa_Nord {
-    background-image: url('../../../assets/map/continente/europa/stati/nord/europa_nord_blank.svg');
-}
-.Europa_Nord_Islanda {
-    background-image: url('../../../assets/map/continente/europa/stati/nord/islanda.svg');
-}
-.Europa_Nord_Svezia {
-    background-image: url('../../../assets/map/continente/europa/stati/nord/svezia.svg');
-}
-.Europa_Nord_Norvegia {
-    background-image: url('../../../assets/map/continente/europa/stati/nord/norvegia.svg');
-}
-
-.Europa_Sud {
-    background-image: url('../../../assets/map/continente/europa/stati/sud/europa_sud_blank.svg');
-}
-.Europa_Sud_Italia {
-    background-image: url('../../../assets/map/continente/europa/stati/sud/italia.svg');
-}
-.Europa_Sud_Grecia {
-    background-image: url('../../../assets/map/continente/europa/stati/sud/grecia.svg');
-}
-.Europa_Sud_Austria {
-    background-image: url('../../../assets/map/continente/europa/stati/sud/austria.svg');
-}
-
-.Europa_Centro {
-    background-image: url('../../../assets/map/continente/europa/stati/centro/europa_centro_blank.svg');
-}
-.Europa_Centro_Germania {
-    background-image: url('../../../assets/map/continente/europa/stati/centro/germania.svg');
-}
-.Europa_Centro_Danimarca {
-    background-image: url('../../../assets/map/continente/europa/stati/centro/danimarca.svg');
-}
-.Europa_Centro_Polonia {
-    background-image: url('../../../assets/map/continente/europa/stati/centro/polonia.svg');
-}
-
-.Europa_Ovest {
-    background-image: url('../../../assets/map/continente/europa/stati/ovest/europa_ovest_blank.svg');
-}
-.Europa_Ovest_Spagna {
-    background-image: url('../../../assets/map/continente/europa/stati/ovest/spagna.svg');
-}
-.Europa_Ovest_Francia {
-    background-image: url('../../../assets/map/continente/europa/stati/ovest/francia.svg');
-}
-.Europa_Ovest_Regno_Unito {
-    background-image: url('../../../assets/map/continente/europa/stati/ovest/uk.svg');
-}
-
-.Europa_Est {
-    background-image: url('../../../assets/map/continente/europa/stati/est/europa_est_blank.svg');
-}
-.Europa_Est_Ucraina {
-    background-image: url('../../../assets/map/continente/europa/stati/est/ucraina.svg');
-}
-.Europa_Est_Romania {
-    background-image: url('../../../assets/map/continente/europa/stati/est/romania.svg');
-}
-.Europa_Est_Biellorussia {
-    background-image: url('../../../assets/map/continente/europa/stati/est/biellorussia.svg');
-}
-
-/* OCEANIA, blank + color */
-.Oceania {
-    background-image: url('../../../assets/map/continente/oceania/oceania_blank.svg');
-}
-.Oceania_Oceania {
-    background-image: url('../../../assets/map/continente/oceania/oceania_oceania.svg');
-}
-
-.Oceania_Australia {
-    background-image: url('../../../assets/map/continente/oceania/stati/australia.svg');
-}
-.Oceania_Nuova_Zelanda {
-    background-image: url('../../../assets/map/continente/oceania/stati/nuova_zelanda.svg');
-}
-.Oceania_Papua_Nuova_Guinea {
-    background-image: url('../../../assets/map/continente/oceania/stati/papua_nuova_guinea.svg');
-}
-

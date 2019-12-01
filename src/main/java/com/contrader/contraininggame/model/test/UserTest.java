@@ -10,6 +10,7 @@ public class UserTest {
     private Iterator<Domanda> domande;
     private List<RispostaUtente> risposteUtente;
     private Map<Long, List<RispostaDomanda>> risposteDomande;
+    private Integer level;
 
 
     /* GETTER, SETTER & CONSTRUCTOR */
@@ -24,7 +25,12 @@ public class UserTest {
     }
     public void setRisposteDomande(Domanda target, List<RispostaDomanda> risposte) {risposteDomande.put(target.getId(), risposte);}
     public List<RispostaDomanda> getRisposteDomanda(Domanda d) {return risposteDomande.get(d.getId());}
-
+    public Integer getLevel() {
+        return level;
+    }
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
     public UserTest() {
         this.risposteUtente = new ArrayList<>();

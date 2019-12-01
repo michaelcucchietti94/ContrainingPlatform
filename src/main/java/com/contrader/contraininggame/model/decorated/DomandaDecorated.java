@@ -20,6 +20,7 @@ public class DomandaDecorated extends Domanda {
     public static DomandaDecorated createFromDomanda(Domanda d) {
         DomandaDecorated dd = new DomandaDecorated();
         dd.setId(d.getId());
+        dd.setLevel(d.getLevel());
         dd.setSpiegazione(d.getSpiegazione());
         dd.setCategoria(d.getCategoria());
         dd.setTesto(d.getTesto());

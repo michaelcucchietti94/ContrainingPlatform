@@ -11,4 +11,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UserTestScore implements Serializable {
     long score;
+    int level;
 }

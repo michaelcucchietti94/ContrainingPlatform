@@ -6,7 +6,7 @@ import com.contrader.contraininggame.model.decorated.DomandaDecorated;
 import com.contrader.contraininggame.model.test.UserTestScore;
 
 public interface IUserTestService  {
-    void startTest(String username, String argomento);
+    void startTest(String username, String argomento, Integer level);
     DomandaDecorated getNextQuestion(String username);
     Boolean hasMoreQuestions(String username);
     void addRisposta(RispostaUtente r);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DomandaService extends DefaultService<Domanda, Long> {
@@ -15,8 +16,8 @@ public class DomandaService extends DefaultService<Domanda, Long> {
         return ((DomandaRepository)repository).getAllByCategoria(c);
     }
 
-    public List<Domanda> getRandomDomandeByCategory(Categoria c) {
-        List<Domanda> all = getDomandeByCategory(c);
+    public List<Domanda> getRandomDomandeByCategory(Categoria c, Integer level) {
+        List<Domanda> all = getDomandeByCategory(c).stream().filter(d -> d.getLevel().equals(level)).collect(Collectors.toList());
         List<Domanda> result = new ArrayList<>();
 
         int n = Math.min(all.size(), 3);

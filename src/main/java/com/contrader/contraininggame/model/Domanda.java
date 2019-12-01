@@ -19,6 +19,7 @@ public class Domanda implements Serializable {
 
     private String testo;
     private String spiegazione;
+    private Integer level;
 
     @ManyToOne
     @JoinColumn(name="idCategory")

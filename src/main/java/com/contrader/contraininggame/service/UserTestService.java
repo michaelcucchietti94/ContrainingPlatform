@@ -39,13 +39,15 @@ public class UserTestService implements IUserTestService {
 
 
     @Override
-    public void startTest(String username, String argomento) {
+    public void startTest(String username, String argomento, Integer level) {
         repository.addTest(username);
         repository.getTest(username)
                 .setDomande(
                         domandaService.getRandomDomandeByCategory(
-                                categoriaService.getCategoriaFromArgomento(argomento)
+                                categoriaService.getCategoriaFromArgomento(argomento),
+                                level
                         ).iterator());
+        repository.getTest(username).setLevel(level);
 
     }
 
@@ -122,6 +124,7 @@ public class UserTestService implements IUserTestService {
         });
 
         score.setScore(partialScore[0]);
+        score.setLevel(repository.getTest(username).getLevel());
         return score;
     }
 

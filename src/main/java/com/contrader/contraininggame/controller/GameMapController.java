@@ -65,6 +65,11 @@ public class GameMapController {
         return partita.getConfinanti();
     }
 
+    @GetMapping("/match/getAvailableAttackerFor_{targetTerritorio}")
+    public List<TerritorioDecorated> getIdTerritoriAvailableForAttack(@PathVariable("targetTerritorio") Long idTerritorio) {
+        return partita.getTerritoriAvailableForAttack(idTerritorio);
+    }
+
     @GetMapping("/match/getConquistati")
     public List<TerritorioDecorated> getConquistati() {
         return partita.getConquistati();

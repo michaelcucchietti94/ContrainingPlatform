@@ -48,6 +48,9 @@ public class PartitaController {
     }
 
 
+    public List<TerritorioDecorated> getTerritoriAvailableForAttack(Long idTerritorioTarget) {
+        return this.service.getTerritoriAvailableForAttack(idTerritorioTarget);
+    }
     
     public void muovi(UserTestScore testScore, Long destId, Long sourceId, int armate) {
         if(testScore.getScore() > 60) {

@@ -112,7 +112,7 @@ public class UserTestService implements IUserTestService {
         List<RispostaUtente> responses = repository.getTest(username).getRisposteUtente();
         UserTestScore score = new UserTestScore();
 
-        long partialScore[] = {0};
+        double partialScore[] = {0};
         responses.forEach(r -> {
             if(r.getRisposta().getCorretta()) {
                 long responseScore = 100;
@@ -123,7 +123,7 @@ public class UserTestService implements IUserTestService {
             }
         });
 
-        score.setScore(partialScore[0]);
+        score.setScore((long)(partialScore[0]/responses.size()));
         score.setLevel(repository.getTest(username).getLevel());
         return score;
     }

@@ -100,7 +100,7 @@ public class Partita {
         return null;
     }
     public Territorio getTerritorioReferenceOf(Partecipante p, Territorio t) {
-        List<Territorio> filtered = p.getTerritori().stream().filter((terr) -> t.getId().equals(terr.getId())).collect(Collectors.toList());
+        List<Territorio> filtered = getTeam(p).getTerritori().stream().filter((terr) -> t.getId().equals(terr.getId())).collect(Collectors.toList());
         if(filtered.size() == 0)
             return null;
 

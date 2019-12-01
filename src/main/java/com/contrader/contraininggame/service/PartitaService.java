@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class PartitaService {
@@ -41,7 +43,7 @@ public class PartitaService {
         while(ids.size() > 0) {
             Partecipante p = this.repository.getPartita().getPartecipanti().get(initialSize - ids.size());
             Territorio t = this.territorioService.getById(ids.remove(0));
-            t.setArmate(1);
+            t.setArmate(10);
             this.repository.getPartita().conquistaTerritorio(p, t);
         }
     }
@@ -76,6 +78,19 @@ public class PartitaService {
         });
 
         return conquistabili;
+    }
+
+    public List<TerritorioDecorated> getTerritoriAvailableForAttack(Long targetTerritorioId) {
+        return this.repository.getPartita().getTerritoriOf(this.current).stream()
+                .filter((t) -> this.territorioService.getTerritoriConfinanti(targetTerritorioId).contains(t))
+                .filter((t) -> t.getArmate() > 1)
+                .map(t -> {
+                    TerritorioDecorated tt = TerritorioDecorated.createFromTerritorio(t);
+                    tt.setOwner(this.current.getNominativo());
+                    return tt;
+                })
+                .collect(Collectors.toList());
+
     }
 
     public List<TerritorioDecorated> getConquistati() {
@@ -121,11 +136,13 @@ public class PartitaService {
 
     }
     public void rinforza(Long territorioId, int livello) {
+
         Territorio t = territorioService.getById(territorioId);
 
         Territorio reference = this.repository.getPartita().getTerritorioReferenceOf(this.current, t);
         if(reference == null)
             return;
+
 
         livello = Math.min(3, livello);
         livello = Math.max(1, livello);
@@ -184,6 +201,8 @@ public class PartitaService {
         int defense = calcolaEffettive(destRef.getArmate(), 2);
         int attack = calcolaEffettive(armate, livello);
         int result = defense - attack;
+        System.out.println("defense - attack = result");
+        System.out.println(defense + " - " + attack + " = " + result);
 
         destRef.setArmate(Math.abs(result));
         if(result == 0) {

@@ -18,7 +18,7 @@ import { RispostaUtente } from 'src/dto/testing/RispostaUtente';
 })
 export class UsertestComponent implements OnInit {
 	@Output('start') startEvent = new EventEmitter();
-	domanda : DomandaDecorated;
+	domanda : DomandaDecorated = new DomandaDecorated();
 	private user : User;
 	private isAddingResponse : boolean = false;
 	private isAboutReadingQuestion : boolean = true;

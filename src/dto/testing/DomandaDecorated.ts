@@ -7,5 +7,5 @@ export class DomandaDecorated {
     level : number;
     spiegazione : String;
     last : boolean;
-    risposte : RispostaDomanda[];
+    risposte : RispostaDomanda[] = [];
 }

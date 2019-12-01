@@ -19,6 +19,9 @@ export class GamemapService {
     getConfini() : Observable<TerritorioDecorated[]> {
         return this.http.get<TerritorioDecorated[]>('http://localhost:8080/game/match/getConfini');
     }
+    getAttackerAvailableFor(territorioDest : number) : Observable<TerritorioDecorated[]> {
+        return this.http.get<TerritorioDecorated[]>('http://localhost:8080/game/match/getAvailableAttackerFor_' + territorioDest);
+    }
     getConquistati() : Observable<TerritorioDecorated[]> {
         return this.http.get<TerritorioDecorated[]>('http://localhost:8080/game/match/getConquistati');
     }

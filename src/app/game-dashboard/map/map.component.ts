@@ -5,6 +5,7 @@ import { User } from 'src/dto/User';
 import { Router } from '@angular/router';
 import { TerritorioDecorated } from 'src/dto/game/TerritorioDecorated';
 import { UtilityService } from 'src/service/utility/Utility.service';
+import { MapTestService } from 'src/service/frontend_scoped/map_test.service';
 
 @Component({
   selector: 'app-map',
@@ -18,14 +19,23 @@ export class MapComponent implements OnInit {
 	private players : String[] = [];
 	private conquistati : TerritorioDecorated[] = [];
 	private confinanti : TerritorioDecorated[] = [];
-	private territorioSelezionato : TerritorioDecorated = null;
+	private territorioSelezionato : TerritorioDecorated = new TerritorioDecorated();
 	private azioniConquista : HTMLElement;
 	private azioniConfine : HTMLElement;
 	private conquistaButton : HTMLElement;
 	private occupaButton : HTMLElement;
+	private attackers : TerritorioDecorated[] = [];
+	private attacker : TerritorioDecorated = new TerritorioDecorated();
+	private attackerArmate : number = 0;
+	private selectedLevel : number = 1;
+	private levels : any[] = [
+		{level: 1, value:'LIVELLO BASE: chiama a raccolta i contadini'},
+		{level: 2, value:'LIVELLO MEDIO: chiama a raccolta i soldati'},
+		{level: 3, value:'LIVELLO ALTO: chiama a raccolta i carri'}
+	]
 
 
-	constructor(private service : GamemapService, private utility : UtilityService, private router : Router) {
+	constructor(private service : GamemapService, private utility : UtilityService, private mapTest : MapTestService, private router : Router) {
 	}
 
 	ngOnInit() {
@@ -48,6 +58,12 @@ export class MapComponent implements OnInit {
 		});
 	}
 	
+	createRange(maxNumber : number) : Array<number> {
+		let result : Array<number> = [];
+		for(let i = 1; i < maxNumber; i++) result.push(i);
+
+		return result;
+	}
 	
 	overElement(target : HTMLElement)  {
 		let tID : number;
@@ -94,16 +110,49 @@ export class MapComponent implements OnInit {
 			this.occupaButton.classList.remove('displayNone');
 		}
 		
-		this.showDetail();
+		this.service.getAttackerAvailableFor(id).subscribe(list => {
+			this.attackers = list;
+			this.showDetail();
+		});
 	}
 	goBack() {
 		this.utility.animationFactory.AnimationLeft(this.mainPanel, 0.4, this.utility.animationCurves.exponential, '0vh').start();
 		this.utility.animationFactory.AnimationLeft(this.infoTerritorio, 0.4, this.utility.animationCurves.exponential, '0vh').start();
+		this.attackers =  [];
+		this.attacker = new TerritorioDecorated();
+		this.attackerArmate = 0;
 	}
 
-	conquista() {}
-	occupa() {}
-	rinforza() {}
+	conquista() {
+		this.mapTest.reset();
+		this.mapTest.setActionFunction(this.service.muovi);
+		this.mapTest.setArmate(this.attackerArmate);
+		this.mapTest.setTerritorioSorce(this.attacker.id);
+		this.mapTest.setTerritorioTarget(this.territorioSelezionato.id);
+		this.mapTest.setArgomento(this.territorioSelezionato.category.argomento.toString());
+		this.mapTest.setLevel(this.selectedLevel);
+		this.router.navigate(['/dashboard/test']);
+		
+	}
+	occupa() {
+		this.mapTest.reset();
+		this.mapTest.setActionFunction(this.service.muovi);
+		this.mapTest.setArmate(this.attackerArmate);
+		this.mapTest.setTerritorioSorce(this.attacker.id);
+		this.mapTest.setTerritorioTarget(this.territorioSelezionato.id);
+		this.mapTest.setArgomento(this.territorioSelezionato.category.argomento.toString());
+		this.mapTest.setLevel(this.selectedLevel);
+		this.router.navigate(['/dashboard/test']);
+	}
+	rinforza() {
+		this.mapTest.reset();
+		this.mapTest.setActionFunction(this.service.rinforza);
+		this.mapTest.setTerritorioTarget(this.territorioSelezionato.id);
+		this.mapTest.setArgomento(this.territorioSelezionato.category.argomento.toString());
+		this.mapTest.setLevel(this.selectedLevel);
+		console.log(this.selectedLevel);
+		this.router.navigate(['/dashboard/test']);
+	}
 
 }
 

@@ -10,18 +10,15 @@ div.userTestContainer {
     display: flex;
     top:0;
     left:0;
-    height: 100%;
+    height: calc(100% - 5vh);
     width: 100%;
     box-sizing: border-box;
 
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
     padding:2vw;
-    background-color: rgba(0, 197, 194, 0.08);
-    border-radius: 1.9vw;
-    border: 0.2vh solid rgba(0, 197, 194, 0.7);
 }
 
 
@@ -39,7 +36,7 @@ div.userTestContainer div.header {
     border: 0;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 div.userTestContainer div.header a.button {
@@ -49,19 +46,6 @@ div.userTestContainer div.header a.button {
     width: 5vw;
 }
 
-div.userTestContainer div.header p.title {
-    display: flex;
-    position: relative;
-    top:0;
-    left:0;
-    height: 100%;
-    width: calc(100% - 17vw);
-    color: rgb(220, 220, 220);
-    border-bottom: 0.1vh solid rgba(0, 197, 194, 0.8);
-    justify-content: center;
-    text-transform: uppercase;
-    font-size: 4vh;
-}
 
 div.userTestContainer div.testRow {
     position: relative;
@@ -194,19 +178,19 @@ div.slider div.question span.questionTitle {
     align-items: center;
 
 }
-div.slider div.question form {
-    display: flex;
-    height:auto;
-    width: 100%;
-    top: 0;
-    left:0;
+div.question div.radioContainer {
     position: relative;
-
+    height: auto;
+    width: auto;
+    top:0;
+    left:0;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    padding: 4vh;
 }
-div.question form label {
+div.question div.radioContainer label {
     display: block;
     position: relative;
     height: 5vh;
@@ -215,10 +199,10 @@ div.question form label {
     color: rgb(220, 220, 220);
     font-size: 2.5vh;
 }
-div.question form label:hover {
+div.question div.radioContainer label:hover {
     cursor: pointer;
 }
-div.question form label input {
+div.question div.radioContainer label input {
     position: absolute;
     top:0;
     left:0;
@@ -226,7 +210,7 @@ div.question form label input {
     width: 3vh;
     opacity: 0;
 }
-div.question form label span.radio {
+div.question div.radioContainer label span.radio {
     position: absolute;
     top:0;
     left:0;
@@ -236,13 +220,13 @@ div.question form label span.radio {
     border-radius: 50%;
 }
 
-div.question form label:hover span.radio {
+div.question div.radioContainer label:hover span.radio {
     background-color: hsl(179,70%, 33%);
 }
-div.question form input:checked ~ span.radio {
+div.question div.radioContainer input:checked ~ span.radio {
     background-color: hsl(179, 90%, 35%);
 }
-div.question form input ~ span.round {
+div.question div.radioContainer input ~ span.round {
     display: none;
     height: 1vh;
     width: 1vh;
@@ -254,7 +238,7 @@ div.question form input ~ span.round {
     background-color: rgb(220, 220, 220);
     box-shadow: 0 0 2vh 0 rgba(40, 40, 40, 0.2);
 }
-div.question form input:checked ~ span.round {
+div.question div.radioContainer input:checked ~ span.round {
     display: block;
 }
 

@@ -6,7 +6,6 @@ export class DomandaDecorated {
     testo : String;
     level : number;
     spiegazione : String;
-    test : Test;
     last : boolean;
     risposte : RispostaDomanda[];
 }

@@ -5,4 +5,8 @@ export class TerritorioDecorated {
     category : Categoria;
     armate : number;
     owner : string;
+
+    constructor() {
+        this.category = new Categoria();
+    }
 }

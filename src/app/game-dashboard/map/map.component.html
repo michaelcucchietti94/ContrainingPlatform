@@ -65,9 +65,28 @@
                     <div class="title">azioni</div>
                     <div class="data">
                         <div class="actions displayNone" azioni_conquistati>
+                            <label>Seleziona il livello del test</label>
+                            <select [(ngModel)]="selectedLevel">
+                                <option *ngFor="let l of levels" [ngValue]="l.level">{{l.value}}</option>
+                            </select>
+
                             <a class="button" (click)="rinforza()">Rinforza</a>
                         </div>
                         <div class="actions displayNone" azioni_confinanti>
+                            <label>Seleziona il livello del test</label>
+                            <select [(ngModel)]="selectedLevel">
+                                <option *ngFor="let l of levels" [ngValue]="l.level">{{l.value}}</option>
+                            </select>
+                            
+                            <label>Seleziona il territorio da cui spostare le armate</label>
+                            <select [(ngModel)]="attacker">
+                                <option *ngFor="let a of attackers" [ngValue]="a">{{a.id}}</option>
+                            </select>
+                            <label>Seleziona il numero di armate da utilizzare</label>
+                            <select [(ngModel)]="attackerArmate">
+                                <option *ngFor="let n of createRange(attacker.armate)" [ngValue]="n">{{n}}</option>
+                            </select>
+
                             <a conquista class="button" (click)="conquista()">Conquista</a>
                             <a occupa class="button" (click)="occupa()">Occupa</a>
                         </div>

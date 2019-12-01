@@ -9,6 +9,8 @@ import { UserLayoutModule } from './user-layout/user-layout.module';
 import { MainUserLayoutComponent } from './user-layout/main-user-layout/main-user-layout.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { GameChoiceComponent } from './game-choice/game-choice.component';
+import { TestingModule } from '../testing/testing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +20,9 @@ import { GameChoiceComponent } from './game-choice/game-choice.component';
     CommonModule,
     GameRoutingModule,
     UserLayoutModule,
-    UserProfileModule
+    UserProfileModule,
+    TestingModule,
+    FormsModule
   ]
 })
 export class GameDashboardModule {

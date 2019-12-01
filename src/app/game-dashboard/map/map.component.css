@@ -139,6 +139,29 @@ div.actions * {
     height: 8vh;
     box-sizing: border-box;
 }
+div.actions > select {
+    position:relative;
+    height: 4vh;
+    border: 0.1vh solid rgb(0, 197, 194);
+    border-radius: 1vh;
+    background-color: hsl(179, 40%, 11%);
+    color: rgb(220, 220, 220);
+    font-size: 2vh;
+    margin:0;
+    margin-bottom: 3vh;
+}
+div.actions > label {
+    position: relative;
+    height: auto;
+    width: 100%;
+    top:0;
+    left:0;
+    margin:0;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    color: rgb(220, 220, 220);
+    font-size: 2vh;
+}
 
 span.nomeSquadra {
     display: flex;

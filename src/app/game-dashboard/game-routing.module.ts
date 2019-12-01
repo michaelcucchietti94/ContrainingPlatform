@@ -6,6 +6,7 @@ import { MainUserLayoutComponent } from './user-layout/main-user-layout/main-use
 import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
 import { GameChoiceComponent } from './game-choice/game-choice.component';
 import { MapComponent } from './map/map.component';
+import { TestComponent } from '../testing/test/test.component';
 
 const routes : Routes = [
     {path: 'dashboard', component: MainUserLayoutComponent, children: [
@@ -13,7 +14,8 @@ const routes : Routes = [
         {path: 'tutorial', component: TutorialComponent},
         {path:'profile', component:UserProfileComponent},
         {path:'gamechoices', component:GameChoiceComponent},
-        {path:'map', component:MapComponent}
+        {path:'map', component:MapComponent},
+        {path:'test', component:TestComponent}
     ]}
 ]
 @NgModule({

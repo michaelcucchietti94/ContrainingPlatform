@@ -33,7 +33,7 @@ export class TestService {
 
     
 
-    startTest(username : string, category : string, level : number|string) : any {
+    startTest(username : string, category : string, level : number|string) : Observable<void> {
         return this.http.get<void>(
             this.getServerCommand(
                 this.cmd_startest,
@@ -53,7 +53,7 @@ export class TestService {
         )
     }
 
-    addResponse(risposta : RispostaUtente) : any {
+    addResponse(risposta : RispostaUtente) : Observable<void> {
         return this.http.post<void>(this.getServerCommand(
             this.cmd_addresponse
         ), risposta);

@@ -1323,7 +1323,7 @@ export class Animation {
     differentSamplingsByDevices : boolean = true;
     stepTime : number = 0.022;					// 22 ms ad aggiornamento -> f = 1000/22 = 45Hz (molto buona)
     mobileStepTime : number = 0.035;            // 35 ms ad aggiornamento -> f = 1000/35 = 28Hz (sufficiente)
-    desktopStepTime : number = 0.012;           // 12 ms ad aggiornamento -> f = 1000/12 = 83Hz (molto buona)
+    desktopStepTime : number = 0.022;           // 12 ms ad aggiornamento -> f = 1000/12 = 83Hz (molto buona)
     priority : number = 1;                      // Default priority is set to 1
     onEndAnimation : Function = null;             // this is called once animation ended, through a timeout of animationTime seconds
     onStartAnimation : Function = null;           // this is called once animation starts.

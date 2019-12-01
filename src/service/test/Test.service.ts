@@ -13,7 +13,7 @@ export class TestService {
     private serverMapping : string = 'http://localhost:8080/game/';
 
 
-    private cmd_startest : string = 'test/user_{username}/start_test_{category}';
+    private cmd_startest : string = 'test/user_{username}/start_test_{category}/lv_{level}';
     private cmd_nextquestion : string = 'test/user_{username}/getNextQuestion';
     private cmd_addresponse : string = 'test/user/addResponse';
     private cmd_endtest : string = 'test/user_{username}/end_test';
@@ -33,12 +33,13 @@ export class TestService {
 
     
 
-    startTest(username : string, category : string) : any {
+    startTest(username : string, category : string, level : number|string) : any {
         return this.http.get<void>(
             this.getServerCommand(
                 this.cmd_startest,
                 new KeyField('username', username),
-                new KeyField('category', category)
+                new KeyField('category', category),
+                new KeyField('level', level.toString())
             )
         )
     }

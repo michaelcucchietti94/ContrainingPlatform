@@ -199,7 +199,7 @@ class StartAction extends TestAction<any> {
 	}
 
 	doAction(): any {
-		return this.testService.startTest(this.user.username.toString(), this.category);
+		return this.testService.startTest(this.user.username.toString(), this.category, 1);
 	}
 }
 class AddResponseAction extends TestAction<any> {

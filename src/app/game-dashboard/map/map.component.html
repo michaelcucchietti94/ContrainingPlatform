@@ -13,10 +13,64 @@
             <div class="angolo_destro"></div>
         </div>
         <div class="mapNavigator">
-            <div>
-                <div class="elements" id="mapElements">
+            <div id="mainPanel">
+                <div class="dataBlock">
+                    <div class="title">players</div>
+                    <div class="data">
+                        <span class="nomeSquadra" *ngFor="let p of players">{{p}}</span>
+                    </div>
+                </div>
+                
+                <div class="dataBlock">
+                    <div class="title">Territori posseduti</div>
+                    <div class="data">
+                        <div class="elements">
+                            <div *ngFor="let elem of conquistati;">
+                                <a class="button" (mouseenter)="overElement($event.target)" (mouseleave)="leaveElement()" (click)="clickOnConquistato($event.target)">{{elem.id}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataBlock">
+                    <div class="title">Conquista</div>
+                    <div class="data">
+                        <div class="elements">
+                            <div *ngFor="let elem of confinanti;">
+                                <a class="button" (mouseenter)="overElement($event.target)" (mouseleave)="leaveElement()" (click)="clickOnConfinanti($event.target)">{{elem.id}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--<div class="elements">
                     <div *ngFor="let n of createRange(42); let i = index;">
                         <a class="button" (mouseenter)="overElement($event.target)" (mouseleave)="leaveElement()">{{n}}</a>
+                    </div>
+                </div>-->
+            </div>
+            <div id="infoTerritorio">
+                <div class="back">
+                    <a class="button" (click)="goBack()">Indietro</a>
+                </div>
+                <div class="dataBlock">
+                    <div class="title">info</div>
+                    <div class="data" >
+                        Territorio: {{territorioSelezionato.id}}<br />
+                        Posseduto da: {{territorioSelezionato.owner}}<br />
+                        Armate posizionate: {{territorioSelezionato.armate}}<br />
+                        Categoria : {{territorioSelezionato.category.argomento}}
+                    </div>
+                </div>
+                <div class="dataBlock">
+                    <div class="title">azioni</div>
+                    <div class="data">
+                        <div class="actions displayNone" azioni_conquistati>
+                            <a class="button" (click)="rinforza()">Rinforza</a>
+                        </div>
+                        <div class="actions displayNone" azioni_confinanti>
+                            <a conquista class="button" (click)="conquista()">Conquista</a>
+                            <a occupa class="button" (click)="occupa()">Occupa</a>
+                        </div>
                     </div>
                 </div>
             </div>

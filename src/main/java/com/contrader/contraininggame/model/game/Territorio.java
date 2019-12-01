@@ -34,4 +34,13 @@ public class Territorio {
 
         return this.getId().equals(other.getId());
     }
+
+    @Override
+    public Territorio clone() {
+        Territorio t = new Territorio();
+        t.setId(getId());
+        t.setArmate(getArmate());
+        t.setCategory(getCategory());
+        return t;
+    }
 }

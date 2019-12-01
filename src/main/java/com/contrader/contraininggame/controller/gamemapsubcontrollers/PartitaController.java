@@ -53,8 +53,8 @@ public class PartitaController {
     }
     
     public void muovi(UserTestScore testScore, Long destId, Long sourceId, int armate) {
-        if(testScore.getScore() > 60) {
-            service.muovi(destId, sourceId, armate, testScore.getLevel());
+        if(service.trasferisciUnita(sourceId, armate) && testScore.getScore() > 60) {
+            service.muovi(destId, armate, testScore.getLevel());
         }
     }
 

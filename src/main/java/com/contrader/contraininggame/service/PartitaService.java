@@ -42,7 +42,8 @@ public class PartitaService {
 
         while(ids.size() > 0) {
             Partecipante p = this.repository.getPartita().getPartecipanti().get(initialSize - ids.size());
-            Territorio t = this.territorioService.getById(ids.remove(0));
+            Territorio t = this.territorioService.getById(ids.remove(0)).clone();
+
             t.setArmate(10);
             this.repository.getPartita().conquistaTerritorio(p, t);
         }
@@ -63,16 +64,34 @@ public class PartitaService {
     public List<TerritorioDecorated> getConfinanti() {
         List<Territorio> conquistati = this.repository.getPartita().getTerritoriOf(this.current);
         List<TerritorioDecorated> conquistabili =  new ArrayList<>();
+
         conquistati.forEach(t -> {
-            List<Territorio> confini = this.territorioService.getTerritoriConfinanti(t.getId());
-            confini.forEach(c -> {
-                TerritorioDecorated tt = TerritorioDecorated.createFromTerritorio(c);
-                Partecipante owner = this.repository.getPartita().ownerOf(c);
-                if(owner == null) {
-                    tt.setOwner("NESSUNO");
-                } else {
-                    tt.setOwner(owner.getNominativo());
-                }
+            List<Territorio> confini = this.territorioService.getTerritoriConfinanti(t.getId()).stream()
+                    .filter((terr) -> !conquistati.contains(terr))
+                    .filter((terr) -> !conquistabili.contains(terr)).collect(Collectors.toList());
+
+            // i confini adesso contengono tutti e i soli territori confinanti presi una e una sola volta.
+            // tuttavia sono dati che provengono dal database e perciò non aggiornati in quanto gli aggiornamenti
+            // sono in memoria.
+            // Si distinguono perciò tutti quelli che hanno un owner da quelli che non ce l'hanno.
+            // chi non ce l'ha viene aggiunto automaticamente, per chi ce l'ha viene preso in considerazione quello in memoria
+
+            confini.stream().filter((territorio) -> {
+                return this.repository.getPartita().ownerOf(territorio) == null;
+            }).forEach(territorioLibero -> {
+                TerritorioDecorated tt = TerritorioDecorated.createFromTerritorio(territorioLibero);
+                tt.setOwner("Nessuno");
+                conquistabili.add(tt);
+            });
+
+            confini.stream().filter((territorio) -> {
+                return this.repository.getPartita().ownerOf(territorio) != null;
+            }).forEach(territorioConquistato -> {
+                Partecipante owner = this.repository.getPartita().ownerOf(territorioConquistato);
+                Territorio reference = this.repository.getPartita().getTerritorioReferenceOf(owner, territorioConquistato);
+
+                TerritorioDecorated tt = TerritorioDecorated.createFromTerritorio(reference);
+                tt.setOwner(owner.getNominativo());
                 conquistabili.add(tt);
             });
         });
@@ -115,18 +134,22 @@ public class PartitaService {
     public List<Squadra> getSquadreRanking() {
         return this.repository.getPartita().getInternalTeamsRanking();
     }
-    public void muovi(Long destId, Long sourceId, int armate, int livello) {
-        Territorio source = territorioService.getById(sourceId);
-        Territorio dest = territorioService.getById(destId);
 
+    public boolean trasferisciUnita(Long sourceId, int armate) {
+        Territorio source = territorioService.getById(sourceId);
         Territorio sourceReference = this.repository.getPartita().getTerritorioReferenceOf(this.current, source);
         if(sourceReference == null)
-            return;
+            return false;           // impossibile trasferire unità
 
-        // Sposta le armate a prescindere
         if(sourceReference.getArmate() <= armate)
             armate = sourceReference.getArmate() - 1;
         sourceReference.setArmate(sourceReference.getArmate()-armate);
+
+        return true;
+
+    }
+    public void muovi(Long destId, int armate, int livello) {
+        Territorio dest = territorioService.getById(destId);
 
         // Se il territorio di destinazione non appartiene a nessuno è neutro
         if(this.repository.getPartita().ownerOf(dest) == null)
@@ -185,8 +208,9 @@ public class PartitaService {
         if(armate == 0)
             return;
 
-        dest.setArmate(calcolaEffettive(armate, livello));
-        this.repository.getPartita().conquistaTerritorio(this.current, dest);
+        Territorio destRef = dest.clone();
+        destRef.setArmate(calcolaEffettive(armate, livello));
+        this.repository.getPartita().conquistaTerritorio(this.current, destRef);
     }
     private void attacca(Territorio dest, int armate, int livello) {
         Partecipante defenser = this.repository.getPartita().ownerOf(dest);
@@ -201,8 +225,7 @@ public class PartitaService {
         int defense = calcolaEffettive(destRef.getArmate(), 2);
         int attack = calcolaEffettive(armate, livello);
         int result = defense - attack;
-        System.out.println("defense - attack = result");
-        System.out.println(defense + " - " + attack + " = " + result);
+
 
         destRef.setArmate(Math.abs(result));
         if(result == 0) {

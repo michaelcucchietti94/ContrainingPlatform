@@ -10,7 +10,7 @@ public abstract class AbstractController<Model, KeyType> {
     @Autowired
     protected Service<Model, KeyType> service;
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public Iterable<Model> getAll() {
         return service.getAll();
     }
@@ -26,12 +26,13 @@ public abstract class AbstractController<Model, KeyType> {
     }
 
     @DeleteMapping("/delete")
-    public void delete(@RequestBody KeyType id) {
+    public void delete(@RequestParam KeyType id) {
+    	System.out.print(id);
         this.service.delete(id);
     }
 
     @GetMapping("/read")
-    public Model read(@RequestBody KeyType key) {
+    public Model read(@RequestParam KeyType key) {
         Optional<Model> result = this.service.read(key);
         return result.orElse(null);
 

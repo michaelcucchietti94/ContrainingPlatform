@@ -2,10 +2,7 @@ package com.contrader.contraininggame.controller.gamemapsubcontrollers;
 
 import com.contrader.contraininggame.model.User;
 import com.contrader.contraininggame.model.decorated.TerritorioDecorated;
-import com.contrader.contraininggame.model.game.Giocatore;
-import com.contrader.contraininggame.model.game.Partecipante;
-import com.contrader.contraininggame.model.game.Squadra;
-import com.contrader.contraininggame.model.game.Territorio;
+import com.contrader.contraininggame.model.game.*;
 import com.contrader.contraininggame.model.test.UserTestScore;
 import com.contrader.contraininggame.service.PartitaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,13 +48,19 @@ public class PartitaController {
     public List<TerritorioDecorated> getTerritoriAvailableForAttack(Long idTerritorioTarget) {
         return this.service.getTerritoriAvailableForAttack(idTerritorioTarget);
     }
-    
-    public void muovi(UserTestScore testScore, Long destId, Long sourceId, int armate) {
+
+
+    public void assegna(UserTestScore testScore, Long destId, Long sourceId, int armate) {
         if(service.trasferisciUnita(sourceId, armate) && testScore.getScore() > 60) {
-            service.muovi(destId, armate, testScore.getLevel());
+            service.assegna(destId, armate, testScore.getLevel());
         }
     }
-
+    public ConquestResult attacca(UserTestScore testScore, Long destId, Long sourceId, int armate) {
+        if(service.trasferisciUnita(sourceId, armate) && testScore.getScore() > 60) {
+            return service.attacca(destId, armate, testScore.getLevel());
+        }
+        return null;
+    }
     
     public void rinforza(UserTestScore testScore, Long territorioId) {
         if(testScore.getScore() > 60)

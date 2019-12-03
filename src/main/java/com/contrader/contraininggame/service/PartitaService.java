@@ -2,10 +2,7 @@ package com.contrader.contraininggame.service;
 
 import com.contrader.contraininggame.model.User;
 import com.contrader.contraininggame.model.decorated.TerritorioDecorated;
-import com.contrader.contraininggame.model.game.Giocatore;
-import com.contrader.contraininggame.model.game.Partecipante;
-import com.contrader.contraininggame.model.game.Squadra;
-import com.contrader.contraininggame.model.game.Territorio;
+import com.contrader.contraininggame.model.game.*;
 import com.contrader.contraininggame.repository.PartitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,15 +26,21 @@ public class PartitaService {
         List<Long> ids = new ArrayList<>();
 
 
-        this.repository.getPartita().getPartecipanti().forEach(s -> {
+        /*this.repository.getPartita().getPartecipanti().forEach(s -> {
             long rand;
             do {
                 rand = (long) (Math.random() * 42);
             } while(ids.contains(rand));
 
-            ids.add(rand);
-        });
 
+
+        });
+*/
+
+        ids.add(33L);
+        ids.add(27L);
+        ids.add(31L);
+        ids.add(32L);
         int initialSize = ids.size();
 
         while(ids.size() > 0) {
@@ -148,16 +151,6 @@ public class PartitaService {
         return true;
 
     }
-    public void muovi(Long destId, int armate, int livello) {
-        Territorio dest = territorioService.getById(destId);
-
-        // Se il territorio di destinazione non appartiene a nessuno è neutro
-        if(this.repository.getPartita().ownerOf(dest) == null)
-            assegna(dest, armate, livello);
-        else
-            attacca(dest, armate, livello);
-
-    }
     public void rinforza(Long territorioId, int livello) {
 
         Territorio t = territorioService.getById(territorioId);
@@ -204,37 +197,57 @@ public class PartitaService {
     }
 
 
-    private void assegna(Territorio dest, int armate, int livello) {
+    public void assegna(Long destId, int armate, int livello) {
         if(armate == 0)
             return;
+
+        Territorio dest = territorioService.getById(destId);
 
         Territorio destRef = dest.clone();
         destRef.setArmate(calcolaEffettive(armate, livello));
         this.repository.getPartita().conquistaTerritorio(this.current, destRef);
     }
-    private void attacca(Territorio dest, int armate, int livello) {
+    public ConquestResult attacca(Long destId, int armate, int livello) {
+        Territorio dest = territorioService.getById(destId);
         Partecipante defenser = this.repository.getPartita().ownerOf(dest);
+
+        ConquestResult source = new ConquestResult();
+        source.setSquadra1(this.current.getNominativo());
+        source.setArmate1(armate);
+        source.setLivello1(livello);
 
         Territorio destRef = this.repository.getPartita().getTerritorioReferenceOf(
                 defenser,
                 dest
         );
-        if(destRef == null)
-            return;
+
 
         int defense = calcolaEffettive(destRef.getArmate(), 2);
         int attack = calcolaEffettive(armate, livello);
         int result = defense - attack;
 
+        source.setLivello2(2);
+        source.setArmate2(destRef.getArmate());
+        source.setSquadra2(defenser.getNominativo());
+
 
         destRef.setArmate(Math.abs(result));
+
         if(result == 0) {
+            source.setFinalArmate1(0);
+            source.setFinalArmate2(0);
             this.repository.getPartita().perdiTerritorio(defenser, destRef);
         } else if(result < 0){
+            source.setFinalArmate1(Math.abs(result));
+            source.setFinalArmate2(0);
             this.repository.getPartita().perdiTerritorio(defenser, destRef);
             this.repository.getPartita().conquistaTerritorio(this.current, destRef);
+        } else {
+            source.setFinalArmate2(result);
+            source.setFinalArmate1(0);
         }
 
+        return source;
     }
 
 

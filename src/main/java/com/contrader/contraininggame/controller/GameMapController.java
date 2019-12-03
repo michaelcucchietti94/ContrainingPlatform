@@ -4,6 +4,7 @@ import com.contrader.contraininggame.controller.gamemapsubcontrollers.*;
 import com.contrader.contraininggame.model.*;
 import com.contrader.contraininggame.model.decorated.DomandaDecorated;
 import com.contrader.contraininggame.model.decorated.TerritorioDecorated;
+import com.contrader.contraininggame.model.game.ConquestResult;
 import com.contrader.contraininggame.model.game.Partecipante;
 import com.contrader.contraininggame.model.game.Squadra;
 import com.contrader.contraininggame.model.game.Territorio;
@@ -85,9 +86,14 @@ public class GameMapController {
         return partita.getTerritoriOf(p);
     }
 
-    @PostMapping("/match/muovi")
-    public void muovi(@RequestBody Action azione) {
-        partita.muovi(azione.getScore(), azione.getTerritorioDest(), azione.getTerritorioSource(), azione.getArmate());
+    @PostMapping("/match/assegna")
+    public void assegna(@RequestBody Action azione) {
+        partita.assegna(azione.getScore(), azione.getTerritorioDest(), azione.getTerritorioSource(), azione.getArmate());
+    }
+
+    @PostMapping("/match/attacca")
+    public ConquestResult attacca(@RequestBody Action azione) {
+        return partita.attacca(azione.getScore(), azione.getTerritorioDest(), azione.getTerritorioSource(), azione.getArmate());
     }
 
     @PostMapping("/match/rinforza")

@@ -7,11 +7,12 @@ import { CharthbarComponent } from './charthbar/charthbar.component';
 import { ChartbarComponent } from './chartbar/chartbar.component';
 import { RouterModule } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
+import { AnalisiAdminComponent } from './analisi-admin/analisi-admin.component';
 
 
 
 @NgModule({
-  declarations: [AdminProfileComponent, ChartradarComponent, ChartlineComponent, CharthbarComponent, ChartbarComponent],
+  declarations: [AdminProfileComponent, ChartradarComponent, ChartlineComponent, CharthbarComponent, ChartbarComponent, AnalisiAdminComponent],
   imports: [
     CommonModule,
     RouterModule,

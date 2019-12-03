@@ -53,8 +53,8 @@ export class AdminProfileComponent implements OnInit {
 	this.provaDataset = this.gProva.createDataset();
 	this.provaLabels = this.gProva.getXAxis();
 
-    this.logoutBox = document.getElementById('logoutBox');
-    this.logoutBox.classList.add('displayNone');
+    /*this.logoutBox = document.getElementById('logoutBox');
+    this.logoutBox.classList.add('displayNone');*/
   }
 
 }

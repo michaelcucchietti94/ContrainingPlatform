@@ -1,1 +1,14 @@
-<p>analisi-admin works!</p>
+<div class="contenitoreHome1">
+    <h2>Tipologie grafici</h2>
+            <!-- Inserimento bottoni per tipologie grafici -->
+            <span>Bar</span>
+            <span>Horizontal Bar</span>
+            <span>Radar</span>
+            <span>Line</span>
+</div>
+<div class="contenitoreHome2">
+    <app-chartbar [chartDatasets]='barProvaDataset' [chartLabels]='barProvaLabels'></app-chartbar>
+    <app-charthbar [chartDatasets]='hbarProvaDataset' [chartLabels]='hbarProvaLabels'></app-charthbar>
+    <app-chartradar [chartDatasets]='radarProvaDataset' [chartLabels]='radarProvaLabels'></app-chartradar>
+    <app-chartline [chartDatasets]='lineProvaDataset' [chartLabels]='lineProvaLabels'></app-chartline>
+</div>

@@ -16,10 +16,11 @@ export class TestComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.start();
 	}
 
 	start() {
-		this.testTimerBridge.timer.start(5000);
+		this.testTimerBridge.timer.start(500);
 	}
 
 }

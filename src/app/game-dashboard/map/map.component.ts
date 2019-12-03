@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { TerritorioDecorated } from 'src/dto/game/TerritorioDecorated';
 import { UtilityService } from 'src/service/utility/Utility.service';
 import { MapTestService } from 'src/service/frontend_scoped/map_test.service';
+import { ConquestResult } from 'src/dto/game/ConquestResult';
 
 @Component({
   selector: 'app-map',
@@ -28,17 +29,32 @@ export class MapComponent implements OnInit {
 	private attacker : TerritorioDecorated = new TerritorioDecorated();
 	private attackerArmate : number = 0;
 	private selectedLevel : number = 1;
+	private combatSimulation : HTMLElement = null;
+	private gameContainer : HTMLElement = null;
 	private levels : any[] = [
 		{level: 1, value:'LIVELLO BASE: chiama a raccolta i contadini'},
 		{level: 2, value:'LIVELLO MEDIO: chiama a raccolta i soldati'},
 		{level: 3, value:'LIVELLO ALTO: chiama a raccolta i carri'}
 	]
+	private conquestResult : ConquestResult = new ConquestResult();
+	
 
 
 	constructor(private service : GamemapService, private utility : UtilityService, private mapTest : MapTestService, private router : Router) {
 	}
 
 	ngOnInit() {
+		this.combatSimulation = document.getElementById('combatSimulation');
+		this.gameContainer = document.getElementById('gameContainer');
+		if(this.mapTest.isConquering()) {
+			this.mapTest.setConquering(false);
+			// Code for showing animation
+			this.conquestResult = this.mapTest.getConquestResult();
+			this.combatSimulation.classList.remove('displayNone');
+			this.gameContainer.classList.add('displayNone');
+			this.startSimulation();
+		}
+
 		this.mapCSS = new MapCss();
 		this.mapCSS.resetMap();
 		this.infoTerritorio = document.getElementById('infoTerritorio');
@@ -48,7 +64,6 @@ export class MapComponent implements OnInit {
 		this.conquistaButton = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.azioniConfine, 'conquista')[0];
 		this.occupaButton = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.azioniConfine, 'occupa')[0];
 
-
 		this.service.startGame().subscribe(() => {
 			this.service.getPartecipanti().subscribe(players => this.players = players);
 			this.service.getConquistati().subscribe(conquistati => {
@@ -56,8 +71,57 @@ export class MapComponent implements OnInit {
 			});
 			this.service.getConfini().subscribe(confini => this.confinanti = confini);
 		});
+
+		
 	}
-	
+	private createSimulationTimingArray(delta : number) : Array<number> {
+		let totalMilliseconds : number = 3000;
+		let arrayTiming : Array<number> = [];
+		let sum : number = 0;
+
+		for(let i = 0; i < delta; i++) {
+			let rand : number = Math.random() * 0.9 + 0.1;
+			arrayTiming.push(sum + rand);
+			sum += rand;
+		}
+		for(let i = 0; i < delta; i++) {
+			arrayTiming[i] *= totalMilliseconds / sum;
+		}
+
+		return arrayTiming;
+	}
+	private createSimulationPlayer1() {
+		let delta : number = this.conquestResult.armate1 - this.conquestResult.finalArmate1;
+		console.log("Delat 1 : " + delta);
+		let timings : Array<number> = this.createSimulationTimingArray(delta);
+		let initialValue : number = this.conquestResult.armate1;
+		timings.forEach((timing, index) => {
+			setTimeout((currentIndex) => {
+				this.conquestResult.armate1 = initialValue - currentIndex;
+			}, timing, index);
+		});
+		
+	}
+	private createSimulationPlayer2() {
+		let delta : number = this.conquestResult.armate2 - this.conquestResult.finalArmate2;
+		console.log("Delat 2 : " + delta);
+		let timings : Array<number> = this.createSimulationTimingArray(delta);
+		let initialValue : number = this.conquestResult.armate2;
+		timings.forEach((timing, index) => {
+			setTimeout((currentIndex) => {
+				this.conquestResult.armate2 = initialValue - (currentIndex+1);
+			}, timing, index);
+		});
+		
+	}
+	private startSimulation() {
+		this.createSimulationPlayer1();
+		this.createSimulationPlayer2();
+		setTimeout(() => {
+			this.combatSimulation.classList.add("displayNone");
+			this.gameContainer.classList.remove('displayNone');
+		}, 3400);
+	}
 	createRange(maxNumber : number) : Array<number> {
 		let result : Array<number> = [];
 		for(let i = 1; i < maxNumber; i++) result.push(i);
@@ -125,7 +189,8 @@ export class MapComponent implements OnInit {
 
 	conquista() {
 		this.mapTest.reset();
-		this.mapTest.setActionFunction(this.service.muovi);
+		this.mapTest.setActionFunction(this.service.attacca);
+		this.mapTest.setConquering(true);
 		this.mapTest.setArmate(this.attackerArmate);
 		this.mapTest.setTerritorioSorce(this.attacker.id);
 		this.mapTest.setTerritorioTarget(this.territorioSelezionato.id);
@@ -136,7 +201,7 @@ export class MapComponent implements OnInit {
 	}
 	occupa() {
 		this.mapTest.reset();
-		this.mapTest.setActionFunction(this.service.muovi);
+		this.mapTest.setActionFunction(this.service.assegna);
 		this.mapTest.setArmate(this.attackerArmate);
 		this.mapTest.setTerritorioSorce(this.attacker.id);
 		this.mapTest.setTerritorioTarget(this.territorioSelezionato.id);
@@ -150,7 +215,6 @@ export class MapComponent implements OnInit {
 		this.mapTest.setTerritorioTarget(this.territorioSelezionato.id);
 		this.mapTest.setArgomento(this.territorioSelezionato.category.argomento.toString());
 		this.mapTest.setLevel(this.selectedLevel);
-		console.log(this.selectedLevel);
 		this.router.navigate(['/dashboard/test']);
 	}
 

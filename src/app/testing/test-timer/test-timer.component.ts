@@ -9,9 +9,9 @@ import { TestTimerBridge } from '../TestTimerBridge.service';
 })
 export class TestTimerComponent implements OnInit {
   private timerElement : HTMLElement;
-	private hourDisk : HTMLElement;
 	private minuteDisk : HTMLElement;
-	private secondDisk : HTMLElement;
+	private secondsDisk : HTMLElement;
+	private millisDisk : HTMLElement;
 	private timeWrite : HTMLElement;
 
 	private hourRoundValue : number = 2;
@@ -26,74 +26,74 @@ export class TestTimerComponent implements OnInit {
 	}
 
 
-	private convertInSeconds(hours : number, minutes : number, seconds : number) : number {
-		return hours*60*60 + minutes*60 + seconds;
+	private convertInMillis(minutes : number, seconds : number, milliseconds : number) : number {
+		return minutes*60*100 + seconds*100 + milliseconds;
 	}
 
-	private maxHourValue() : number {
-		return this.convertInSeconds(this.hourRoundValue, 59, 59);
-	}
 	private maxMinuteValue() : number {
-		return this.convertInSeconds(0, 60,0);
+		return this.convertInMillis(59, 59, 99);
 	}
-	private maxSecondValue() : number {
-		return this.convertInSeconds(0,0,60);
+	private maxSecondsValue() : number {
+		return this.convertInMillis(0, 60,0);
+	}
+	private maxMillisecondValue() : number {
+		return this.convertInMillis(0,0,99);
 	}
 
-	private getHoursDeg(timerSeconds : number) {
-		let x = Math.min(timerSeconds, this.maxHourValue());
-		x = Math.max(0, timerSeconds);
+	private getMinutesDeg(timerMillis : number) {
+		let x = Math.min(timerMillis, this.maxMinuteValue());
+		x = Math.max(0, timerMillis);
 
-		return (360 / this.maxHourValue()) * x;
-	}
-	private getMinuteDeg(timerSeconds : number) {
-		let x = timerSeconds % (60*60);
-		let deg = (360 / this.maxMinuteValue()) * x;
-		
 		return (360 / this.maxMinuteValue()) * x;
 	}
-	private getSecondDeg(timerSeconds : number) {
-		let x = timerSeconds % 60;
-		let deg = (360 / this.maxSecondValue()) * x;
+	private getSecondsDeg(timerMillis : number) {
+		let x = timerMillis;
+		let deg = (360 / this.maxSecondsValue()) * x;
+		
+		return (360 / this.maxSecondsValue()) * x;
+	}
+	private getMillisecondsDeg(timerMillis : number) {
+		let x = timerMillis % 100;
+		let deg = (360 / this.maxMillisecondValue()) * x;
 		return deg;
 	}
 
 
-	private setHourStyle(timerSeconds : number) {
-		this.hourDisk.style.transform = 'rotate(' + this.getHoursDeg(timerSeconds) + 'deg)';
+	private setMinutesStyle(timerSeconds : number) {
+		this.minuteDisk.style.transform = 'rotate(' + this.getMinutesDeg(timerSeconds) + 'deg)';
 	}
-	private setMinuteStyle(timerSeconds : number) {
-		this.minuteDisk.style.transform = 'rotate(' + this.getMinuteDeg(timerSeconds) + 'deg)';
+	private setSecondsStyle(timerSeconds : number) {
+		this.secondsDisk.style.transform = 'rotate(' + this.getSecondsDeg(timerSeconds) + 'deg)';
 	}
-	private setSecondStyle(timerSeconds : number) {
-		this.secondDisk.style.transform = 'rotate(' + this.getSecondDeg(timerSeconds) + 'deg)';
+	private setMillisStyle(timerSeconds : number) {
+		this.millisDisk.style.transform = 'rotate(' + this.getMillisecondsDeg(timerSeconds) + 'deg)';
 	}
 	private setStyle(timerSeconds : number) {
-		this.setHourStyle(timerSeconds);
-		this.setMinuteStyle(timerSeconds);
-		this.setSecondStyle(timerSeconds);
+		this.setMinutesStyle(timerSeconds);
+		this.setSecondsStyle(timerSeconds);
+		this.setMillisStyle(timerSeconds);
 	}
 
-	private calculateRemainingHours() : number {
-		return Math.floor(this.timerValue / 3600);
-	}
 	private calculateRemainingMinutes() : number {
-		let m_in_seconds : number = this.timerValue % (60*60);
-		return Math.floor(m_in_seconds / 60);
+		return Math.floor(this.timerValue / 6000);
 	}
 	private calculateRemainingSeconds() : number {
-		return Math.floor(this.timerValue % (60));
+		let m_in_seconds : number = this.timerValue % (60*100);
+		return Math.floor(m_in_seconds / 100);
+	}
+	private calculateRemainingMilliseconds() : number {
+		return Math.floor(this.timerValue % (100));
 	}
 	private setRemainingText() {
-		let hourText : string = this.calculateRemainingHours().toString();
+		let hourText : string = this.calculateRemainingMinutes().toString();
 		if(hourText.length < 2)
 			hourText = '0' + hourText;
 
-		let minuteText : string = this.calculateRemainingMinutes().toString();
+		let minuteText : string = this.calculateRemainingSeconds().toString();
 		if(minuteText.length < 2)
 			minuteText = '0' + minuteText;
 
-		let secondText : string = this.calculateRemainingSeconds().toString();
+		let secondText : string = this.calculateRemainingMilliseconds().toString();
 		if(secondText.length < 2)
 			secondText = '0' + secondText;
 					
@@ -111,12 +111,12 @@ export class TestTimerComponent implements OnInit {
 	private startTimer() {
 		this.timeoutID = setInterval(() => {
 			this.setRemainingText();
-			if(this.timerValue === 0) {
+			/*if(this.timerValue === 0) {
 				this.stop();
 				this.timerEnd.emit();
-			} else {
-				this.setStyle(this.timerValue -= 0.01);
-			}
+			} else {*/
+				this.setStyle(this.timerValue += 1);
+			//}
 			
 		}, 10);
 	}
@@ -142,9 +142,9 @@ export class TestTimerComponent implements OnInit {
 
   ngOnInit() {
 	this.timerElement = document.getElementById('testTimer');
-	this.hourDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'hours')[0];
-	this.minuteDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'minutes')[0];
-	this.secondDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'seconds')[0];
+	this.minuteDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'hours')[0];
+	this.secondsDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'minutes')[0];
+	this.millisDisk = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'seconds')[0];
 	this.timeWrite = <HTMLElement>this.utility.extendedDocument.getElementsByAttributeNameOf(this.timerElement, 'text')[0];
 	this.timerValue = 0;
 	this.setRemainingText();

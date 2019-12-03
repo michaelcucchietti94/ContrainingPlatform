@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/dto/User';
 import { TerritorioDecorated } from 'src/dto/game/TerritorioDecorated';
 import { Action } from 'src/dto/game/Action';
+import { ConquestResult } from 'src/dto/game/ConquestResult';
 
 @Injectable({
     providedIn: 'root'
@@ -33,11 +34,15 @@ export class GamemapService {
         return this.http.get<TerritorioDecorated[]>('http://localhost:8080/game/match/getTerritoriOf_' + nome);
     }
     
-    muovi(azione : Action) : Observable<void> {
-        return this.http.post<void>('http://localhost:8080/game/match/muovi', azione);
+    
+    assegna(azione : Action) : Observable<void> {
+        return this.http.post<void>('http://localhost:8080/game/match/assegna', azione);
     }
     rinforza(azione : Action) : Observable<void> {
         return this.http.post<void>('http://localhost:8080/game/match/rinforza', azione);
+    }
+    attacca(azione : Action) : Observable<ConquestResult> {
+        return this.http.post<ConquestResult>('http://localhost:8080/game/match/attacca', azione);
     }
 
 }

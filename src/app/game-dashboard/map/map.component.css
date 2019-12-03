@@ -363,3 +363,85 @@ div.map {
 .continente_42 {
     background-image: url('../../../assets/map/parts/part_42.svg');
 }
+
+
+div.combatSimulation {
+    position: fixed;
+    height: 100vh;
+    width:100vw;
+    top:0;
+    left:0;
+
+    overflow: hidden;
+    padding: 5vh;
+    z-index: 1000;
+}
+
+div.combatSimulation * {
+    color: rgb(220, 220, 220);
+}
+
+div.combatSimulation div.simulation {
+    position: relative;
+    display: flex;
+    height: calc(100% - 5vh);
+    width: 100%;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.simulation > div {
+    position: relative;
+    height: 100%;
+    width: 33.33%;
+    top: 0;
+    left:0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+div.simulation div.vs {
+    font-size: 6vh;
+}
+
+div.player > div {
+    position: relative;
+    width: 100%;
+    top:0;
+    left:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+div.player div.nome {
+    height: 25vh;
+    font-size: 8vh;
+}
+
+div.player div.armate {
+    height: 25vh;
+    font-size: 12vh;
+}
+
+div.player div.livello {
+    height: 8vh;
+}
+
+div.livelloBall {
+    position: relative;
+    top:0;
+    left:0;
+    height: 3vh;
+    width: 3vh;
+    background-color: rgb(220, 220, 220);
+    border-radius:50%;
+    margin: 1vh;
+}

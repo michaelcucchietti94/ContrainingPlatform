@@ -10,6 +10,7 @@ import { RispostaDomanda } from 'src/dto/testing/RispostaDomanda';
 import { MapTestService } from 'src/service/frontend_scoped/map_test.service';
 import { Router } from '@angular/router';
 import { RispostaUtente } from 'src/dto/testing/RispostaUtente';
+import { ConquestResult } from 'src/dto/game/ConquestResult';
 
 @Component({
   selector: 'app-usertest',
@@ -87,9 +88,17 @@ export class UsertestComponent implements OnInit {
 					this.isAddingResponse = false;
 					this.mapTest.setScore(score);
 				
-					this.mapTest.doAction().subscribe(() => {
-						this.router.navigate(['/dashboard/map']);
-					});
+					if(this.mapTest.isConquering()) {
+						this.mapTest.doAction().subscribe((result : ConquestResult) => {
+							this.mapTest.setConquestResult(result);
+							this.router.navigate(['/dashboard/map']);
+						});
+					} else {
+							
+						this.mapTest.doAction().subscribe(() => {
+							this.router.navigate(['/dashboard/map']);
+						});
+					}
 				});
 			}
 		} else {

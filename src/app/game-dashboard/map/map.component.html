@@ -1,4 +1,40 @@
-<div class="componentContainer">
+<div class="combatSimulation displayNone" id="combatSimulation">
+    <div class="defaultBox">
+        <div class="title">
+            <div class="angolo_sinistro"></div>
+            <div class="content">
+                Conquista
+            </div>
+            <div class="angolo_destro"></div>
+        </div>
+        <div class="simulation">
+            <div class="player" player1>
+                <div class="nome">
+                    {{conquestResult.squadra1}}
+                </div>
+                <div class="armate">
+                    {{conquestResult.armate1}}
+                </div>
+                <div class="livello">
+                    <div class="livelloBall" *ngFor="let b of createRange(conquestResult.livello1+1)"></div>
+                </div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="player" player2>
+                <div class="nome">
+                    {{conquestResult.squadra2}}
+                </div>
+                <div class="armate">
+                    {{conquestResult.armate2}}
+                </div>
+                <div class="livello">
+                    <div class="livelloBall" *ngFor="let b of createRange(conquestResult.livello2+1)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="componentContainer" id="gameContainer">
     <div class="defaultBox mapBox">
         <div class="mapContainer">
             <div class="map continente" id="contrainingMap"></div>

@@ -33,44 +33,7 @@ div.container div.menu {
     justify-content: flex-start;
 
 }
-div.contenitoreHome1{
-    display: flex;
-    position:relative;
-    top:4vh;
-    left:2.2vw;
-    height:70vh;
-    width: 23vw;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    background-color: rgba(194, 255, 245, 0.055);
-    overflow: visible;
-}
-div.contenitoreHome1 div {
-    height: auto;
-    width: 200%;
-}
 
-div.contenitoreHome2{
-    display: flex;
-    position:relative;
-    top:-66vh;
-    left:27vw;
-    height:70vh;
-    width: 70.8vw;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    background-color: rgba(194, 255, 245, 0.055);
-}
 
 div.container div.data {
     position:relative;

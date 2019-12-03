@@ -7,13 +7,15 @@ import { GameDashboardModule } from './game-dashboard/game-dashboard.module';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TestingModule } from './testing/testing.module';
-import { AdminModule } from './admin/admin-dashboard/admin.module';
+import { AdminModule } from './admin/admin.module';
 import { ChartsModule } from 'ng2-charts';
+import { AdminLayoutModule } from './admin/admin-layout/admin-layout.module';
+import { AdminProfileModule } from './admin/admin-profile/admin-profile.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { ChartsModule } from 'ng2-charts';
     GameDashboardModule,
     TestingModule,
     AdminModule,
-    ChartsModule
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
